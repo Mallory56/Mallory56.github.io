@@ -2,46 +2,130 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Portfolio Mallolos</title>
-  
+<title>Portfolio Mallory</title>
+
 <style>
 body {
   margin:0;
-  font-family: Arial;
-  background: linear-gradient(#87CEEB, #1E90FF);
-  height:100vh;
-  overflow:hidden;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(180deg,#0f2027,#203a43,#2c5364);
   color:white;
-  text-align:center;
+  overflow-x:hidden;
 }
 
-h1 {
-  margin-top:100px;
-  font-size:50px;
+nav {
+  position:fixed;
+  top:0;
+  width:100%;
+  background: rgba(0,0,0,0.3);
+  backdrop-filter: blur(10px);
+  display:flex;
+  justify-content:center;
+  gap:40px;
+  padding:20px;
+  z-index:100;
+}
+
+nav a {
+  color:white;
+  text-decoration:none;
+  font-weight:bold;
+  transition:0.3s;
+}
+
+nav a:hover {
+  color:#4fd1c5;
+}
+
+section {
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  text-align:center;
+  padding:20px;
+}
+
+.hero {
+  font-size:60px;
 }
 
 .whale {
   position:absolute;
   bottom:50px;
-  left:-300px;
-  width:300px;
-  animation: swim 12s linear infinite;
+  left:-400px;
+  width:350px;
+  animation: swim 20s linear infinite;
 }
 
 @keyframes swim {
-  0% { left:-300px; }
-  100% { left:110%; }
+  0% { left:-400px; }
+  100% { left:120%; }
+}
+
+.wave {
+  position:absolute;
+  bottom:0;
+  width:200%;
+  height:150px;
+  background: url('https://svgshare.com/i/uKp.svg');
+  animation: wave 10s linear infinite;
+}
+
+@keyframes wave {
+  from { transform:translateX(0); }
+  to { transform:translateX(-50%); }
+}
+
+.card {
+  background: rgba(255,255,255,0.1);
+  padding:30px;
+  border-radius:20px;
+  backdrop-filter: blur(10px);
+  max-width:600px;
 }
 </style>
-
 </head>
 
 <body>
 
-<h1>Bienvenue sur le profolio de mallolo</h1>
-<p>Développeur passionné</p>
+<nav>
+<a href="#home">Accueil</a>
+<a href="#about">À propos</a>
+<a href="#projects">Projets</a>
+<a href="#contact">Contact</a>
+</nav>
 
-<img class="whale" src="https://i.imgur.com/7yUvePI.png">
+<section id="home">
+<h1 class="hero">Mallory</h1>
+<p>Développeur Web Océan 🌊</p>
+</section>
+
+<section id="about">
+<div class="card">
+<h2>À propos</h2>
+<p>Passionné par le développement web et les animations modernes.</p>
+</div>
+</section>
+
+<section id="projects">
+<div class="card">
+<h2>Projets</h2>
+<p>Projet 1<br>Projet 2<br>Projet 3</p>
+</div>
+</section>
+
+<section id="contact">
+<div class="card">
+<h2>Contact</h2>
+<p>Email : mail@email.com</p>
+</div>
+</section>
+
+<img class="whale" src="whale.png">
+
+<div class="wave"></div>
 
 </body>
 </html>

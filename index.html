@@ -123,6 +123,67 @@ section {
   100% { transform: translateX(-50%); }
 }
 
+/* Onglets projets */
+.proj-tab {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.7);
+  padding: 8px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+.proj-tab:hover  { background: rgba(255,255,255,0.15); color: white; }
+.proj-tab.active { background: rgba(79,209,197,0.25); border-color: #4fd1c5; color: #4fd1c5; }
+
+.proj-panel { text-align: left; }
+.proj-panel.hidden { display: none; }
+
+/* Groupes déroulants */
+.proj-group { margin-bottom: 8px; }
+
+.proj-group-btn {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: white;
+  padding: 10px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+.proj-group-btn:hover { background: rgba(255,255,255,0.12); }
+.proj-group-btn.open  { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-color: rgba(79,209,197,0.4); }
+.proj-group-btn .arrow { transition: transform 0.3s; font-size: 12px; opacity: 0.7; }
+.proj-group-btn.open .arrow { transform: rotate(180deg); }
+
+.proj-group-content {
+  display: none;
+  flex-direction: column;
+  background: rgba(0,0,0,0.2);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-top: none;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  overflow: hidden;
+}
+.proj-group-content.open { display: flex; }
+.proj-group-content a {
+  padding: 9px 20px;
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  font-size: 13px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  transition: background 0.2s, color 0.2s;
+}
+.proj-group-content a:last-child { border-bottom: none; }
+.proj-group-content a:hover { background: rgba(79,209,197,0.1); color: #4fd1c5; }
+
 /* Poissons */
 .fish {
   position: absolute;
@@ -198,9 +259,72 @@ section {
 
   <!-- Section Projets -->
   <section id="projects">
-    <div class="bg-white/10 backdrop-blur-xl p-10 rounded-3xl shadow-xl max-w-xl">
-      <h2 class="text-3xl mb-4">Projets</h2>
-      <p>Projet 1<br>Projet 2<br>Projet 3</p>
+    <div class="bg-white/10 backdrop-blur-xl p-10 rounded-3xl shadow-xl" style="max-width:680px; width:90vw;">
+      <h2 class="text-3xl mb-6">Projets</h2>
+
+      <!-- Onglets -->
+      <div style="display:flex; gap:10px; justify-content:center; margin-bottom:24px; flex-wrap:wrap;">
+        <button class="proj-tab active" data-tab="metabarcoding">Métabarcoding</button>
+        <button class="proj-tab" data-tab="transcriptomique">Transcriptomique</button>
+        <button class="proj-tab" data-tab="genomique">Génomique</button>
+      </div>
+
+      <!-- Panneau Métabarcoding -->
+      <div class="proj-panel" id="tab-metabarcoding">
+        <div class="proj-group">
+          <button class="proj-group-btn" onclick="toggleGroup(this)">
+            <span>Long reads</span><span class="arrow">▾</span>
+          </button>
+          <div class="proj-group-content">
+            <a href="#">Nanopore</a>
+            <a href="#">PacBio</a>
+          </div>
+        </div>
+        <div class="proj-group">
+          <button class="proj-group-btn" onclick="toggleGroup(this)">
+            <span>Short reads</span><span class="arrow">▾</span>
+          </button>
+          <div class="proj-group-content">
+            <a href="#">Illumina</a>
+          </div>
+        </div>
+        <div class="proj-group">
+          <button class="proj-group-btn" onclick="toggleGroup(this)">
+            <span>Compartiments</span><span class="arrow">▾</span>
+          </button>
+          <div class="proj-group-content">
+            <a href="#">18S</a>
+            <a href="#">16S</a>
+            <a href="#">Archées</a>
+            <a href="#">ITS</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panneau Transcriptomique -->
+      <div class="proj-panel hidden" id="tab-transcriptomique">
+        <div class="proj-group">
+          <button class="proj-group-btn" onclick="toggleGroup(this)">
+            <span>À venir</span><span class="arrow">▾</span>
+          </button>
+          <div class="proj-group-content">
+            <a href="#">Projet 1</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panneau Génomique -->
+      <div class="proj-panel hidden" id="tab-genomique">
+        <div class="proj-group">
+          <button class="proj-group-btn" onclick="toggleGroup(this)">
+            <span>À venir</span><span class="arrow">▾</span>
+          </button>
+          <div class="proj-group-content">
+            <a href="#">Projet 1</a>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -208,7 +332,7 @@ section {
   <section id="contact">
     <div class="bg-white/10 backdrop-blur-xl p-10 rounded-3xl shadow-xl max-w-xl">
       <h2 class="text-3xl mb-4">Contact</h2>
-      <p>mail@email.com</p>
+      <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="eb868a8287ab8e868a8287c5888486">[email&#160;protected]</a></p>
       <p>LinkedIn</p>
     </div>
   </section>
@@ -221,7 +345,23 @@ section {
 
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+/* --- Onglets projets --- */
+document.querySelectorAll('.proj-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.proj-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.proj-panel').forEach(p => p.classList.add('hidden'));
+    tab.classList.add('active');
+    document.getElementById('tab-' + tab.dataset.tab).classList.remove('hidden');
+  });
+});
+
+function toggleGroup(btn) {
+  const content = btn.nextElementSibling;
+  btn.classList.toggle('open');
+  content.classList.toggle('open');
+}
+
 /* --- Bulles : s'arrêtent à la surface (haut de .ocean-zone) --- */
 function createBubble() {
   const oceanZone = document.querySelector('.ocean-zone');
@@ -375,13 +515,4 @@ function createCloud() {
   cloud.style.left   = '-220px';
   const duration = Math.random() * 40 + 30;
   cloud.style.animationDuration = duration + 's';
-  cloud.style.opacity = (Math.random() * 0.3 + 0.1).toString();
-  skyZone.appendChild(cloud);
-  setTimeout(() => cloud.remove(), duration * 1000 + 1000);
-}
-for (let i = 0; i < 4; i++) setTimeout(createCloud, i * 4000);
-setInterval(createCloud, 8000);
-</script>
-
-</body>
-</html>
+  cloud.style.opacity = (Math.random() * 0.3 + 0.1).t

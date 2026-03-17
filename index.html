@@ -7,14 +7,13 @@
 
 <style>
 /* -------------------
-    Fond ciel -> océan
+    Fond ciel -> océan global
    ------------------- */
 body {
-  margin:0;
-  font-family:'Segoe UI', sans-serif;
-  background: linear-gradient(to bottom, #87CEEB, #1E90FF, #203a43, #000814); /* ciel clair -> océan profond */
-  color:white;
-  overflow-x:hidden;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+  overflow-x: hidden;
   perspective: 1px;
   transform-style: preserve-3d;
 }
@@ -24,11 +23,11 @@ body {
    ------------------- */
 nav {
   position: fixed;
-  top:0;
-  width:100%;
+  top: 0;
+  width: 100%;
   background: rgba(255,255,255,0.05);
   backdrop-filter: blur(10px);
-  z-index:100;
+  z-index: 100;
 }
 nav a {
   transition: 0.3s;
@@ -39,14 +38,14 @@ nav a:hover { color: #4fd1c5; }
     Sections
    ------------------- */
 section {
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  flex-direction:column;
-  text-align:center;
-  position:relative;
-  z-index:10;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+  z-index: 10;
 }
 
 /* -------------------
@@ -54,33 +53,33 @@ section {
    ------------------- */
 .whale-video {
   position: absolute;
-  bottom:50px;
-  left:-400px;
-  width:400px;
+  bottom: 50px;
+  left: -400px;
+  width: 400px;
   mix-blend-mode: screen;
   animation: swim 20s linear infinite;
   pointer-events: none;
 }
 @keyframes swim {
-  0% { left:-400px; }
-  100% { left:120%; }
+  0% { left: -400px; }
+  100% { left: 120%; }
 }
 
 /* -------------------
     Bulles
    ------------------- */
 .bubble {
-  position:absolute;
-  bottom:-50px;
+  position: absolute;
+  bottom: -50px;
   background: rgba(255,255,255,0.3);
-  border-radius:50%;
-  pointer-events:none;
+  border-radius: 50%;
+  pointer-events: none;
   animation: rise linear infinite;
 }
 @keyframes rise {
-  0% { transform: translateY(0) scale(0.5); opacity:0; }
-  10% { opacity:0.5; }
-  100% { transform: translateY(-120vh) scale(1); opacity:0; }
+  0% { transform: translateY(0) scale(0.5); opacity: 0; }
+  10% { opacity: 0.5; }
+  100% { transform: translateY(-120vh) scale(1); opacity: 0; }
 }
 
 /* -------------------
@@ -99,12 +98,35 @@ section {
     transparent 5px,
     transparent 10px
   );
-  opacity:0.5;
+  opacity: 0.5;
   animation: scrollDNA 5s linear infinite;
 }
 @keyframes scrollDNA {
-  0% { background-position:0 0; }
-  100% { background-position:0 10px; }
+  0% { background-position: 0 0; }
+  100% { background-position: 0 10px; }
+}
+
+/* -------------------
+    Séparation Accueil -> Océan
+   ------------------- */
+.separator {
+  width: 100%;
+  height: 40vh;
+  position: relative;
+  overflow: hidden;
+}
+.separator .gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, #87CEEB, #1E90FF, #203a43, #000814);
+}
+.separator hr {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  border-top: 2px solid rgba(255,255,255,0.3);
 }
 </style>
 </head>
@@ -119,16 +141,23 @@ section {
   <a href="#contact" class="font-bold">Contact</a>
 </nav>
 
-<!-- Section Accueil (dans le ciel) -->
+<!-- Section Accueil (ciel) -->
 <section id="home" class="relative h-screen flex flex-col justify-center items-center text-center overflow-hidden">
   <h1 class="text-6xl font-bold mb-4 z-10">Mallory Le Corres</h1>
-  <p class="text-xl opacity-80 mb-20 z-10">Bio-informaticenne 🌊</p>
+  <p class="text-xl opacity-80 mb-20 z-10">Bio-informaticienne 🌊</p>
 
-<!-- Surface de l'eau -->
-<div class="absolute bottom-0 left-0 w-full h-64 z-0 overflow-hidden">
-  <svg viewBox="0 0 1440 320" class="w-[200%] h-full">
-    <path fill="#1E90FF" fill-opacity="0.6" d="M0,64L48,69.3C96,75,192,85,288,101.3C384,117,480,139,576,138.7C672,139,768,117,864,101.3C960,85,1056,75,1152,90.7C1248,107,1344,149,1392,170.7L1440,192L1440,320L0,320Z"></path>
-  </svg>
+  <!-- Surface de l'eau -->
+  <div class="absolute bottom-0 left-0 w-full h-64 z-0 overflow-hidden">
+    <svg viewBox="0 0 1440 320" class="w-[200%] h-full">
+      <path fill="#1E90FF" fill-opacity="0.6" d="M0,64L48,69.3C96,75,192,85,288,101.3C384,117,480,139,576,138.7C672,139,768,117,864,101.3C960,85,1056,75,1152,90.7C1248,107,1344,149,1392,170.7L1440,192L1440,320L0,320Z"></path>
+    </svg>
+  </div>
+</section>
+
+<!-- Séparation Accueil -> Océan -->
+<div class="separator">
+  <div class="gradient"></div>
+  <hr>
 </div>
 
 <!-- Section À propos (surface océan) -->
@@ -175,9 +204,9 @@ function createBubble() {
   bubble.style.left = Math.random() * window.innerWidth + 'px';
   bubble.style.animationDuration = (Math.random() * 5 + 5) + 's';
   document.body.appendChild(bubble);
-  setTimeout(()=>bubble.remove(),10000);
+  setTimeout(() => bubble.remove(), 10000);
 }
-setInterval(createBubble,200);
+setInterval(createBubble, 200);
 </script>
 
 </body>

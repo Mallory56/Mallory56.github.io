@@ -2,54 +2,20 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Portfolio Mallory</title>
+<title>Portfolio Mallory6</title>
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
 /* -------------------
-    Reset & base
+    Fond ciel -> océan global
    ------------------- */
-*, *::before, *::after { box-sizing: border-box; }
-
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
   color: white;
   overflow-x: hidden;
-}
-
-/* -------------------
-    Zone CIEL (au-dessus du trait)
-    = fond bleu ciel dégradé vers bleu moyen
-   ------------------- */
-.sky-zone {
-  background: linear-gradient(to bottom, #cce8f4, #87CEEB, #4ab8e8, #1E90FF);
-}
-
-/* -------------------
-    Surface de l'eau animée
-   ------------------- */
-.surface-wrapper {
-  position: relative;
-  width: 100%;
-  height: 80px;
-  z-index: 20;
-  pointer-events: none;
-  overflow: hidden;
-  background: transparent;
-}
-.surface-wrapper canvas {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-/* -------------------
-    Zone OCÉAN (en dessous du trait)
-    = bleu profond -> abysses
-   ------------------- */
-.ocean-zone {
-  background: linear-gradient(to bottom, #1565C0, #0d47a1, #203a43, #0a1628, #000814);
+  perspective: 1px;
+  transform-style: preserve-3d;
 }
 
 /* -------------------
@@ -59,7 +25,7 @@ nav {
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(255,255,255,0.07);
+  background: rgba(255,255,255,0.05);
   backdrop-filter: blur(10px);
   z-index: 100;
 }
@@ -95,7 +61,7 @@ section {
   pointer-events: none;
 }
 @keyframes swim {
-  0%   { left: -400px; }
+  0% { left: -400px; }
   100% { left: 120%; }
 }
 
@@ -111,8 +77,8 @@ section {
   animation: rise linear infinite;
 }
 @keyframes rise {
-  0%   { transform: translateY(0) scale(0.5); opacity: 0; }
-  10%  { opacity: 0.5; }
+  0% { transform: translateY(0) scale(0.5); opacity: 0; }
+  10% { opacity: 0.5; }
   100% { transform: translateY(-120vh) scale(1); opacity: 0; }
 }
 
@@ -134,217 +100,113 @@ section {
   );
   opacity: 0.5;
   animation: scrollDNA 5s linear infinite;
-  z-index: 50;
 }
 @keyframes scrollDNA {
-  0%   { background-position: 0 0; }
+  0% { background-position: 0 0; }
   100% { background-position: 0 10px; }
 }
 
 /* -------------------
-    Nuages légers dans le ciel
+    Séparation Accueil -> Océan
    ------------------- */
-.cloud {
-  position: absolute;
-  border-radius: 50px;
-  background: rgba(255,255,255,0.25);
-  filter: blur(8px);
-  pointer-events: none;
-  animation: drift linear infinite;
+.separator {
+  width: 100%;
+  height: 40vh;
+  position: relative;
+  overflow: hidden;
 }
-@keyframes drift {
-  0%   { transform: translateX(-200px); }
-  100% { transform: translateX(110vw); }
+.separator .gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, #87CEEB, #1E90FF, #203a43, #000814);
+}
+.separator hr {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  border-top: 2px solid rgba(255,255,255,0.3);
 }
 </style>
 </head>
 
-<body>
+<body class="relative">
 
 <!-- Navbar -->
 <nav class="flex justify-center space-x-6 p-4 max-w-6xl mx-auto">
-  <a href="#home"     class="font-bold">Accueil</a>
-  <a href="#about"    class="font-bold">À propos</a>
+  <a href="#home" class="font-bold">Accueil</a>
+  <a href="#about" class="font-bold">À propos</a>
   <a href="#projects" class="font-bold">Projets</a>
-  <a href="#contact"  class="font-bold">Contact</a>
+  <a href="#contact" class="font-bold">Contact</a>
 </nav>
 
-<!-- ===== ZONE CIEL ===== -->
-<div class="sky-zone" id="sky-wrapper" style="position:relative; overflow:hidden;">
+<!-- Section Accueil (ciel) -->
+<section id="home" class="relative h-screen flex flex-col justify-center items-center text-center overflow-hidden">
+  <h1 class="text-6xl font-bold mb-4 z-10">Mallory Le Corres</h1>
+  <p class="text-xl opacity-80 mb-20 z-10">Bio-informaticienne 🌊</p>
 
-  <!-- Nuages générés en JS ici -->
+  <!-- Surface de l'eau -->
+  <div class="absolute bottom-0 left-0 w-full h-64 z-0 overflow-hidden">
+    <svg viewBox="0 0 1440 320" class="w-[200%] h-full">
+      <path fill="#1E90FF" fill-opacity="0.6" d="M0,64L48,69.3C96,75,192,85,288,101.3C384,117,480,139,576,138.7C672,139,768,117,864,101.3C960,85,1056,75,1152,90.7C1248,107,1344,149,1392,170.7L1440,192L1440,320L0,320Z"></path>
+    </svg>
+  </div>
+</section>
 
-  <!-- Section Accueil -->
-  <section id="home">
-    <h1 class="text-6xl font-bold mb-4">Mallory Le Corre</h1>
-    <p class="text-xl opacity-80">Bio-informaticienne 🌊</p>
-  </section>
-
+<!-- Séparation Accueil -> Océan -->
+<div class="separator">
+  <div class="gradient"></div>
+  <hr>
 </div>
 
+<!-- Section À propos (surface océan) -->
+<section id="about">
+  <div class="bg-white/10 backdrop-blur-xl p-10 rounded-3xl shadow-xl max-w-xl">
+    <h2 class="text-3xl mb-4">À propos</h2>
+    <p>Passionné par le web, les animations et les effets immersifs.</p>
+  </div>
+</section>
 
-<!-- ===== ZONE OCÉAN ===== -->
-<div class="ocean-zone" style="position:relative; overflow:hidden;">
+<!-- Section Projets (profondeur) -->
+<section id="projects">
+  <div class="bg-white/10 backdrop-blur-xl p-10 rounded-3xl shadow-xl max-w-xl">
+    <h2 class="text-3xl mb-4">Projets</h2>
+    <p>Projet 1<br>Projet 2<br>Projet 3</p>
+  </div>
+</section>
 
-  <!-- Section À propos -->
-  <section id="about">
-    <div class="bg-white/10 backdrop-blur-xl p-10 rounded-3xl shadow-xl max-w-xl">
-      <h2 class="text-3xl mb-4">À propos</h2>
-      <p>Passionné par les baleines</p>
-    </div>
-  </section>
+<!-- Section Contact (abysse) -->
+<section id="contact">
+  <div class="bg-white/10 backdrop-blur-xl p-10 rounded-3xl shadow-xl max-w-xl">
+    <h2 class="text-3xl mb-4">Contact</h2>
+    <p>mail@email.com</p>
+  </div>
+</section>
 
-  <!-- Section Projets -->
-  <section id="projects">
-    <div class="bg-white/10 backdrop-blur-xl p-10 rounded-3xl shadow-xl max-w-xl">
-      <h2 class="text-3xl mb-4">Projets</h2>
-      <p>Projet 1<br>Projet 2<br>Projet 3</p>
-    </div>
-  </section>
+<!-- ADN -->
+<div class="dna"></div>
 
-  <!-- Section Contact -->
-  <section id="contact">
-    <div class="bg-white/10 backdrop-blur-xl p-10 rounded-3xl shadow-xl max-w-xl">
-      <h2 class="text-3xl mb-4">Contact</h2>
-      <p>mail@email.com</p>
-      <p>LinkedIn</p>  
-    </div>
-  </section>
+<!-- Vidéo baleine -->
+<video autoplay loop muted playsinline class="whale-video">
+  <source src="whale.mp4" type="video/mp4">
+  Votre navigateur ne supporte pas les vidéos.
+</video>
 
-  <!-- Vidéo baleine -->
-  <video autoplay loop muted playsinline class="whale-video">
-    <source src="whale.mp4" type="video/mp4">
-    Votre navigateur ne supporte pas les vidéos.
-  </video>
-
-</div>
-
-<!-- Bulles & Nuages en JS -->
+<!-- Bulles générées en JS -->
 <script>
-/* --- Bulles dans l'océan --- */
 function createBubble() {
-  const oceanZone = document.querySelector('.ocean-zone');
   const bubble = document.createElement('div');
   bubble.classList.add('bubble');
   const size = Math.random() * 15 + 5;
-  bubble.style.width  = size + 'px';
+  bubble.style.width = size + 'px';
   bubble.style.height = size + 'px';
-  bubble.style.left   = Math.random() * window.innerWidth + 'px';
+  bubble.style.left = Math.random() * window.innerWidth + 'px';
   bubble.style.animationDuration = (Math.random() * 5 + 5) + 's';
-  oceanZone.appendChild(bubble);
+  document.body.appendChild(bubble);
   setTimeout(() => bubble.remove(), 10000);
 }
 setInterval(createBubble, 200);
-
-/* --- Vagues surface --- */
-(function() {
-  const canvas = document.getElementById('waveCanvas');
-  const ctx = canvas.getContext('2d');
-
-  function resize() {
-    canvas.width = canvas.offsetWidth * window.devicePixelRatio;
-    canvas.height = canvas.offsetHeight * window.devicePixelRatio;
-    ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-  }
-  window.addEventListener('resize', resize);
-  resize();
-
-  let t = 0;
-
-  // Plusieurs couches de vagues avec paramètres différents
-  const waveLayers = [
-    { amp: 10, freq: 0.012, speed: 0.018, offset: 0,    alpha: 0.55, color: 'rgba(255,255,255,{a})' },
-    { amp: 6,  freq: 0.018, speed: 0.025, offset: 1.2,  alpha: 0.35, color: 'rgba(180,230,255,{a})' },
-    { amp: 14, freq: 0.008, speed: 0.010, offset: 2.5,  alpha: 0.25, color: 'rgba(255,255,255,{a})' },
-    { amp: 4,  freq: 0.030, speed: 0.040, offset: 0.8,  alpha: 0.15, color: 'rgba(100,200,255,{a})' },
-  ];
-
-  function drawWave(layer, midY, w, h) {
-    const { amp, freq, speed, offset, alpha, color } = layer;
-    ctx.beginPath();
-    ctx.moveTo(0, midY);
-    for (let x = 0; x <= w; x += 2) {
-      const y = midY
-        + Math.sin(x * freq + t * speed + offset) * amp
-        + Math.sin(x * freq * 1.7 + t * speed * 0.6 + offset + 1) * amp * 0.4;
-      ctx.lineTo(x, y);
-    }
-    // Reflet lumineux : ligne fine sur la crête
-    ctx.strokeStyle = color.replace('{a}', alpha);
-    ctx.lineWidth = 1.5;
-    ctx.stroke();
-
-    // Zone de transition en dessous de la vague
-    ctx.lineTo(w, h);
-    ctx.lineTo(0, h);
-    ctx.closePath();
-    ctx.fillStyle = color.replace('{a}', alpha * 0.12);
-    ctx.fill();
-  }
-
-  function draw() {
-    const w = canvas.offsetWidth;
-    const h = canvas.offsetHeight;
-    ctx.clearRect(0, 0, w, h);
-
-    const midY = h / 2;
-
-    // Fond haut = couleur basse du ciel
-    ctx.fillStyle = '#1E90FF';
-    ctx.fillRect(0, 0, w, midY);
-
-    // Fond bas = couleur haute de l'océan
-    ctx.fillStyle = '#1565C0';
-    ctx.fillRect(0, midY, w, h - midY);
-
-    // Lueur diffuse à la surface
-    const grd = ctx.createLinearGradient(0, midY - 20, 0, midY + 20);
-    grd.addColorStop(0, 'rgba(200,240,255,0.0)');
-    grd.addColorStop(0.5, 'rgba(255,255,255,0.25)');
-    grd.addColorStop(1, 'rgba(100,180,255,0.0)');
-    ctx.fillStyle = grd;
-    ctx.fillRect(0, midY - 20, w, 40);
-
-    // Dessin des couches de vagues
-    waveLayers.forEach(layer => drawWave(layer, midY, w, h));
-
-    // Petits reflets scintillants aléatoires
-    ctx.save();
-    for (let i = 0; i < 8; i++) {
-      const px = ((Math.sin(t * 0.07 + i * 137.5) * 0.5 + 0.5)) * w;
-      const py = midY + Math.sin(px * 0.012 + t * 0.018 + i) * 10;
-      const sparkAlpha = Math.max(0, Math.sin(t * 0.15 + i * 1.3)) * 0.7;
-      ctx.beginPath();
-      ctx.arc(px, py, 1.5, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(255,255,255,${sparkAlpha})`;
-      ctx.fill();
-    }
-    ctx.restore();
-
-    t += 1;
-    requestAnimationFrame(draw);
-  }
-  draw();
-})();
-function createCloud() {
-  const skyZone = document.getElementById('sky-wrapper');
-  const cloud = document.createElement('div');
-  cloud.classList.add('cloud');
-  const w = Math.random() * 180 + 80;
-  const h = w * 0.35;
-  cloud.style.width  = w + 'px';
-  cloud.style.height = h + 'px';
-  cloud.style.top    = (Math.random() * 60 + 5) + '%';
-  cloud.style.left   = '-220px';
-  const duration = Math.random() * 40 + 30; // 30-70s
-  cloud.style.animationDuration = duration + 's';
-  cloud.style.opacity = (Math.random() * 0.3 + 0.1).toString();
-  skyZone.appendChild(cloud);
-  setTimeout(() => cloud.remove(), duration * 1000 + 1000);
-}
-// Quelques nuages au départ
-for (let i = 0; i < 4; i++) setTimeout(createCloud, i * 4000);
-setInterval(createCloud, 8000);
 </script>
 
 </body>

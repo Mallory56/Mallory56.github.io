@@ -3,75 +3,173 @@
 <head>
 <meta charset="UTF-8">
 <title>Portfolio Mallory</title>
-
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
-/* Animation de la vidéo */
-.whale-video {
-  position: absolute;
-  bottom: 40px;
-  left: -400px;
-  width: 400px;
-  mix-blend-mode: screen; /* rend le fond vert transparent */
-  animation: swim 20s linear infinite;
-  pointer-events: none; /* pour que la vidéo ne bloque pas les clics */
+/* -------------------
+     Effet scroll abysse
+   ------------------- */
+body {
+  margin:0;
+  font-family:'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom, #0f2027, #203a43, #000814); /* du bleu clair en surface vers presque noir */
+  color:white;
+  overflow-x:hidden;
+  perspective: 1px;
+  transform-style: preserve-3d;
 }
 
+/* -------------------
+    Navbar
+   ------------------- */
+nav {
+  position: fixed;
+  top:0;
+  width:100%;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  z-index:100;
+}
+nav a {
+  transition: 0.3s;
+}
+nav a:hover { color: #4fd1c5; }
+
+/* -------------------
+    Sections
+   ------------------- */
+section {
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  text-align:center;
+  position:relative;
+  z-index:10;
+}
+
+/* -------------------
+    Vidéo baleine
+   ------------------- */
+.whale-video {
+  position: absolute;
+  bottom:50px;
+  left:-400px;
+  width:400px;
+  mix-blend-mode: screen;
+  animation: swim 20s linear infinite;
+  pointer-events: none;
+}
 @keyframes swim {
-  0% { left: -400px; }
-  100% { left: 120%; }
+  0% { left:-400px; }
+  100% { left:120%; }
+}
+
+/* -------------------
+    Bulles
+   ------------------- */
+.bubble {
+  position:absolute;
+  bottom:-50px;
+  background: rgba(255,255,255,0.3);
+  border-radius:50%;
+  pointer-events:none;
+  animation: rise linear infinite;
+}
+@keyframes rise {
+  0% { transform: translateY(0) scale(0.5); opacity:0; }
+  10% { opacity:0.5; }
+  100% { transform: translateY(-120vh) scale(1); opacity:0; }
+}
+
+/* -------------------
+    ADN déroulant
+   ------------------- */
+.dna {
+  position: fixed;
+  right: 20px;
+  top: 0;
+  width: 10px;
+  height: 100vh;
+  background: repeating-linear-gradient(
+    to bottom,
+    #4fd1c5,
+    #4fd1c5 5px,
+    transparent 5px,
+    transparent 10px
+  );
+  opacity:0.5;
+  animation: scrollDNA 5s linear infinite;
+}
+@keyframes scrollDNA {
+  0% { background-position:0 0; }
+  100% { background-position:0 10px; }
 }
 </style>
 </head>
 
-<body class="bg-gradient-to-b from-sky-900 via-blue-900 to-cyan-900 text-white relative overflow-x-hidden">
+<body class="relative">
 
 <!-- Navbar -->
-<nav class="fixed w-full bg-white/10 backdrop-blur-md z-50">
-  <div class="max-w-6xl mx-auto flex justify-between p-4">
-    <h1 class="font-bold text-xl">Mallory</h1>
-    <div class="space-x-6">
-      <a href="#home" class="hover:text-cyan-300">Accueil</a>
-      <a href="#about" class="hover:text-cyan-300">À propos</a>
-      <a href="#projects" class="hover:text-cyan-300">Projets</a>
-      <a href="#contact" class="hover:text-cyan-300">Contact</a>
-    </div>
-  </div>
+<nav class="flex justify-center space-x-6 p-4 max-w-6xl mx-auto">
+  <a href="#home" class="font-bold">Accueil</a>
+  <a href="#about" class="font-bold">À propos</a>
+  <a href="#projects" class="font-bold">Projets</a>
+  <a href="#contact" class="font-bold">Contact</a>
 </nav>
 
 <!-- Sections -->
-<section id="home" class="h-screen flex flex-col justify-center items-center text-center relative z-10">
+<section id="home">
   <h1 class="text-6xl font-bold mb-4">Bienvenue</h1>
   <p class="text-xl opacity-80">Développeur Web Océan 🌊</p>
 </section>
 
-<section id="about" class="h-screen flex justify-center items-center relative z-10">
+<section id="about">
   <div class="bg-white/10 backdrop-blur-xl p-10 rounded-3xl shadow-xl max-w-xl">
     <h2 class="text-3xl mb-4">À propos</h2>
-    <p>Passionné par le web, le design et les animations modernes.</p>
+    <p>Passionné par le web, les animations et les effets immersifs.</p>
   </div>
 </section>
 
-<section id="projects" class="h-screen flex justify-center items-center relative z-10">
+<section id="projects">
   <div class="bg-white/10 backdrop-blur-xl p-10 rounded-3xl shadow-xl max-w-xl">
     <h2 class="text-3xl mb-4">Projets</h2>
     <p>Projet 1<br>Projet 2<br>Projet 3</p>
   </div>
 </section>
 
-<section id="contact" class="h-screen flex justify-center items-center relative z-10">
+<section id="contact">
   <div class="bg-white/10 backdrop-blur-xl p-10 rounded-3xl shadow-xl max-w-xl">
     <h2 class="text-3xl mb-4">Contact</h2>
     <p>mail@email.com</p>
   </div>
 </section>
 
+<!-- ADN -->
+<div class="dna"></div>
+
 <!-- Vidéo baleine -->
 <video autoplay loop muted playsinline class="whale-video">
-  <source src="image/whale.mp4" type="video/mp4">
+  <source src="whale.mp4" type="video/mp4">
   Votre navigateur ne supporte pas les vidéos.
 </video>
+
+<!-- Bulles générées en JS -->
+<script>
+function createBubble() {
+  const bubble = document.createElement('div');
+  bubble.classList.add('bubble');
+  const size = Math.random() * 15 + 5;
+  bubble.style.width = size + 'px';
+  bubble.style.height = size + 'px';
+  bubble.style.left = Math.random() * window.innerWidth + 'px';
+  bubble.style.animationDuration = (Math.random() * 5 + 5) + 's';
+  document.body.appendChild(bubble);
+  setTimeout(()=>bubble.remove(),10000);
+}
+setInterval(createBubble,200);
+</script>
 
 </body>
 </html>

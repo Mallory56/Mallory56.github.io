@@ -1,176 +1,184 @@
-<!doctype html>  
-<html lang="en">
-	
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Portfolio Mallory6</title>
+<script src="https://cdn.tailwindcss.com"></script>
 
-		<title>Abyss - A Avgrund inspired abyss</title>
-		
-		<link href='http://fonts.googleapis.com/css?family=Nunito:300' rel='stylesheet' type='text/css'>
-		<link href='http://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
-		
-		<link rel="stylesheet" href="css/styles.css">
-		<link rel="stylesheet" href="css/abyss.css">
+<style>
+/* -------------------
+    Fond ciel -> océan
+   ------------------- */
+body {
+  margin:0;
+  font-family:'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom, #87CEEB, #1E90FF, #203a43, #000814); /* ciel clair -> océan profond */
+  color:white;
+  overflow-x:hidden;
+  perspective: 1px;
+  transform-style: preserve-3d;
+}
 
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-		<script type="text/javascript" src="js/abyss.js"></script>
-		<script type="text/javascript" src="js/abyss-picture.js"></script>
-		
-		<script>
-			var loadedURLs = {};
-			var loadedElements = {};
+/* -------------------
+    Navbar
+   ------------------- */
+nav {
+  position: fixed;
+  top:0;
+  width:100%;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  z-index:100;
+}
+nav a {
+  transition: 0.3s;
+}
+nav a:hover { color: #4fd1c5; }
 
-			function openPicture(url) 
-			{
-				var picture = loadedURLs[url];
-				if(typeof picture === 'undefined')
-				{
-					picture = new AbyssPicture(url);
-					loadedURLs[url] = picture;
-				}
+/* -------------------
+    Sections
+   ------------------- */
+section {
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  text-align:center;
+  position:relative;
+  z-index:10;
+}
 
-				picture.show();
-			}
+/* -------------------
+    Vidéo baleine
+   ------------------- */
+.whale-video {
+  position: absolute;
+  bottom:50px;
+  left:-400px;
+  width:400px;
+  mix-blend-mode: screen;
+  animation: swim 20s linear infinite;
+  pointer-events: none;
+}
+@keyframes swim {
+  0% { left:-400px; }
+  100% { left:120%; }
+}
 
-			function displayElement(id)
-			{
-				var abyss = loadedElements[id];
+/* -------------------
+    Bulles
+   ------------------- */
+.bubble {
+  position:absolute;
+  bottom:-50px;
+  background: rgba(255,255,255,0.3);
+  border-radius:50%;
+  pointer-events:none;
+  animation: rise linear infinite;
+}
+@keyframes rise {
+  0% { transform: translateY(0) scale(0.5); opacity:0; }
+  10% { opacity:0.5; }
+  100% { transform: translateY(-120vh) scale(1); opacity:0; }
+}
 
-				if(typeof abyss === 'undefined')
-				{
-					var element = document.getElementById(id);
-					abyss = new Abyss(element);
+/* -------------------
+    ADN déroulant
+   ------------------- */
+.dna {
+  position: fixed;
+  right: 20px;
+  top: 0;
+  width: 10px;
+  height: 100vh;
+  background: repeating-linear-gradient(
+    to bottom,
+    #4fd1c5,
+    #4fd1c5 5px,
+    transparent 5px,
+    transparent 10px
+  );
+  opacity:0.5;
+  animation: scrollDNA 5s linear infinite;
+}
+@keyframes scrollDNA {
+  0% { background-position:0 0; }
+  100% { background-position:0 10px; }
+}
+</style>
+</head>
 
-					loadedElements[id] = abyss;
-				}
+<body class="relative">
 
-				abyss.show();
-			}
+<!-- Navbar -->
+<nav class="flex justify-center space-x-6 p-4 max-w-6xl mx-auto">
+  <a href="#home" class="font-bold">Accueil</a>
+  <a href="#about" class="font-bold">À propos</a>
+  <a href="#projects" class="font-bold">Projets</a>
+  <a href="#contact" class="font-bold">Contact</a>
+</nav>
 
-			function blowUp(id)
-			{
-				var abyss = loadedElements[id];
-				abyss.resize(800, 600);
-			}
-		</script>
+<!-- Section Accueil (dans le ciel) -->
+<section id="home" class="relative h-screen flex flex-col justify-center items-center text-center overflow-hidden">
+  <h1 class="text-6xl font-bold mb-4 z-10">Mallory Le Corres</h1>
+  <p class="text-xl opacity-80 mb-20 z-10">Bio-informaticenne 🌊</p>
 
-	</head>
+<!-- Surface de l'eau -->
+<div class="absolute bottom-0 left-0 w-full h-64 z-0 overflow-hidden">
+  <svg viewBox="0 0 1440 320" class="w-[200%] h-full">
+    <path fill="#1E90FF" fill-opacity="0.6" d="M0,64L48,69.3C96,75,192,85,288,101.3C384,117,480,139,576,138.7C672,139,768,117,864,101.3C960,85,1056,75,1152,90.7C1248,107,1344,149,1392,170.7L1440,192L1440,320L0,320Z"></path>
+  </svg>
+</div>
 
-	<body>
-		<div id="custom-popup" class="abyss-popup">
-			<h1>Oh, hey there!</h1>
-			<p>I'm a static HTML element, nothing fancy... But, you can resize me!</p>
-			<button onclick="javascript:blowUp('custom-popup');">Resize</button>
-		</div>
+<!-- Section À propos (surface océan) -->
+<section id="about">
+  <div class="bg-white/10 backdrop-blur-xl p-10 rounded-3xl shadow-xl max-w-xl">
+    <h2 class="text-3xl mb-4">À propos</h2>
+    <p>Passionné par le web, les animations et les effets immersifs.</p>
+  </div>
+</section>
 
-		<!-- Example code -->
-		<div id="example-one" class="abyss-popup">
-			<h1>Abyss with a custom element</h1>
-			<p>The following example creates a new Abyss with an element that is already in your DOM.</p>
+<!-- Section Projets (profondeur) -->
+<section id="projects">
+  <div class="bg-white/10 backdrop-blur-xl p-10 rounded-3xl shadow-xl max-w-xl">
+    <h2 class="text-3xl mb-4">Projets</h2>
+    <p>Projet 1<br>Projet 2<br>Projet 3</p>
+  </div>
+</section>
 
-			<pre>
-<code>var element = document.getElementById('myElement');</code>
-<code>var abyss = new Abyss(element);</code>
-<code></code>
-<code>abyss.show(); // Displays the Abyss</code></pre>
-		</div>
+<!-- Section Contact (abysse) -->
+<section id="contact">
+  <div class="bg-white/10 backdrop-blur-xl p-10 rounded-3xl shadow-xl max-w-xl">
+    <h2 class="text-3xl mb-4">Contact</h2>
+    <p>mail@email.com</p>
+  </div>
+</section>
 
-		<div id="example-two" class="abyss-popup">
-			<h1>Abyss without an element</h1>
-			<p>The following example creates a new Abyss which provides it's own HTML element to display content. The element created by the Abyss will be automatically added to the DOM.</p>
+<!-- ADN -->
+<div class="dna"></div>
 
-			<pre>
-<code>var abyss = new Abyss();</code>
-<code>var element = abyss.element;</code>
-<code>element.innerHTML('&lt;h1&gt;Hello World!&lt;/h1&gt;');</code>
-<code></code>
-<code>abyss.show(); // Displays the Abyss</code></pre>
-		</div>
+<!-- Vidéo baleine -->
+<video autoplay loop muted playsinline class="whale-video">
+  <source src="whale.mp4" type="video/mp4">
+  Votre navigateur ne supporte pas les vidéos.
+</video>
 
-		<div id="example-three" class="abyss-popup">
-			<h1>Displaying a picture</h1>
-			<p>To display a popup with a picture, you need to create a new <code>AbyssPicture</code> instance.</p>
+<!-- Bulles générées en JS -->
+<script>
+function createBubble() {
+  const bubble = document.createElement('div');
+  bubble.classList.add('bubble');
+  const size = Math.random() * 15 + 5;
+  bubble.style.width = size + 'px';
+  bubble.style.height = size + 'px';
+  bubble.style.left = Math.random() * window.innerWidth + 'px';
+  bubble.style.animationDuration = (Math.random() * 5 + 5) + 's';
+  document.body.appendChild(bubble);
+  setTimeout(()=>bubble.remove(),10000);
+}
+setInterval(createBubble,200);
+</script>
 
-			<pre>
-<code>var picture = new AbyssPicture('http://the.url/to/the/image');</code>
-<code>picture.show();</code></pre>
-		</div>
-
-
-		<div id="license" class="abyss-popup">
-			<h1>License</h1>
-			<p>Permission is hereby granted, free of charge, to any person obtaining a copy
-			of this software and associated documentation files (the "Software"), to deal
-			in the Software without restriction, including without limitation the rights
-			to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-			copies of the Software, and to permit persons to whom the Software is
-			furnished to do so, subject to the following conditions:<br /><br />
-			The above copyright notice and this permission notice shall be included in
-			all copies or substantial portions of the Software.<br /><br />
-			THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-			IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-			FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-			AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-			LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-			OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-			THE SOFTWARE.
-			</p>
-		</div>
-
-
-		<!-- Content -->
-		<div class="abyss-content content">
-			<div>
-				<h1>Abyss</h1>
-				<p>Abyss is a <a href="http://lab.hakim.se/avgrund/">Avgrund</a> inspired modal concept. It uses the same effect as Avgrund to give a sense of depth between the page and a displayed popup, however, unlike Avgrund it also works with sites which have more than a screenful of content and supports resizeable popups. It also comes with a handy helper that allows you to display images inside an Abyss, all with automatic resizing and everything.</p>
-				<p>Give it a spin by clicking one of the buttons below:</p>
-
-				<button onclick="javascript:openPicture('http://widerwille.com/screens/empire01.jpeg');">Show image popup</button>
-				<button onclick="javascript:displayElement('custom-popup');">Show element popup</button>
-			</div>
-
-			<div>
-				<h1>Usage</h1>
-				<p>To use Abyss you need to include <code>jQuery</code> and the <code>abyss.css</code> and <code>abyss.js</code> files. Additionally, if you want to use Abyss picture helper, you need to include <code>abyss-picture.js</code>.</p>
-				<p>Elements you want to display as popups should get the <code>abyss-popup</code> class assigned to which will automatically hide the element and enables the fade-in animation.</p>
-				<p>If you want to blur the background when an Abyss is displayed, you need to assing the <code>abyss-content</code> class to the element that hosts your sites content</p>
-				
-				<button onclick="javascript:displayElement('example-one');">Show example #1</button>
-				<button onclick="javascript:displayElement('example-two');">Show example #2</button>
-				<button onclick="javascript:displayElement('example-three');">Show example #3</button>
-
-				<h2>API</h2>
-				<p>An Abyss instance provides the following methods:</p>
-				<pre>
-<code>Abyss.show(); // Displays the Abyss.</code>
-<code>Abyss.close(); // Hides the Abyss.</code>
-<code>Abyss.resize(width, height); // Resizes the Abyss to the given size</code></pre>
-	
-				<p><code>show()</code> and <code>close()</code> are also available in the AbyssPicture class, <code>resize()</code> however is not.</p>	
-				<p>Additionally there are the following callbacks:</p>
-
-				<pre>
-<code>Abyss.onclose; // Invoked when the Abyss closes</code>
-<code>Abyss.onresize; // Invoked when the Abyss gets automatically</code>
-<code>// gets automatically resized.</code>
-<code>// If you implement this, you MUST call resize() with the new size yourself</code></pre>
-
-				<p>There are also the following properties available:</p>
-				<pre>
-<code>Abyss.element; // The element that the Abyss displays</code>
-<code>AbyssPicture.image; // The Image instance that contains the image to display</code>
-<code>AbyssPicture.abyss; // The Abyss instance that is used</code>
-<code>AbyssPicture.isLoaded; // true if the picture is loaded, otherwise false</code></pre>
-			</div>
-
-			<div>
-				<h1>License</h1>
-				<p>Abyss is licensed under the MIT license. The picture helper includes code from <a href="http://fgnass.github.com/spin.js/">Spin.js</a> by Felix Gnass which is also released under the MIT license.</p>
-				<button onclick="javascript:displayElement('license');">Show license text</button>
-			</div>
-
-			<a href="https://github.com/JustSid/Abyss"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
-		</div>
-	</body>
+</body>
 </html>

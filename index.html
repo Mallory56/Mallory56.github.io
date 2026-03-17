@@ -7,12 +7,12 @@
 
 <style>
 /* -------------------
-     Effet scroll abysse
+    Fond ciel -> océan
    ------------------- */
 body {
   margin:0;
   font-family:'Segoe UI', sans-serif;
-  background: linear-gradient(to bottom, #0f2027, #203a43, #000814); /* du bleu clair en surface vers presque noir */
+  background: linear-gradient(to bottom, #87CEEB, #1E90FF, #203a43, #000814); /* ciel clair -> océan profond */
   color:white;
   overflow-x:hidden;
   perspective: 1px;
@@ -119,12 +119,13 @@ section {
   <a href="#contact" class="font-bold">Contact</a>
 </nav>
 
-<!-- Sections -->
+<!-- Section Accueil (dans le ciel) -->
 <section id="home">
   <h1 class="text-6xl font-bold mb-4">Bienvenue</h1>
   <p class="text-xl opacity-80">Développeur Web Océan 🌊</p>
 </section>
 
+<!-- Section À propos (surface océan) -->
 <section id="about">
   <div class="bg-white/10 backdrop-blur-xl p-10 rounded-3xl shadow-xl max-w-xl">
     <h2 class="text-3xl mb-4">À propos</h2>
@@ -132,6 +133,7 @@ section {
   </div>
 </section>
 
+<!-- Section Projets (profondeur) -->
 <section id="projects">
   <div class="bg-white/10 backdrop-blur-xl p-10 rounded-3xl shadow-xl max-w-xl">
     <h2 class="text-3xl mb-4">Projets</h2>
@@ -139,6 +141,7 @@ section {
   </div>
 </section>
 
+<!-- Section Contact (abysse) -->
 <section id="contact">
   <div class="bg-white/10 backdrop-blur-xl p-10 rounded-3xl shadow-xl max-w-xl">
     <h2 class="text-3xl mb-4">Contact</h2>

@@ -139,6 +139,19 @@ section {
   95%  { opacity: 1; }
   100% { left: 110%;   opacity: 0; }
 }
+
+/* Bioluminescence */
+.biolum {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: pulse ease-in-out infinite;
+}
+@keyframes pulse {
+  0%   { opacity: 0;    transform: scale(0.6); }
+  50%  { opacity: 1;    transform: scale(1.2); }
+  100% { opacity: 0;    transform: scale(0.6); }
+}
 </style>
 </head>
 
@@ -300,6 +313,54 @@ function createFish() {
 
 for (let i = 0; i < 3; i++) setTimeout(createFish, i * 3000);
 setInterval(createFish, 9000);
+
+/* --- Bioluminescence dans les profondeurs --- */
+const bioColors = [
+  'rgba(0, 255, 180, VAL)',   /* vert cyan */
+  'rgba(80, 180, 255, VAL)',  /* bleu électrique */
+  'rgba(180, 100, 255, VAL)', /* violet */
+  'rgba(0, 220, 255, VAL)',   /* cyan pur */
+  'rgba(100, 255, 200, VAL)', /* vert menthe */
+];
+
+function createBiolum() {
+  const oceanZone = document.querySelector('.ocean-zone');
+  const oceanH    = oceanZone.offsetHeight;
+  const oceanW    = oceanZone.offsetWidth;
+
+  const dot = document.createElement('div');
+  dot.classList.add('biolum');
+
+  /* Taille : 2 à 6px, très petit */
+  const size = Math.random() * 4 + 2;
+  dot.style.width  = size + 'px';
+  dot.style.height = size + 'px';
+
+  /* Position : plutôt dans les 2/3 bas (les profondeurs) */
+  dot.style.left = (Math.random() * oceanW) + 'px';
+  dot.style.top  = (Math.random() * oceanH * 0.7 + oceanH * 0.3) + 'px';
+
+  /* Couleur avec opacité faible */
+  const col = bioColors[Math.floor(Math.random() * bioColors.length)];
+  const opacity = Math.random() * 0.4 + 0.2;
+  dot.style.background = col.replace('VAL', opacity);
+
+  /* Halo très léger autour du point */
+  const glowColor = col.replace('VAL', 0.15);
+  dot.style.boxShadow = `0 0 ${size * 3}px ${size}px ${glowColor}`;
+
+  /* Durée de pulsation : 2 à 6s, délai aléatoire */
+  const duration = Math.random() * 4 + 2;
+  dot.style.animationDuration = duration + 's';
+  dot.style.animationDelay    = (Math.random() * -6) + 's';
+
+  oceanZone.appendChild(dot);
+  setTimeout(() => dot.remove(), (duration * 4 + 2) * 1000);
+}
+
+/* Peupler au départ puis renouveler */
+for (let i = 0; i < 40; i++) setTimeout(createBiolum, i * 150);
+setInterval(createBiolum, 800);
 
 /* --- Nuages dans le ciel --- */
 function createCloud() {

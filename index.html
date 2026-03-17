@@ -7,63 +7,71 @@
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
-.whale {
-position:absolute;
-bottom:40px;
-left:-300px;
-width:300px;
-animation: swim 18s linear infinite;
+/* Animation de la vidéo */
+.whale-video {
+  position: absolute;
+  bottom: 40px;
+  left: -400px;
+  width: 400px;
+  mix-blend-mode: screen; /* rend le fond vert transparent */
+  animation: swim 20s linear infinite;
+  pointer-events: none; /* pour que la vidéo ne bloque pas les clics */
 }
 
 @keyframes swim {
-0% { left:-300px; }
-100% { left:110%; }
+  0% { left: -400px; }
+  100% { left: 120%; }
 }
 </style>
-
 </head>
 
-<body class="bg-gradient-to-b from-sky-900 via-blue-900 to-cyan-900 text-white">
+<body class="bg-gradient-to-b from-sky-900 via-blue-900 to-cyan-900 text-white relative overflow-x-hidden">
 
+<!-- Navbar -->
 <nav class="fixed w-full bg-white/10 backdrop-blur-md z-50">
-<div class="max-w-6xl mx-auto flex justify-between p-4">
-<h1 class="font-bold text-xl">Mallory</h1>
-<div class="space-x-6">
-<a href="#home" class="hover:text-cyan-300">Accueil</a>
-<a href="#about" class="hover:text-cyan-300">À propos</a>
-<a href="#projects" class="hover:text-cyan-300">Projets</a>
-<a href="#contact" class="hover:text-cyan-300">Contact</a>
-</div>
-</div>
+  <div class="max-w-6xl mx-auto flex justify-between p-4">
+    <h1 class="font-bold text-xl">Mallory</h1>
+    <div class="space-x-6">
+      <a href="#home" class="hover:text-cyan-300">Accueil</a>
+      <a href="#about" class="hover:text-cyan-300">À propos</a>
+      <a href="#projects" class="hover:text-cyan-300">Projets</a>
+      <a href="#contact" class="hover:text-cyan-300">Contact</a>
+    </div>
+  </div>
 </nav>
 
-<section id="home" class="h-screen flex flex-col justify-center items-center text-center">
-<h1 class="text-6xl font-bold mb-4">Bienvenue</h1>
-<p class="text-xl opacity-80">Développeur Web Océan 🌊</p>
+<!-- Sections -->
+<section id="home" class="h-screen flex flex-col justify-center items-center text-center relative z-10">
+  <h1 class="text-6xl font-bold mb-4">Bienvenue</h1>
+  <p class="text-xl opacity-80">Développeur Web Océan 🌊</p>
 </section>
 
-<section id="about" class="h-screen flex justify-center items-center">
-<div class="bg-white/10 backdrop-blur-xl p-10 rounded-3xl shadow-xl max-w-xl">
-<h2 class="text-3xl mb-4">À propos</h2>
-<p>Passionné par le web, le design et les animations modernes.</p>
-</div>
+<section id="about" class="h-screen flex justify-center items-center relative z-10">
+  <div class="bg-white/10 backdrop-blur-xl p-10 rounded-3xl shadow-xl max-w-xl">
+    <h2 class="text-3xl mb-4">À propos</h2>
+    <p>Passionné par le web, le design et les animations modernes.</p>
+  </div>
 </section>
 
-<section id="projects" class="h-screen flex justify-center items-center">
-<div class="bg-white/10 backdrop-blur-xl p-10 rounded-3xl shadow-xl max-w-xl">
-<h2 class="text-3xl mb-4">Projets</h2>
-<p>Projet 1<br>Projet 2<br>Projet 3</p>
-</div>
+<section id="projects" class="h-screen flex justify-center items-center relative z-10">
+  <div class="bg-white/10 backdrop-blur-xl p-10 rounded-3xl shadow-xl max-w-xl">
+    <h2 class="text-3xl mb-4">Projets</h2>
+    <p>Projet 1<br>Projet 2<br>Projet 3</p>
+  </div>
 </section>
 
-<section id="contact" class="h-screen flex justify-center items-center">
-<div class="bg-white/10 backdrop-blur-xl p-10 rounded-3xl shadow-xl max-w-xl">
-<h2 class="text-3xl mb-4">Contact</h2>
-<p>mail@email.com</p>
-</div>
+<section id="contact" class="h-screen flex justify-center items-center relative z-10">
+  <div class="bg-white/10 backdrop-blur-xl p-10 rounded-3xl shadow-xl max-w-xl">
+    <h2 class="text-3xl mb-4">Contact</h2>
+    <p>mail@email.com</p>
+  </div>
 </section>
 
-<img src="whale.png" class="whale">
+<!-- Vidéo baleine -->
+<video autoplay loop muted playsinline class="whale-video">
+  <source src="whale.mp4" type="video/mp4">
+  Votre navigateur ne supporte pas les vidéos.
+</video>
 
 </body>
 </html>

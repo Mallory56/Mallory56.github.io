@@ -383,6 +383,13 @@ section {
 /* ===== BAUDROIE LURE (pas de conflit avec .pulse) ===== */
 @keyframes baudroiePulse { 0%,100%{opacity:1;} 50%{opacity:0.25;} }
 .baudroie-lure { animation: baudroiePulse 1.6s ease-in-out infinite; }
+@keyframes whaleFloat {
+  0%, 100% { transform: translateY(0px) rotate(-1deg); }
+  50%       { transform: translateY(-12px) rotate(1deg); }
+}
+.whale-deco {
+  animation: whaleFloat 6s ease-in-out infinite;
+}
 @keyframes baudroieFloat {
   0%, 100% { transform: rotate(-2deg) translateY(0px); }
   50%       { transform: rotate(2deg) translateY(-8px); }
@@ -748,6 +755,26 @@ function createCloud() {
 for (let i = 0; i < 4; i++) setTimeout(createCloud, i * 4000);
 setInterval(createCloud, 8000);
 </script>
-
+  
+<!-- ===== BALEINE ===== -->
+<div style="
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+">
+  <img
+    src="humpback-whale-isolated-white-background.png"
+    alt="Baleine à bosse"
+    class="whale-deco"
+    style="
+      width: min(600px, 85vw);
+      filter: brightness(0.7) saturate(0.8) drop-shadow(0 0 30px rgba(79,209,197,0.2));
+    "
+  >
+</div>
 </body>
 </html>

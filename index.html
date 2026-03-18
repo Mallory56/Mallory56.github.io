@@ -383,6 +383,15 @@ section {
 /* ===== BAUDROIE LURE (pas de conflit avec .pulse) ===== */
 @keyframes baudroiePulse { 0%,100%{opacity:1;} 50%{opacity:0.25;} }
 .baudroie-lure { animation: baudroiePulse 1.6s ease-in-out infinite; }
+@keyframes baudroieFloat {
+  0%, 100% { transform: rotate(-2deg) translateY(0px); }
+  50%       { transform: rotate(2deg) translateY(-8px); }
+}
+.baudroie-float {
+  animation: baudroieFloat 4s ease-in-out infinite;
+  transform-origin: center center;
+}
+  
 </style>
 </head>
 
@@ -577,7 +586,7 @@ section {
     <div style="display:flex; align-items:center; gap:3rem; max-width:860px; width:95%; flex-wrap:wrap; justify-content:center;">
 
       <!-- Baudroie SVG (classe renommée pour éviter tout conflit) -->
-      <div style="flex-shrink:0; width:240px; filter: drop-shadow(0 0 20px rgba(79,209,197,0.4));">
+      <div class="baudroie-float" style="flex-shrink:0; width:240px; filter: drop-shadow(...);">
         <svg width="100%" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.001 512.001">
           <path style="fill:#2a7a72;" d="M377.511,183.315c-1.539,0-3.094-0.427-4.48-1.329c-3.827-2.481-4.915-7.589-2.433-11.408c25.525-39.358,52.894-59.147,54.046-59.968c3.698-2.65,8.846-1.788,11.497,1.91c2.65,3.698,1.797,8.855-1.902,11.505c-0.258,0.194-26.089,18.967-49.8,55.529C382.861,181.993,380.21,183.315,377.511,183.315z"/>
           <path style="fill:#4fd1c5;" d="M400.594,301.664l-16.017-10.885c-3.779-2.562-8.903-1.579-11.465,2.183c-2.562,3.77-1.579,8.903,2.183,11.465l16.017,10.885c1.426,0.967,3.037,1.426,4.633,1.426c2.643,0,5.237-1.265,6.832-3.61C405.339,309.358,404.357,304.225,400.594,301.664z"/>

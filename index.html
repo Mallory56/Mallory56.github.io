@@ -6,7 +6,6 @@
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
-/* Reset & base */
 *, *::before, *::after { box-sizing: border-box; }
 
 body {
@@ -16,19 +15,16 @@ body {
   overflow-x: hidden;
 }
 
-/* Zone CIEL */
 .sky-zone {
   background: linear-gradient(to bottom, #cce8f4, #87CEEB, #4ab8e8, #1E90FF);
 }
 
-/* Zone OCÉAN */
 .ocean-zone {
   background: linear-gradient(to bottom, #1565C0, #0d47a1, #203a43, #0a1628, #000814);
   position: relative;
   overflow: hidden;
 }
 
-/* Navbar */
 nav {
   position: fixed;
   top: 0;
@@ -40,7 +36,6 @@ nav {
 nav a { transition: 0.3s; }
 nav a:hover { color: #4fd1c5; }
 
-/* Sections */
 section {
   height: 100vh;
   display: flex;
@@ -52,7 +47,6 @@ section {
   z-index: 10;
 }
 
-/* Vidéo baleine */
 .whale-video {
   position: absolute;
   bottom: 50px;
@@ -67,7 +61,6 @@ section {
   100% { left: 120%; }
 }
 
-/* Bulles */
 .bubble {
   position: absolute;
   background: rgba(255,255,255,0.35);
@@ -82,7 +75,6 @@ section {
   100% { opacity: 0; }
 }
 
-/* ADN déroulant */
 .dna {
   position: fixed;
   right: 20px;
@@ -103,7 +95,6 @@ section {
   100% { background-position: 0 10px; }
 }
 
-/* Nuages */
 .cloud {
   position: absolute;
   border-radius: 50px;
@@ -117,13 +108,11 @@ section {
   100% { transform: translateX(110vw); }
 }
 
-/* Vague séparatrice */
 @keyframes waveSlide {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
 
-/* Poissons */
 .fish {
   position: absolute;
   pointer-events: none;
@@ -140,7 +129,6 @@ section {
   100% { left: 110%;   opacity: 0; }
 }
 
-/* Bioluminescence */
 .biolum {
   position: absolute;
   border-radius: 50%;
@@ -151,6 +139,137 @@ section {
   0%   { opacity: 0;    transform: scale(0.6); }
   50%  { opacity: 1;    transform: scale(1.2); }
   100% { opacity: 0;    transform: scale(0.6); }
+}
+
+/* ===== ACCORDION PROJETS ===== */
+.projects-card {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(79, 209, 197, 0.2);
+  border-radius: 24px;
+  padding: 2rem 2.5rem;
+  max-width: 560px;
+  width: 90%;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1);
+}
+
+.projects-card h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.05em;
+  color: #fff;
+}
+
+.accordion-item {
+  border-bottom: 1px solid rgba(79, 209, 197, 0.15);
+  overflow: hidden;
+}
+.accordion-item:last-child {
+  border-bottom: none;
+}
+
+.accordion-btn {
+  width: 100%;
+  background: none;
+  border: none;
+  color: white;
+  text-align: left;
+  padding: 1rem 0;
+  font-size: 1rem;
+  font-family: 'Segoe UI', sans-serif;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  transition: color 0.25s;
+}
+.accordion-btn:hover {
+  color: #4fd1c5;
+}
+.accordion-btn:hover .acc-icon {
+  background: rgba(79, 209, 197, 0.2);
+  border-color: rgba(79, 209, 197, 0.6);
+}
+
+.acc-label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+
+.acc-emoji {
+  font-size: 1.2rem;
+  width: 1.8rem;
+  text-align: center;
+}
+
+.acc-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.25s;
+  background: rgba(255,255,255,0.05);
+}
+
+.acc-icon svg {
+  width: 12px;
+  height: 12px;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.accordion-btn[aria-expanded="true"] .acc-icon svg {
+  transform: rotate(180deg);
+}
+.accordion-btn[aria-expanded="true"] {
+  color: #4fd1c5;
+}
+.accordion-btn[aria-expanded="true"] .acc-icon {
+  background: rgba(79, 209, 197, 0.15);
+  border-color: rgba(79, 209, 197, 0.5);
+}
+
+.accordion-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.35s ease,
+              padding 0.35s ease;
+  opacity: 0;
+}
+.accordion-body.open {
+  opacity: 1;
+}
+
+.accordion-body-inner {
+  padding: 0 0 1rem 2.55rem;
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.65);
+}
+
+.acc-tag {
+  display: inline-block;
+  background: rgba(79, 209, 197, 0.12);
+  border: 1px solid rgba(79, 209, 197, 0.25);
+  border-radius: 20px;
+  padding: 2px 10px;
+  font-size: 0.75rem;
+  color: #4fd1c5;
+  margin-top: 0.5rem;
+  margin-right: 4px;
 }
 </style>
 </head>
@@ -198,9 +317,97 @@ section {
 
   <!-- Section Projets -->
   <section id="projects">
-    <div class="bg-white/10 backdrop-blur-xl p-10 rounded-3xl shadow-xl max-w-xl">
-      <h2 class="text-3xl mb-4">Projets</h2>
-      <p>Projet 1<br>Projet 2<br>Projet 3</p>
+    <div class="projects-card">
+      <h2>Projets</h2>
+
+      <!-- Métabarcoding -->
+      <div class="accordion-item">
+        <button class="accordion-btn" aria-expanded="false" onclick="toggleAcc(this)">
+          <span class="acc-label">
+            <span class="acc-emoji">🧬</span>
+            Métabarcoding
+          </span>
+          <span class="acc-icon">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            Identification et caractérisation de la biodiversité marine via l'analyse de séquences d'ADN environnemental (eDNA). Comparaison de communautés planctoniques le long de gradients côtiers.
+            <br>
+            <span class="acc-tag">eDNA</span>
+            <span class="acc-tag">QIIME2</span>
+            <span class="acc-tag">R</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Transcriptomique -->
+      <div class="accordion-item">
+        <button class="accordion-btn" aria-expanded="false" onclick="toggleAcc(this)">
+          <span class="acc-label">
+            <span class="acc-emoji">🔬</span>
+            Transcriptomique
+          </span>
+          <span class="acc-icon">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            Analyse de l'expression différentielle de gènes chez des organismes marins soumis à des stress thermiques. Pipeline RNA-seq de l'alignement à l'interprétation fonctionnelle.
+            <br>
+            <span class="acc-tag">RNA-seq</span>
+            <span class="acc-tag">DESeq2</span>
+            <span class="acc-tag">Python</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Génomique -->
+      <div class="accordion-item">
+        <button class="accordion-btn" aria-expanded="false" onclick="toggleAcc(this)">
+          <span class="acc-label">
+            <span class="acc-emoji">🧫</span>
+            Génomique
+          </span>
+          <span class="acc-icon">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            Assemblage et annotation de génomes de cétacés. Étude des variants structuraux associés à l'adaptation à la plongée profonde et à la communication acoustique.
+            <br>
+            <span class="acc-tag">WGS</span>
+            <span class="acc-tag">GATK</span>
+            <span class="acc-tag">Snakemake</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Machine Learning -->
+      <div class="accordion-item">
+        <button class="accordion-btn" aria-expanded="false" onclick="toggleAcc(this)">
+          <span class="acc-label">
+            <span class="acc-emoji">🤖</span>
+            Machine Learning
+          </span>
+          <span class="acc-icon">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            Classification automatique de chants de baleines à bosse par réseaux de neurones convolutifs. Détection de patterns acoustiques sur des enregistrements hydrophones longue durée.
+            <br>
+            <span class="acc-tag">CNN</span>
+            <span class="acc-tag">TensorFlow</span>
+            <span class="acc-tag">spectrogrammes</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -222,10 +429,35 @@ section {
 </div>
 
 <script>
-/* --- Bulles : s'arrêtent à la surface (haut de .ocean-zone) --- */
+/* ===== ACCORDION ===== */
+function toggleAcc(btn) {
+  const body = btn.nextElementSibling;
+  const isOpen = btn.getAttribute('aria-expanded') === 'true';
+
+  /* Fermer tous les autres */
+  document.querySelectorAll('.accordion-btn').forEach(b => {
+    if (b !== btn) {
+      b.setAttribute('aria-expanded', 'false');
+      const bd = b.nextElementSibling;
+      bd.style.maxHeight = '0';
+      bd.classList.remove('open');
+    }
+  });
+
+  if (isOpen) {
+    btn.setAttribute('aria-expanded', 'false');
+    body.style.maxHeight = '0';
+    body.classList.remove('open');
+  } else {
+    btn.setAttribute('aria-expanded', 'true');
+    body.style.maxHeight = body.scrollHeight + 'px';
+    body.classList.add('open');
+  }
+}
+
+/* --- Bulles --- */
 function createBubble() {
   const oceanZone = document.querySelector('.ocean-zone');
-  const oceanTop  = oceanZone.getBoundingClientRect().top + window.scrollY;
   const oceanH    = oceanZone.offsetHeight;
 
   const bubble = document.createElement('div');
@@ -237,9 +469,6 @@ function createBubble() {
   bubble.style.width  = size + 'px';
   bubble.style.height = size + 'px';
   bubble.style.left   = Math.random() * window.innerWidth + 'px';
-
-  /* La bulle monte depuis le bas de l'océan jusqu'au tout haut de l'océan,
-     jamais au-delà : translateY max = -oceanH */
   bubble.style.animation = `rise ${duration}s linear forwards`;
   bubble.style.setProperty('--rise', `-${oceanH}px`);
 
@@ -247,7 +476,6 @@ function createBubble() {
   setTimeout(() => bubble.remove(), duration * 1000 + 200);
 }
 
-/* On adapte le @keyframes dynamiquement via une règle CSS avec la variable --rise */
 const styleSheet = document.createElement('style');
 styleSheet.textContent = `
   @keyframes rise {
@@ -258,111 +486,65 @@ styleSheet.textContent = `
   }
 `;
 document.head.appendChild(styleSheet);
-
 setInterval(createBubble, 600);
 
-/* --- Poissons dans l'océan --- */
+/* --- Poissons --- */
 const fishShapes = [
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 50" width="60" height="30">
-    <path fill="currentColor" d="M72,25 C72,25 85,10 100,8 C95,18 94,25 95,32 C100,42 85,40 72,25 Z M72,25 C65,14 50,8 32,10 C18,12 8,18 4,25 C8,32 18,38 32,40 C50,42 65,36 72,25 Z M10,22 C10,22 6,20 4,25 C6,30 10,28 10,28 Z"/>
-  </svg>`,
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 60" width="55" height="33">
-    <path fill="currentColor" d="M65,30 C65,30 80,12 100,10 C94,22 93,30 94,38 C100,50 80,48 65,30 Z M65,30 C58,18 42,10 25,13 C12,15 4,22 2,30 C4,38 12,45 25,47 C42,50 58,42 65,30 Z M35,13 C38,6 48,4 55,8 C52,13 45,14 35,13 Z M8,27 C8,27 4,24 2,30 C4,36 8,33 8,33 Z"/>
-  </svg>`,
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" width="70" height="24">
-    <path fill="currentColor" d="M88,20 C88,20 100,8 120,6 C116,15 115,20 116,25 C120,34 100,32 88,20 Z M88,20 C80,12 62,6 40,8 C22,10 8,15 4,20 C8,25 22,30 40,32 C62,34 80,28 88,20 Z M6,18 C6,18 3,16 2,20 C3,24 6,22 6,22 Z"/>
-  </svg>`,
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 60" width="46" height="35">
-    <path fill="currentColor" d="M52,30 C52,30 62,16 78,14 C74,22 73,30 74,38 C78,46 62,44 52,30 Z M52,30 C46,18 34,10 22,12 C12,14 5,21 4,30 C5,39 12,46 22,48 C34,50 46,42 52,30 Z M24,12 C26,5 36,3 42,8 C40,12 33,13 24,12 Z M24,48 C26,55 36,57 42,52 C40,48 33,47 24,48 Z M8,27 C8,27 4,24 4,30 C4,36 8,33 8,33 Z"/>
-  </svg>`,
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 50" width="60" height="30"><path fill="currentColor" d="M72,25 C72,25 85,10 100,8 C95,18 94,25 95,32 C100,42 85,40 72,25 Z M72,25 C65,14 50,8 32,10 C18,12 8,18 4,25 C8,32 18,38 32,40 C50,42 65,36 72,25 Z M10,22 C10,22 6,20 4,25 C6,30 10,28 10,28 Z"/></svg>`,
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 60" width="55" height="33"><path fill="currentColor" d="M65,30 C65,30 80,12 100,10 C94,22 93,30 94,38 C100,50 80,48 65,30 Z M65,30 C58,18 42,10 25,13 C12,15 4,22 2,30 C4,38 12,45 25,47 C42,50 58,42 65,30 Z M35,13 C38,6 48,4 55,8 C52,13 45,14 35,13 Z M8,27 C8,27 4,24 2,30 C4,36 8,33 8,33 Z"/></svg>`,
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" width="70" height="24"><path fill="currentColor" d="M88,20 C88,20 100,8 120,6 C116,15 115,20 116,25 C120,34 100,32 88,20 Z M88,20 C80,12 62,6 40,8 C22,10 8,15 4,20 C8,25 22,30 40,32 C62,34 80,28 88,20 Z M6,18 C6,18 3,16 2,20 C3,24 6,22 6,22 Z"/></svg>`,
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 60" width="46" height="35"><path fill="currentColor" d="M52,30 C52,30 62,16 78,14 C74,22 73,30 74,38 C78,46 62,44 52,30 Z M52,30 C46,18 34,10 22,12 C12,14 5,21 4,30 C5,39 12,46 22,48 C34,50 46,42 52,30 Z M24,12 C26,5 36,3 42,8 C40,12 33,13 24,12 Z M24,48 C26,55 36,57 42,52 C40,48 33,47 24,48 Z M8,27 C8,27 4,24 4,30 C4,36 8,33 8,33 Z"/></svg>`,
 ];
-
-const fishColors = [
-  'rgba(255,255,255,0.12)',
-  'rgba(100,200,255,0.10)',
-  'rgba(150,220,255,0.10)',
-  'rgba(255,255,255,0.08)',
-  'rgba(80,180,220,0.12)',
-];
+const fishColors = ['rgba(255,255,255,0.12)','rgba(100,200,255,0.10)','rgba(150,220,255,0.10)','rgba(255,255,255,0.08)','rgba(80,180,220,0.12)'];
 
 function createFish() {
   const oceanZone = document.querySelector('.ocean-zone');
-  const oceanH    = oceanZone.offsetHeight;
-
   const fish = document.createElement('div');
   fish.classList.add('fish');
-
   const goRight = Math.random() > 0.5;
   fish.classList.add(goRight ? 'left' : 'right');
-
   fish.innerHTML = fishShapes[Math.floor(Math.random() * fishShapes.length)];
   fish.style.color = fishColors[Math.floor(Math.random() * fishColors.length)];
-
   const scale = Math.random() * 0.8 + 0.6;
   fish.style.transform = goRight ? `scale(-${scale}, ${scale})` : `scale(${scale})`;
-
   fish.style.top = (Math.random() * 85 + 5) + '%';
-
   const duration = Math.random() * 27 + 18;
   fish.style.animationDuration = duration + 's';
   fish.style.animationDelay    = (Math.random() * -20) + 's';
-
   oceanZone.appendChild(fish);
   setTimeout(() => fish.remove(), (duration + 20) * 1000);
 }
-
 for (let i = 0; i < 3; i++) setTimeout(createFish, i * 3000);
 setInterval(createFish, 9000);
 
-/* --- Bioluminescence dans les profondeurs --- */
-const bioColors = [
-  'rgba(0, 255, 180, VAL)',   /* vert cyan */
-  'rgba(80, 180, 255, VAL)',  /* bleu électrique */
-  'rgba(180, 100, 255, VAL)', /* violet */
-  'rgba(0, 220, 255, VAL)',   /* cyan pur */
-  'rgba(100, 255, 200, VAL)', /* vert menthe */
-];
+/* --- Bioluminescence --- */
+const bioColors = ['rgba(0,255,180,VAL)','rgba(80,180,255,VAL)','rgba(180,100,255,VAL)','rgba(0,220,255,VAL)','rgba(100,255,200,VAL)'];
 
 function createBiolum() {
   const oceanZone = document.querySelector('.ocean-zone');
-  const oceanH    = oceanZone.offsetHeight;
-  const oceanW    = oceanZone.offsetWidth;
-
+  const oceanH = oceanZone.offsetHeight;
+  const oceanW = oceanZone.offsetWidth;
   const dot = document.createElement('div');
   dot.classList.add('biolum');
-
-  /* Taille : 2 à 6px, très petit */
   const size = Math.random() * 4 + 2;
   dot.style.width  = size + 'px';
   dot.style.height = size + 'px';
-
-  /* Position : plutôt dans les 2/3 bas (les profondeurs) */
   dot.style.left = (Math.random() * oceanW) + 'px';
   dot.style.top  = (Math.random() * oceanH * 0.7 + oceanH * 0.3) + 'px';
-
-  /* Couleur avec opacité faible */
   const col = bioColors[Math.floor(Math.random() * bioColors.length)];
   const opacity = Math.random() * 0.4 + 0.2;
   dot.style.background = col.replace('VAL', opacity);
-
-  /* Halo très léger autour du point */
-  const glowColor = col.replace('VAL', 0.15);
-  dot.style.boxShadow = `0 0 ${size * 3}px ${size}px ${glowColor}`;
-
-  /* Durée de pulsation : 2 à 6s, délai aléatoire */
+  dot.style.boxShadow = `0 0 ${size * 3}px ${size}px ${col.replace('VAL', 0.15)}`;
   const duration = Math.random() * 4 + 2;
   dot.style.animationDuration = duration + 's';
   dot.style.animationDelay    = (Math.random() * -6) + 's';
-
   oceanZone.appendChild(dot);
   setTimeout(() => dot.remove(), (duration * 4 + 2) * 1000);
 }
-
-/* Peupler au départ puis renouveler */
 for (let i = 0; i < 40; i++) setTimeout(createBiolum, i * 150);
 setInterval(createBiolum, 800);
 
-/* --- Nuages dans le ciel --- */
+/* --- Nuages --- */
 function createCloud() {
   const skyZone = document.getElementById('sky-wrapper');
   const cloud = document.createElement('div');

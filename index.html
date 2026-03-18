@@ -37,7 +37,7 @@ nav a { transition: 0.3s; }
 nav a:hover { color: #4fd1c5; }
 
 section {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,6 +45,7 @@ section {
   text-align: center;
   position: relative;
   z-index: 10;
+  padding: 6rem 1rem 3rem;
 }
 
 .whale-video {
@@ -67,12 +68,6 @@ section {
   border-radius: 50%;
   pointer-events: none;
   bottom: 0;
-}
-@keyframes rise {
-  0%   { transform: translateY(0) scale(0.5); opacity: 0; }
-  5%   { opacity: 0.6; }
-  95%  { opacity: 0.4; }
-  100% { opacity: 0; }
 }
 
 .dna {
@@ -141,6 +136,133 @@ section {
   100% { opacity: 0;    transform: scale(0.6); }
 }
 
+/* ===== CARTE GÉNÉRIQUE ===== */
+.glass-card {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(79, 209, 197, 0.2);
+  border-radius: 24px;
+  padding: 2rem 2.5rem;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1);
+}
+
+.glass-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.4rem;
+  letter-spacing: 0.05em;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.glass-card h2 svg {
+  width: 20px;
+  height: 20px;
+  stroke: #4fd1c5;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+/* ===== GRILLE À PROPOS ===== */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  max-width: 880px;
+  width: 95%;
+}
+@media (max-width: 640px) {
+  .about-grid { grid-template-columns: 1fr; }
+}
+
+/* ===== SKILLS ===== */
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  text-align: left;
+}
+
+.skill-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(79, 209, 197, 0.1);
+  border: 1px solid rgba(79, 209, 197, 0.25);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.85);
+  transition: background 0.2s, border-color 0.2s;
+}
+.skill-tag:hover {
+  background: rgba(79, 209, 197, 0.2);
+  border-color: rgba(79, 209, 197, 0.5);
+}
+.skill-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4fd1c5;
+  flex-shrink: 0;
+}
+
+/* ===== EXPÉRIENCE ===== */
+.exp-list {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.exp-item {
+  position: relative;
+  padding-left: 1.1rem;
+  border-left: 2px solid rgba(79, 209, 197, 0.3);
+}
+
+.exp-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 0.15rem;
+}
+
+.exp-org {
+  font-size: 0.75rem;
+  color: #4fd1c5;
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.03em;
+}
+
+.exp-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.exp-bullets li {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.6);
+  padding-left: 0.9rem;
+  position: relative;
+  line-height: 1.45;
+}
+.exp-bullets li::before {
+  content: '›';
+  position: absolute;
+  left: 0;
+  color: #4fd1c5;
+  font-weight: bold;
+}
+
 /* ===== ACCORDION PROJETS ===== */
 .projects-card {
   background: rgba(255,255,255,0.08);
@@ -164,9 +286,7 @@ section {
   border-bottom: 1px solid rgba(79, 209, 197, 0.15);
   overflow: hidden;
 }
-.accordion-item:last-child {
-  border-bottom: none;
-}
+.accordion-item:last-child { border-bottom: none; }
 
 .accordion-btn {
   width: 100%;
@@ -184,9 +304,7 @@ section {
   gap: 1rem;
   transition: color 0.25s;
 }
-.accordion-btn:hover {
-  color: #4fd1c5;
-}
+.accordion-btn:hover { color: #4fd1c5; }
 .accordion-btn:hover .acc-icon {
   background: rgba(79, 209, 197, 0.2);
   border-color: rgba(79, 209, 197, 0.6);
@@ -218,7 +336,6 @@ section {
   transition: all 0.25s;
   background: rgba(255,255,255,0.05);
 }
-
 .acc-icon svg {
   width: 12px;
   height: 12px;
@@ -229,13 +346,8 @@ section {
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-
-.accordion-btn[aria-expanded="true"] .acc-icon svg {
-  transform: rotate(180deg);
-}
-.accordion-btn[aria-expanded="true"] {
-  color: #4fd1c5;
-}
+.accordion-btn[aria-expanded="true"] .acc-icon svg { transform: rotate(180deg); }
+.accordion-btn[aria-expanded="true"] { color: #4fd1c5; }
 .accordion-btn[aria-expanded="true"] .acc-icon {
   background: rgba(79, 209, 197, 0.15);
   border-color: rgba(79, 209, 197, 0.5);
@@ -244,14 +356,10 @@ section {
 .accordion-body {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-              opacity 0.35s ease,
-              padding 0.35s ease;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease;
   opacity: 0;
 }
-.accordion-body.open {
-  opacity: 1;
-}
+.accordion-body.open { opacity: 1; }
 
 .accordion-body-inner {
   padding: 0 0 1rem 2.55rem;
@@ -289,13 +397,13 @@ section {
 
 <!-- ===== ZONE CIEL ===== -->
 <div class="sky-zone" id="sky-wrapper" style="position:relative; overflow:hidden;">
-  <section id="home">
+  <section id="home" style="padding-top:4rem;">
     <h1 class="text-6xl font-bold mb-4">Mallory Le Corre</h1>
     <p class="text-xl opacity-80">Bio-informaticienne 🌊</p>
   </section>
 </div>
 
-<!-- ===== SÉPARATEUR : vague ciel -> océan ===== -->
+<!-- ===== SÉPARATEUR vague ===== -->
 <div id="wave-separator" style="position:relative; height:80px; overflow:hidden; background:#1565C0; z-index:5;">
   <svg viewBox="0 0 2880 80" preserveAspectRatio="none"
        style="position:absolute; top:0; left:0; width:200%; height:80px; animation: waveSlide 9s linear infinite;">
@@ -309,9 +417,68 @@ section {
 
   <!-- Section À propos -->
   <section id="about">
-    <div class="bg-white/10 backdrop-blur-xl p-10 rounded-3xl shadow-xl max-w-xl">
-      <h2 class="text-3xl mb-4">À propos</h2>
-      <p>Passionné par les baleines</p>
+    <div class="about-grid">
+
+      <!-- Boîte Skills -->
+      <div class="glass-card">
+        <h2>
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="8" r="3"/>
+            <path d="M6 20v-1a6 6 0 0 1 12 0v1"/>
+            <path d="M17 11l2 2 4-4" stroke-width="2"/>
+          </svg>
+          Skills
+        </h2>
+        <div class="skills-grid">
+          <span class="skill-tag"><span class="skill-dot"></span>Python</span>
+          <span class="skill-tag"><span class="skill-dot"></span>R</span>
+          <span class="skill-tag"><span class="skill-dot"></span>Bash</span>
+          <span class="skill-tag"><span class="skill-dot"></span>Snakemake</span>
+          <span class="skill-tag"><span class="skill-dot"></span>Nextflow</span>
+          <span class="skill-tag"><span class="skill-dot"></span>QIIME2</span>
+          <span class="skill-tag"><span class="skill-dot"></span>Illumina</span>
+          <span class="skill-tag"><span class="skill-dot"></span>Nanopore</span>
+          <span class="skill-tag"><span class="skill-dot"></span>PacBio</span>
+          <span class="skill-tag"><span class="skill-dot"></span>Git</span>
+          <span class="skill-tag"><span class="skill-dot"></span>Linux</span>
+          <span class="skill-tag"><span class="skill-dot"></span>TensorFlow</span>
+        </div>
+      </div>
+
+      <!-- Boîte Expérience -->
+      <div class="glass-card">
+        <h2>
+          <svg viewBox="0 0 24 24">
+            <rect x="2" y="7" width="20" height="14" rx="2"/>
+            <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+            <line x1="12" y1="12" x2="12" y2="16"/>
+            <line x1="10" y1="14" x2="14" y2="14"/>
+          </svg>
+          Expérience
+        </h2>
+        <div class="exp-list">
+
+          <div class="exp-item">
+            <div class="exp-title">Alternance Bio-informatique</div>
+            <div class="exp-org">Institut Méditerranéen d'Océanographie</div>
+            <ul class="exp-bullets">
+              <li>Création d'un pipeline automatisé de métabarcoding sur Nanopore</li>
+              <li>Comparaison des technologies de séquençage Illumina, Nanopore et PacBio</li>
+            </ul>
+          </div>
+
+          <div class="exp-item">
+            <div class="exp-title">VSC Bio-informatique</div>
+            <div class="exp-org">Ifremer</div>
+            <ul class="exp-bullets">
+              <li>Métabarcoding sédiments</li>
+              <li>Traitement et mise en forme de données physiques</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -390,7 +557,7 @@ section {
       <div class="accordion-item">
         <button class="accordion-btn" aria-expanded="false" onclick="toggleAcc(this)">
           <span class="acc-label">
-            Texte
+            Machine Learning
           </span>
           <span class="acc-icon">
             <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
@@ -398,7 +565,6 @@ section {
         </button>
         <div class="accordion-body">
           <div class="accordion-body-inner">
-            
             <br>
             <span class="acc-tag">CNN</span>
             <span class="acc-tag">TensorFlow</span>
@@ -432,8 +598,6 @@ section {
 function toggleAcc(btn) {
   const body = btn.nextElementSibling;
   const isOpen = btn.getAttribute('aria-expanded') === 'true';
-
-  /* Fermer tous les autres */
   document.querySelectorAll('.accordion-btn').forEach(b => {
     if (b !== btn) {
       b.setAttribute('aria-expanded', 'false');
@@ -442,7 +606,6 @@ function toggleAcc(btn) {
       bd.classList.remove('open');
     }
   });
-
   if (isOpen) {
     btn.setAttribute('aria-expanded', 'false');
     body.style.maxHeight = '0';
@@ -458,23 +621,18 @@ function toggleAcc(btn) {
 function createBubble() {
   const oceanZone = document.querySelector('.ocean-zone');
   const oceanH    = oceanZone.offsetHeight;
-
-  const bubble = document.createElement('div');
+  const bubble    = document.createElement('div');
   bubble.classList.add('bubble');
-
   const size     = Math.random() * 15 + 5;
   const duration = Math.random() * 5 + 5;
-
   bubble.style.width  = size + 'px';
   bubble.style.height = size + 'px';
   bubble.style.left   = Math.random() * window.innerWidth + 'px';
   bubble.style.animation = `rise ${duration}s linear forwards`;
   bubble.style.setProperty('--rise', `-${oceanH}px`);
-
   oceanZone.appendChild(bubble);
   setTimeout(() => bubble.remove(), duration * 1000 + 200);
 }
-
 const styleSheet = document.createElement('style');
 styleSheet.textContent = `
   @keyframes rise {

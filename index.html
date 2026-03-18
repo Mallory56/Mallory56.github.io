@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title> Mallory 3 </title>
+<title> Mallory 4 </title>
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
@@ -277,7 +277,7 @@ section {
   50%       { transform: translateY(-12px) rotate(1deg); }
 }
 .abyss-deco {
-  animation: whaleFloat 6s ease-in-out infinite;
+  animation: abyssFloat 6s ease-in-out infinite;
 }
 
 /* ===== ACCORDION PROJETS ===== */
@@ -440,7 +440,6 @@ section {
 </div>
 
 
-
 <!-- ===== ZONE OCÉAN ===== -->
 <div class="ocean-zone">
 
@@ -508,132 +507,153 @@ section {
   </section>
 
   <!-- ===== BALEINE DÉCORATIVE (entre about et projects) ===== -->
-<div style="
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 0rem -5rem 0rem 0rem;
-  z-index: 10;
-">
-  <img
-    src="image/humpback-whale-isolated-white-background.png"
-    alt="Baleine à bosse"
-    class="whale-deco"
-    style="
-      width: min(450px, 31vw);
-      filter: brightness(0.6) saturate(0.7);
-      mix-blend-mode: screen;
-    "
-  >
-</div>
+  <div style="
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0rem -5rem 0rem 0rem;
+    z-index: 10;
+  ">
+    <img
+      src="image/humpback-whale-isolated-white-background.png"
+      alt="Baleine à bosse"
+      class="whale-deco"
+      style="
+        width: min(450px, 31vw);
+        filter: brightness(0.6) saturate(0.7);
+        mix-blend-mode: screen;
+      "
+    >
+  </div>
 
   <!-- Section technical experiences -->
-<section id="projects">
-  <div class="projects-card">
-    <h2>Technical Experience</h2>
+  <section id="projects">
+    <div class="projects-card">
+      <h2>Technical Experience</h2>
 
-    <!-- Métabarcoding -->
-    <div class="accordion-item">
-      <button class="accordion-btn" aria-expanded="false" onclick="toggleAcc(this)">
-        <span class="acc-label">
-          <span class="acc-emoji">🧬</span>
-          Métabarcoding
-        </span>
-        <span class="acc-icon">
-          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-        </span>
-      </button>
-      <div class="accordion-body">
-        <div class="accordion-body-inner">
-          Analyse de la diversité microbienne et eucaryote en milieu marin via contrôle qualité des reads, débruitage (DADA2), déreplication (vsearch) et assignation taxonomique.
-          <div style="margin-top:0.8rem;">
-            <div style="font-size:0.69rem; color:rgba(255,255,255,0.35); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.35rem;">Marqueurs</div>
-            <span class="acc-tag">16S</span>
-            <span class="acc-tag">18S</span>
-            <span class="acc-tag">ITS</span>
-            <span class="acc-tag">Archées</span>
-          </div>
-          <div style="margin-top:0.8rem;">
-            <div style="font-size:0.69rem; color:rgba(255,255,255,0.35); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.35rem;">Reads</div>
-            <span class="acc-tag">Long reads</span>
-            <span class="acc-tag">Short reads</span>
-          </div>
-          <div style="margin-top:0.8rem;">
-            <div style="font-size:0.69rem; color:rgba(255,255,255,0.35); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.35rem;">technos<</div>
-            <span class="acc-tag">Illumina</span>
-            <span class="acc-tag">Pacbio</span>
-            <span class="acc-tag">Nanopore</span>
-          </div>
-          <div style="margin-top:0.8rem;">
-            <div style="font-size:0.69rem; color:rgba(255,255,255,0.35); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.35rem;">Outils</div>
-            <span class="acc-tag">QIIME2</span>
-            <span class="acc-tag">DADA2</span>
-            <span class="acc-tag">vsearch</span>
-            <span class="acc-tag">Nextflow</span>
-          </div>
-          <div style="margin-top:0.8rem;">
-            <div style="font-size:0.69rem; color:rgba(255,255,255,0.35); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.35rem;">Environnements</div>
-            <span class="acc-tag">Colonne d'eau</span>
-            <span class="acc-tag">Sédiments</span>
+      <!-- Métabarcoding -->
+      <div class="accordion-item">
+        <button class="accordion-btn" aria-expanded="false" onclick="toggleAcc(this)">
+          <span class="acc-label">
+            <span class="acc-emoji">🧬</span>
+            Métabarcoding
+          </span>
+          <span class="acc-icon">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            Analyse de la diversité microbienne et eucaryote en milieu marin via contrôle qualité des reads, débruitage (DADA2), déreplication (vsearch) et assignation taxonomique.
+            <div style="margin-top:0.8rem;">
+              <div style="font-size:0.69rem; color:rgba(255,255,255,0.35); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.35rem;">Marqueurs</div>
+              <span class="acc-tag">16S</span>
+              <span class="acc-tag">18S</span>
+              <span class="acc-tag">ITS</span>
+              <span class="acc-tag">Archées</span>
+            </div>
+            <div style="margin-top:0.8rem;">
+              <div style="font-size:0.69rem; color:rgba(255,255,255,0.35); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.35rem;">Reads</div>
+              <span class="acc-tag">Long reads</span>
+              <span class="acc-tag">Short reads</span>
+            </div>
+            <div style="margin-top:0.8rem;">
+              <div style="font-size:0.69rem; color:rgba(255,255,255,0.35); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.35rem;">Technos</div>
+              <span class="acc-tag">Illumina</span>
+              <span class="acc-tag">Pacbio</span>
+              <span class="acc-tag">Nanopore</span>
+            </div>
+            <div style="margin-top:0.8rem;">
+              <div style="font-size:0.69rem; color:rgba(255,255,255,0.35); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.35rem;">Outils</div>
+              <span class="acc-tag">QIIME2</span>
+              <span class="acc-tag">DADA2</span>
+              <span class="acc-tag">vsearch</span>
+              <span class="acc-tag">Nextflow</span>
+            </div>
+            <div style="margin-top:0.8rem;">
+              <div style="font-size:0.69rem; color:rgba(255,255,255,0.35); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.35rem;">Environnements</div>
+              <span class="acc-tag">Colonne d'eau</span>
+              <span class="acc-tag">Sédiments</span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Transcriptomique -->
-    <div class="accordion-item">
-      <button class="accordion-btn" aria-expanded="false" onclick="toggleAcc(this)">
-        <span class="acc-label">Transcriptomique</span>
-        <span class="acc-icon">
-          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-        </span>
-      </button>
-      <div class="accordion-body">
-        <div class="accordion-body-inner">
-          Texte
-          <br>
-          <span class="acc-tag">assemblage</span>
-          <span class="acc-tag">de novo</span>
+      <!-- Transcriptomique -->
+      <div class="accordion-item">
+        <button class="accordion-btn" aria-expanded="false" onclick="toggleAcc(this)">
+          <span class="acc-label">Transcriptomique</span>
+          <span class="acc-icon">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            Texte
+            <br>
+            <span class="acc-tag">assemblage</span>
+            <span class="acc-tag">de novo</span>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Génomique -->
-    <div class="accordion-item">
-      <button class="accordion-btn" aria-expanded="false" onclick="toggleAcc(this)">
-        <span class="acc-label">Génomique</span>
-        <span class="acc-icon">
-          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-        </span>
-      </button>
-      <div class="accordion-body">
-        <div class="accordion-body-inner">
-          Texte
-          <br>
-          <span class="acc-tag">annotation fonctionnelle</span>
-          <span class="acc-tag">Pipeline</span>
+      <!-- Génomique -->
+      <div class="accordion-item">
+        <button class="accordion-btn" aria-expanded="false" onclick="toggleAcc(this)">
+          <span class="acc-label">Génomique</span>
+          <span class="acc-icon">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            Texte
+            <br>
+            <span class="acc-tag">annotation fonctionnelle</span>
+            <span class="acc-tag">Pipeline</span>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Machine Learning -->
-    <div class="accordion-item">
-      <button class="accordion-btn" aria-expanded="false" onclick="toggleAcc(this)">
-        <span class="acc-label">Machine Learning</span>
-        <span class="acc-icon">
-          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-        </span>
-      </button>
-      <div class="accordion-body">
-        <div class="accordion-body-inner">
-          <span class="acc-tag">CNN</span>
+      <!-- Machine Learning -->
+      <div class="accordion-item">
+        <button class="accordion-btn" aria-expanded="false" onclick="toggleAcc(this)">
+          <span class="acc-label">Machine Learning</span>
+          <span class="acc-icon">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="accordion-body">
+          <div class="accordion-body-inner">
+            <span class="acc-tag">CNN</span>
+          </div>
         </div>
       </div>
-    </div>
 
+    </div>
+  </section>
+
+  <!-- ===== IMAGE ABYSSE (entre projects et contact) ===== -->
+  <div style="
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0rem 0rem 0rem 4rem;
+    z-index: 10;
+    position: relative;
+  ">
+    <img
+      src="image/83fb8569-f4a9-4ee8-8cbb-a36cefc3f841.jpeg"
+      alt="abysse"
+      class="abyss-deco"
+      style="
+        width: min(450px, 31vw);
+        filter: brightness(0.6) saturate(0.7);
+        mix-blend-mode: screen;
+      "
+    >
   </div>
-</section>
-  
+
   <!-- Section Contact -->
   <section id="contact">
     <div style="display:flex; align-items:center; gap:3rem; max-width:860px; width:95%; flex-wrap:wrap; justify-content:center;">
@@ -702,24 +722,7 @@ function toggleAcc(btn) {
     body.classList.add('open');
   }
 }
-<div style="
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 0rem 0rem 0rem 4rem;
-  z-index: 10;
-">
-  <img
-    src="image/83fb8569-f4a9-4ee8-8cbb-a36cefc3f841.jpeg"
-    alt="abysse"
-    class="abyss-deco"
-    style="
-      width: min(450px, 31vw);
-      filter: brightness(0.6) saturate(0.7);
-      mix-blend-mode: screen;
-    "
-  >
-</div>
+
 /* --- Bulles --- */
 function createBubble() {
   const oceanZone = document.querySelector('.ocean-zone');

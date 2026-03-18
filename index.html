@@ -421,16 +421,17 @@ section {
     <h1 class="text-6xl font-bold mb-4">Mallory Le Corre</h1>
     <p class="text-xl opacity-80">Bio-informaticienne 🌊</p>
   </section>
+  <!-- Vague visible depuis l'accueil -->
+  <div style="position:absolute; bottom:0; left:0; width:100%; height:120px; overflow:hidden; z-index:5; pointer-events:none;">
+    <svg viewBox="0 0 2880 120" preserveAspectRatio="none"
+         style="position:absolute; bottom:0; left:0; width:200%; height:120px; animation: waveSlide 9s linear infinite;">
+      <path fill="#1565C0"
+            d="M0,60 C240,20 480,100 720,60 C960,20 1200,100 1440,60 C1680,20 1920,100 2160,60 C2400,20 2640,100 2880,60 L2880,120 L0,120 Z"/>
+    </svg>
+  </div>
 </div>
 
-<!-- ===== SÉPARATEUR vague ===== -->
-<div id="wave-separator" style="position:relative; height:80px; overflow:hidden; background:#1565C0; z-index:5;">
-  <svg viewBox="0 0 2880 80" preserveAspectRatio="none"
-       style="position:absolute; top:0; left:0; width:200%; height:80px; animation: waveSlide 9s linear infinite;">
-    <path fill="#1E90FF"
-          d="M0,40 C240,0 480,80 720,40 C960,0 1200,80 1440,40 C1680,0 1920,80 2160,40 C2400,0 2640,80 2880,40 L2880,0 L0,0 Z"/>
-  </svg>
-</div>
+
 
 <!-- ===== ZONE OCÉAN ===== -->
 <div class="ocean-zone">

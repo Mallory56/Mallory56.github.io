@@ -517,96 +517,108 @@ section {
     "
   >
 </div>
-  <!-- Section Projets -->
-  <section id="projects">
-    <div class="projects-card">
-      <h2>Technical Experience</h2>
 
-      <!-- Métabarcoding -->
-      <div class="accordion-item">
-        <button class="accordion-btn" aria-expanded="false" onclick="toggleAcc(this)">
-          <span class="acc-label">
-            <span class="acc-emoji">🧬</span>
-            Métabarcoding
-          </span>
-          <span class="acc-icon">
-            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </span>
-        </button>
-        <div class="accordion-body">
-          <div class="accordion-body-inner">
-            Identification et caractérisation de la biodiversité marine via l'analyse de séquences d'ADN environnemental (eDNA). Colonnes d'eau et sédiments.
-            <br>
+  <!-- Section technical experiences -->
+<section id="projects">
+  <div class="projects-card">
+    <h2>Technical Experience</h2>
+
+    <!-- Métabarcoding -->
+    <div class="accordion-item">
+      <button class="accordion-btn" aria-expanded="false" onclick="toggleAcc(this)">
+        <span class="acc-label">
+          <span class="acc-emoji">🧬</span>
+          Métabarcoding
+        </span>
+        <span class="acc-icon">
+          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </span>
+      </button>
+      <div class="accordion-body">
+        <div class="accordion-body-inner">
+          Analyse de la diversité microbienne et eucaryote en milieu marin via contrôle qualité des reads, débruitage (DADA2), déreplication (vsearch) et assignation taxonomique.
+          <div style="margin-top:0.8rem;">
+            <div style="font-size:0.69rem; color:rgba(255,255,255,0.35); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.35rem;">Marqueurs</div>
+            <span class="acc-tag">16S</span>
+            <span class="acc-tag">18S</span>
+            <span class="acc-tag">ITS</span>
+            <span class="acc-tag">Archées</span>
+          </div>
+          <div style="margin-top:0.8rem;">
+            <div style="font-size:0.69rem; color:rgba(255,255,255,0.35); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.35rem;">Reads</div>
             <span class="acc-tag">Long reads</span>
-            <span class="acc-tag">short reads</span>
-            <span class="acc-tag">16s</span>
-            <span class="acc-tag">18s</span>
-            <span class="acc-tag">arch</span>
+            <span class="acc-tag">Short reads</span>
+          </div>
+          <div style="margin-top:0.8rem;">
+            <div style="font-size:0.69rem; color:rgba(255,255,255,0.35); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.35rem;">Outils</div>
+            <span class="acc-tag">QIIME2</span>
+            <span class="acc-tag">DADA2</span>
+            <span class="acc-tag">vsearch</span>
+            <span class="acc-tag">Nextflow</span>
+          </div>
+          <div style="margin-top:0.8rem;">
+            <div style="font-size:0.69rem; color:rgba(255,255,255,0.35); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.35rem;">Environnements</div>
+            <span class="acc-tag">Colonne d'eau</span>
+            <span class="acc-tag">Sédiments</span>
           </div>
         </div>
       </div>
-
-      <!-- Transcriptomique -->
-      <div class="accordion-item">
-        <button class="accordion-btn" aria-expanded="false" onclick="toggleAcc(this)">
-          <span class="acc-label">
-            Transcriptomique
-          </span>
-          <span class="acc-icon">
-            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </span>
-        </button>
-        <div class="accordion-body">
-          <div class="accordion-body-inner">
-            Texte
-            <br>
-            <span class="acc-tag">assemblage</span>
-            <span class="acc-tag">de novo</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Génomique -->
-      <div class="accordion-item">
-        <button class="accordion-btn" aria-expanded="false" onclick="toggleAcc(this)">
-          <span class="acc-label">
-            Génomique
-          </span>
-          <span class="acc-icon">
-            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </span>
-        </button>
-        <div class="accordion-body">
-          <div class="accordion-body-inner">
-            Texte
-            <br>
-            <span class="acc-tag">annotation_fonctionnelle</span>
-            <span class="acc-tag">Pipeline</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Machine Learning -->
-      <div class="accordion-item">
-        <button class="accordion-btn" aria-expanded="false" onclick="toggleAcc(this)">
-          <span class="acc-label">
-            Machine Learning
-          </span>
-          <span class="acc-icon">
-            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </span>
-        </button>
-        <div class="accordion-body">
-          <div class="accordion-body-inner">
-            <br>
-            <span class="acc-tag">CNN</span>
-          </div>
-        </div>
-      </div>
-
     </div>
-  </section>
 
+    <!-- Transcriptomique -->
+    <div class="accordion-item">
+      <button class="accordion-btn" aria-expanded="false" onclick="toggleAcc(this)">
+        <span class="acc-label">Transcriptomique</span>
+        <span class="acc-icon">
+          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </span>
+      </button>
+      <div class="accordion-body">
+        <div class="accordion-body-inner">
+          Texte
+          <br>
+          <span class="acc-tag">assemblage</span>
+          <span class="acc-tag">de novo</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Génomique -->
+    <div class="accordion-item">
+      <button class="accordion-btn" aria-expanded="false" onclick="toggleAcc(this)">
+        <span class="acc-label">Génomique</span>
+        <span class="acc-icon">
+          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </span>
+      </button>
+      <div class="accordion-body">
+        <div class="accordion-body-inner">
+          Texte
+          <br>
+          <span class="acc-tag">annotation fonctionnelle</span>
+          <span class="acc-tag">Pipeline</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Machine Learning -->
+    <div class="accordion-item">
+      <button class="accordion-btn" aria-expanded="false" onclick="toggleAcc(this)">
+        <span class="acc-label">Machine Learning</span>
+        <span class="acc-icon">
+          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </span>
+      </button>
+      <div class="accordion-body">
+        <div class="accordion-body-inner">
+          <span class="acc-tag">CNN</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+  
   <!-- Section Contact -->
   <section id="contact">
     <div style="display:flex; align-items:center; gap:3rem; max-width:860px; width:95%; flex-wrap:wrap; justify-content:center;">

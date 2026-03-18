@@ -272,6 +272,14 @@ section {
   animation: whaleFloat 6s ease-in-out infinite;
 }
 
+@keyframes abyssFloat {
+  0%, 100% { transform: translateY(0px) rotate(-1deg); }
+  50%       { transform: translateY(-12px) rotate(1deg); }
+}
+.abyss-deco {
+  animation: whaleFloat 6s ease-in-out infinite;
+}
+
 /* ===== ACCORDION PROJETS ===== */
 .projects-card {
   background: rgba(255,255,255,0.08);
@@ -694,7 +702,24 @@ function toggleAcc(btn) {
     body.classList.add('open');
   }
 }
-
+<div style="
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0rem 0rem 0rem 4rem;
+  z-index: 10;
+">
+  <img
+    src="image/83fb8569-f4a9-4ee8-8cbb-a36cefc3f841.jpeg"
+    alt="abysse"
+    class="abyss-deco"
+    style="
+      width: min(450px, 31vw);
+      filter: brightness(0.6) saturate(0.7);
+      mix-blend-mode: screen;
+    "
+  >
+</div>
 /* --- Bulles --- */
 function createBubble() {
   const oceanZone = document.querySelector('.ocean-zone');

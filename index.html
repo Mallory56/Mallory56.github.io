@@ -263,6 +263,15 @@ section {
   font-weight: bold;
 }
 
+/* ===== BALEINE DÉCORATIVE ===== */
+@keyframes whaleFloat {
+  0%, 100% { transform: translateY(0px) rotate(-1deg); }
+  50%       { transform: translateY(-12px) rotate(1deg); }
+}
+.whale-deco {
+  animation: whaleFloat 6s ease-in-out infinite;
+}
+
 /* ===== ACCORDION PROJETS ===== */
 .projects-card {
   background: rgba(255,255,255,0.08);
@@ -380,16 +389,10 @@ section {
   margin-right: 4px;
 }
 
-/* ===== BAUDROIE LURE (pas de conflit avec .pulse) ===== */
+/* ===== BAUDROIE ===== */
 @keyframes baudroiePulse { 0%,100%{opacity:1;} 50%{opacity:0.25;} }
 .baudroie-lure { animation: baudroiePulse 1.6s ease-in-out infinite; }
-@keyframes whaleFloat {
-  0%, 100% { transform: translateY(0px) rotate(-1deg); }
-  50%       { transform: translateY(-12px) rotate(1deg); }
-}
-.whale-deco {
-  animation: whaleFloat 6s ease-in-out infinite;
-}
+
 @keyframes baudroieFloat {
   0%, 100% { transform: rotate(-2deg) translateY(0px); }
   50%       { transform: rotate(2deg) translateY(-8px); }
@@ -398,7 +401,6 @@ section {
   animation: baudroieFloat 4s ease-in-out infinite;
   transform-origin: center center;
 }
-  
 </style>
 </head>
 
@@ -412,7 +414,8 @@ section {
   <a href="#contact"  class="font-bold">Contact</a>
 </nav>
 
-
+<!-- ADN -->
+<div class="dna"></div>
 
 <!-- ===== ZONE CIEL ===== -->
 <div class="sky-zone" id="sky-wrapper" style="position:relative; overflow:hidden;">
@@ -496,6 +499,27 @@ section {
 
     </div>
   </section>
+
+  <!-- ===== BALEINE DÉCORATIVE (entre about et projects) ===== -->
+  <div style="
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+    position: relative;
+    z-index: 10;
+  ">
+    <img
+      src="image/humpback-whale-isolated-white-background.png"
+      alt="Baleine à bosse"
+      class="whale-deco"
+      style="
+        width: min(600px, 85vw);
+        filter: brightness(0.6) saturate(0.7);
+        mix-blend-mode: screen;
+      "
+    >
+  </div>
 
   <!-- Section Projets -->
   <section id="projects">
@@ -591,8 +615,8 @@ section {
   <section id="contact">
     <div style="display:flex; align-items:center; gap:3rem; max-width:860px; width:95%; flex-wrap:wrap; justify-content:center;">
 
-      <!-- Baudroie SVG (classe renommée pour éviter tout conflit) -->
-      <div class="baudroie-float" style="flex-shrink:0; width:240px; filter: drop-shadow(...);">
+      <!-- Baudroie -->
+      <div class="baudroie-float" style="flex-shrink:0; width:240px; filter: drop-shadow(0 0 20px rgba(79,209,197,0.4));">
         <svg width="100%" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.001 512.001">
           <path style="fill:#2a7a72;" d="M377.511,183.315c-1.539,0-3.094-0.427-4.48-1.329c-3.827-2.481-4.915-7.589-2.433-11.408c25.525-39.358,52.894-59.147,54.046-59.968c3.698-2.65,8.846-1.788,11.497,1.91c2.65,3.698,1.797,8.855-1.902,11.505c-0.258,0.194-26.089,18.967-49.8,55.529C382.861,181.993,380.21,183.315,377.511,183.315z"/>
           <path style="fill:#4fd1c5;" d="M400.594,301.664l-16.017-10.885c-3.779-2.562-8.903-1.579-11.465,2.183c-2.562,3.77-1.579,8.903,2.183,11.465l16.017,10.885c1.426,0.967,3.037,1.426,4.633,1.426c2.643,0,5.237-1.265,6.832-3.61C405.339,309.358,404.357,304.225,400.594,301.664z"/>
@@ -609,7 +633,6 @@ section {
           <path style="fill:#2a7a72;" d="M272.682,175.072c-6.703-11.86-89.306,12.439-90.754,24.751c-0.688,5.843,4.109,37.12,16.501,41.252c24.751,8.25,66.003,8.25,74.253,8.25C280.932,249.326,290.916,207.334,272.682,175.072z"/>
           <path style="fill:#155e57;" d="M272.682,257.576c-2.111,0-4.23-0.805-5.841-2.426c-0.266-0.266-27.144-27.103-48.012-40.068c-3.876-2.409-5.06-7.493-2.659-11.361c2.401-3.876,7.493-5.06,11.361-2.659c22.511,13.986,49.84,41.275,50.992,42.436c3.215,3.223,3.215,8.444-0.016,11.666C276.896,256.771,274.793,257.576,272.682,257.576z"/>
           <circle style="fill:#0d2020;" cx="351.062" cy="236.95" r="20.626"/>
-          <!-- Lure : classe renommée baudroie-lure, définie dans le <style> global -->
           <circle class="baudroie-lure" style="fill:rgba(79,209,197,0.2);" cx="429.441" cy="117.32" r="32"/>
           <circle class="baudroie-lure" style="fill:#4fd1c5;" cx="429.441" cy="117.32" r="16.501"/>
         </svg>
@@ -624,6 +647,11 @@ section {
 
     </div>
   </section>
+
+  <!-- Vidéo baleine -->
+  <video autoplay loop muted playsinline class="whale-video">
+    <source src="whale.mp4" type="video/mp4">
+  </video>
 
 </div>
 
@@ -755,26 +783,6 @@ function createCloud() {
 for (let i = 0; i < 4; i++) setTimeout(createCloud, i * 4000);
 setInterval(createCloud, 8000);
 </script>
-  
-<!-- ===== BALEINE ===== -->
-<div style="
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem 0;
-  position: relative;
-  z-index: 10;
-  overflow: hidden;
-">
-  <img
-    src="image/humpback-whale-isolated-white-background.png"
-    alt="Baleine à bosse"
-    class="whale-deco"
-    style="
-      width: min(600px, 85vw);
-      filter: brightness(0.7) saturate(0.8) drop-shadow(0 0 30px rgba(79,209,197,0.2));
-    "
-  >
-</div>
+
 </body>
 </html>

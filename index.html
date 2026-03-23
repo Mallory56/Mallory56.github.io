@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title> Mallory 4 </title>
+<title> Mallory 5 </title>
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
@@ -167,13 +167,118 @@ section {
   flex-shrink: 0;
 }
 
-/* ===== GRILLE À PROPOS ===== */
+/* ===== SECTION ABOUT — layout vertical ===== */
+.about-wrapper {
+  max-width: 1100px;
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+/* --- Timeline block (haut) --- */
+.timeline-block {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 3rem;
+  align-items: start;
+}
+@media (max-width: 700px) {
+  .timeline-block { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+.tl-intro {
+  text-align: left;
+}
+
+.section-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #4fd1c5;
+  margin-bottom: 0.75rem;
+}
+
+.section-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 1.2rem;
+  color: #fff;
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 0.55rem 1.4rem;
+  border: 1px solid rgba(79,209,197,0.5);
+  border-radius: 40px;
+  font-size: 0.82rem;
+  color: #4fd1c5;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-primary:hover {
+  background: rgba(79,209,197,0.15);
+  color: #fff;
+}
+
+/* Timeline items */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  text-align: left;
+  position: relative;
+}
+
+.tl-item {
+  position: relative;
+  padding: 0 0 1.8rem 1.8rem;
+  border-left: 1px solid rgba(255,255,255,0.12);
+}
+.tl-item:last-child {
+  padding-bottom: 0;
+}
+.tl-item::before {
+  content: '';
+  position: absolute;
+  left: -4px;
+  top: 6px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #4fd1c5;
+  box-shadow: 0 0 8px rgba(79,209,197,0.6);
+}
+
+.tl-year {
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin: 0 0 0.2rem;
+}
+
+.tl-title {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 0.15rem;
+}
+
+.tl-sub {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.45);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* --- Blocs Skills + Technical (bas) --- */
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
-  max-width: 880px;
-  width: 95%;
 }
 @media (max-width: 640px) {
   .about-grid { grid-template-columns: 1fr; }
@@ -280,23 +385,36 @@ section {
   animation: abyssFloat 6s ease-in-out infinite;
 }
 
-/* ===== ACCORDION PROJETS ===== */
-.projects-card {
+/* ===== ACCORDION INTÉGRÉ DANS LA GRILLE ===== */
+.accordion-card {
   background: rgba(255,255,255,0.08);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(79, 209, 197, 0.2);
   border-radius: 24px;
-  padding: 2rem 2.5rem;
-  max-width: 560px;
-  width: 90%;
+  padding: 2rem 2rem;
   box-shadow: 0 8px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1);
+  text-align: left;
 }
 
-.projects-card h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
+.accordion-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.4rem;
   letter-spacing: 0.05em;
   color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.accordion-card h2 svg {
+  width: 20px;
+  height: 20px;
+  stroke: #4fd1c5;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
 }
 
 .accordion-item {
@@ -311,8 +429,8 @@ section {
   border: none;
   color: white;
   text-align: left;
-  padding: 1rem 0;
-  font-size: 1rem;
+  padding: 0.85rem 0;
+  font-size: 0.92rem;
   font-family: 'Segoe UI', sans-serif;
   cursor: pointer;
   display: flex;
@@ -336,8 +454,8 @@ section {
 }
 
 .acc-emoji {
-  font-size: 1.2rem;
-  width: 1.8rem;
+  font-size: 1.1rem;
+  width: 1.6rem;
   text-align: center;
 }
 
@@ -379,8 +497,8 @@ section {
 .accordion-body.open { opacity: 1; }
 
 .accordion-body-inner {
-  padding: 0 0 1rem 2.55rem;
-  font-size: 0.88rem;
+  padding: 0 0 1rem 2.35rem;
+  font-size: 0.82rem;
   line-height: 1.7;
   color: rgba(255,255,255,0.65);
 }
@@ -391,7 +509,7 @@ section {
   border: 1px solid rgba(79, 209, 197, 0.25);
   border-radius: 20px;
   padding: 2px 10px;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   color: #4fd1c5;
   margin-top: 0.5rem;
   margin-right: 4px;
@@ -418,7 +536,6 @@ section {
 <nav class="flex justify-center space-x-6 p-4">
   <a href="#home"     class="font-bold">Accueil</a>
   <a href="#about"    class="font-bold">À propos</a>
-  <a href="#projects" class="font-bold">Technical experience</a>
   <a href="#contact"  class="font-bold">Contact</a>
 </nav>
 
@@ -445,7 +562,48 @@ section {
 
   <!-- Section À propos -->
   <section id="about">
-    <div class="about-grid">
+    <div class="about-wrapper">
+
+      <!-- HAUT : Timeline -->
+      <div class="timeline-block">
+        <div class="tl-intro">
+          <p class="section-label">Background</p>
+          <h2 class="section-title">Education &<br>Experience</h2>
+          <p style="color:rgba(255,255,255,0.45); font-size:0.88rem; max-width:300px; line-height:1.8; margin-bottom:1.8rem;">
+            A path built at the intersection of computational biology and marine science — from sequence data to cetacean conservation.
+          </p>
+          <a href="#" class="btn-primary">Full CV (PDF)</a>
+        </div>
+        <div class="timeline">
+          <div class="tl-item">
+            <p class="tl-year">2023 – Present</p>
+            <p class="tl-title">M.Sc. Bioinformatics</p>
+            <p class="tl-sub">Université de Bretagne Occidentale · Brest, France</p>
+          </div>
+          <div class="tl-item">
+            <p class="tl-year">2023</p>
+            <p class="tl-title">Research Internship — Marine Omics</p>
+            <p class="tl-sub">IFREMER · Metabarcoding of marine megafauna</p>
+          </div>
+          <div class="tl-item">
+            <p class="tl-year">2022</p>
+            <p class="tl-title">B.Sc. Biology — Bioinformatics track</p>
+            <p class="tl-sub">Université de Bretagne Occidentale</p>
+          </div>
+          <div class="tl-item">
+            <p class="tl-year">2022</p>
+            <p class="tl-title">Poster Presentation</p>
+            <p class="tl-sub">SMBE Annual Meeting · eDNA pipelines for marine mammals</p>
+          </div>
+          <div class="tl-item">
+            <p class="tl-year">Languages</p>
+            <p class="tl-title">French (native) · English (C1) · Spanish (B1)</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- BAS : Skills + Technical Experience côte à côte -->
+      <div class="about-grid">
 
       <!-- Boîte Skills -->
       <div class="glass-card">
@@ -469,44 +627,122 @@ section {
         </div>
       </div>
 
-      <!-- Boîte Expérience -->
-      <div class="glass-card">
+      <!-- Boîte Technical Experience (accordion) -->
+      <div class="accordion-card">
         <h2>
           <svg viewBox="0 0 24 24">
-            <rect x="2" y="7" width="20" height="14" rx="2"/>
-            <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
-            <line x1="12" y1="12" x2="12" y2="16"/>
-            <line x1="10" y1="14" x2="14" y2="14"/>
+            <path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/>
           </svg>
-          Expérience
+          Technical Experience
         </h2>
-        <div class="exp-list">
 
-          <div class="exp-item">
-            <div class="exp-title">Alternance Bio-informatique</div>
-            <div class="exp-org">Institut Méditerranéen d'Océanographie</div>
-            <ul class="exp-bullets">
-              <li>Création d'un pipeline automatisé de métabarcoding sur Nanopore</li>
-              <li>Comparaison des technologies de séquençage Illumina, Nanopore et PacBio</li>
-            </ul>
+        <!-- Métabarcoding -->
+        <div class="accordion-item">
+          <button class="accordion-btn" aria-expanded="false" onclick="toggleAcc(this)">
+            <span class="acc-label">
+              <span class="acc-emoji">🧬</span>
+              Métabarcoding
+            </span>
+            <span class="acc-icon">
+              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              Analyse de la diversité microbienne et eucaryote en milieu marin via contrôle qualité des reads, débruitage (DADA2), déreplication (vsearch) et assignation taxonomique.
+              <div style="margin-top:0.8rem;">
+                <div style="font-size:0.65rem; color:rgba(255,255,255,0.35); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.35rem;">Marqueurs</div>
+                <span class="acc-tag">16S</span>
+                <span class="acc-tag">18S</span>
+                <span class="acc-tag">ITS</span>
+                <span class="acc-tag">Archées</span>
+              </div>
+              <div style="margin-top:0.8rem;">
+                <div style="font-size:0.65rem; color:rgba(255,255,255,0.35); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.35rem;">Reads</div>
+                <span class="acc-tag">Long reads</span>
+                <span class="acc-tag">Short reads</span>
+              </div>
+              <div style="margin-top:0.8rem;">
+                <div style="font-size:0.65rem; color:rgba(255,255,255,0.35); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.35rem;">Technos</div>
+                <span class="acc-tag">Illumina</span>
+                <span class="acc-tag">Pacbio</span>
+                <span class="acc-tag">Nanopore</span>
+              </div>
+              <div style="margin-top:0.8rem;">
+                <div style="font-size:0.65rem; color:rgba(255,255,255,0.35); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.35rem;">Outils</div>
+                <span class="acc-tag">QIIME2</span>
+                <span class="acc-tag">DADA2</span>
+                <span class="acc-tag">vsearch</span>
+                <span class="acc-tag">Nextflow</span>
+              </div>
+              <div style="margin-top:0.8rem;">
+                <div style="font-size:0.65rem; color:rgba(255,255,255,0.35); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.35rem;">Environnements</div>
+                <span class="acc-tag">Colonne d'eau</span>
+                <span class="acc-tag">Sédiments</span>
+              </div>
+            </div>
           </div>
-
-          <div class="exp-item">
-            <div class="exp-title">VSC Bio-informatique</div>
-            <div class="exp-org">Ifremer</div>
-            <ul class="exp-bullets">
-              <li>Métabarcoding sédiments</li>
-              <li>Traitement et mise en forme de données physiques</li>
-            </ul>
-          </div>
-
         </div>
+
+        <!-- Transcriptomique -->
+        <div class="accordion-item">
+          <button class="accordion-btn" aria-expanded="false" onclick="toggleAcc(this)">
+            <span class="acc-label">Transcriptomique</span>
+            <span class="acc-icon">
+              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              Texte
+              <br>
+              <span class="acc-tag">assemblage</span>
+              <span class="acc-tag">de novo</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Génomique -->
+        <div class="accordion-item">
+          <button class="accordion-btn" aria-expanded="false" onclick="toggleAcc(this)">
+            <span class="acc-label">Génomique</span>
+            <span class="acc-icon">
+              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              Texte
+              <br>
+              <span class="acc-tag">annotation fonctionnelle</span>
+              <span class="acc-tag">Pipeline</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Machine Learning -->
+        <div class="accordion-item">
+          <button class="accordion-btn" aria-expanded="false" onclick="toggleAcc(this)">
+            <span class="acc-label">Machine Learning</span>
+            <span class="acc-icon">
+              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <span class="acc-tag">CNN</span>
+            </div>
+          </div>
+        </div>
+
       </div>
 
-    </div>
+      </div><!-- end about-grid -->
+
+    </div><!-- end about-wrapper -->
   </section>
 
-  <!-- ===== BALEINE DÉCORATIVE (entre about et projects) ===== -->
+  <!-- ===== BALEINE DÉCORATIVE ===== -->
   <div style="
     display: flex;
     justify-content: flex-end;
@@ -518,134 +754,6 @@ section {
       src="image/humpback-whale-isolated-white-background.png"
       alt="Baleine à bosse"
       class="whale-deco"
-      style="
-        width: min(450px, 31vw);
-        filter: brightness(0.6) saturate(0.7);
-        mix-blend-mode: screen;
-      "
-    >
-  </div>
-
-  <!-- Section technical experiences -->
-  <section id="projects">
-    <div class="projects-card">
-      <h2>Technical Experience</h2>
-
-      <!-- Métabarcoding -->
-      <div class="accordion-item">
-        <button class="accordion-btn" aria-expanded="false" onclick="toggleAcc(this)">
-          <span class="acc-label">
-            <span class="acc-emoji">🧬</span>
-            Métabarcoding
-          </span>
-          <span class="acc-icon">
-            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </span>
-        </button>
-        <div class="accordion-body">
-          <div class="accordion-body-inner">
-            Analyse de la diversité microbienne et eucaryote en milieu marin via contrôle qualité des reads, débruitage (DADA2), déreplication (vsearch) et assignation taxonomique.
-            <div style="margin-top:0.8rem;">
-              <div style="font-size:0.69rem; color:rgba(255,255,255,0.35); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.35rem;">Marqueurs</div>
-              <span class="acc-tag">16S</span>
-              <span class="acc-tag">18S</span>
-              <span class="acc-tag">ITS</span>
-              <span class="acc-tag">Archées</span>
-            </div>
-            <div style="margin-top:0.8rem;">
-              <div style="font-size:0.69rem; color:rgba(255,255,255,0.35); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.35rem;">Reads</div>
-              <span class="acc-tag">Long reads</span>
-              <span class="acc-tag">Short reads</span>
-            </div>
-            <div style="margin-top:0.8rem;">
-              <div style="font-size:0.69rem; color:rgba(255,255,255,0.35); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.35rem;">Technos</div>
-              <span class="acc-tag">Illumina</span>
-              <span class="acc-tag">Pacbio</span>
-              <span class="acc-tag">Nanopore</span>
-            </div>
-            <div style="margin-top:0.8rem;">
-              <div style="font-size:0.69rem; color:rgba(255,255,255,0.35); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.35rem;">Outils</div>
-              <span class="acc-tag">QIIME2</span>
-              <span class="acc-tag">DADA2</span>
-              <span class="acc-tag">vsearch</span>
-              <span class="acc-tag">Nextflow</span>
-            </div>
-            <div style="margin-top:0.8rem;">
-              <div style="font-size:0.69rem; color:rgba(255,255,255,0.35); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.35rem;">Environnements</div>
-              <span class="acc-tag">Colonne d'eau</span>
-              <span class="acc-tag">Sédiments</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Transcriptomique -->
-      <div class="accordion-item">
-        <button class="accordion-btn" aria-expanded="false" onclick="toggleAcc(this)">
-          <span class="acc-label">Transcriptomique</span>
-          <span class="acc-icon">
-            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </span>
-        </button>
-        <div class="accordion-body">
-          <div class="accordion-body-inner">
-            Texte
-            <br>
-            <span class="acc-tag">assemblage</span>
-            <span class="acc-tag">de novo</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Génomique -->
-      <div class="accordion-item">
-        <button class="accordion-btn" aria-expanded="false" onclick="toggleAcc(this)">
-          <span class="acc-label">Génomique</span>
-          <span class="acc-icon">
-            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </span>
-        </button>
-        <div class="accordion-body">
-          <div class="accordion-body-inner">
-            Texte
-            <br>
-            <span class="acc-tag">annotation fonctionnelle</span>
-            <span class="acc-tag">Pipeline</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Machine Learning -->
-      <div class="accordion-item">
-        <button class="accordion-btn" aria-expanded="false" onclick="toggleAcc(this)">
-          <span class="acc-label">Machine Learning</span>
-          <span class="acc-icon">
-            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </span>
-        </button>
-        <div class="accordion-body">
-          <div class="accordion-body-inner">
-            <span class="acc-tag">CNN</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ===== IMAGE ABYSSE (entre projects et contact) ===== -->
-  <div style="
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 0rem 0rem 0rem 4rem;
-    z-index: 10;
-    position: relative;
-  ">
-    <img
-      src="image/83fb8569-f4a9-4ee8-8cbb-a36cefc3f841.jpeg"
-      alt="abysse"
-      class="abyss-deco"
       style="
         width: min(450px, 31vw);
         filter: brightness(0.6) saturate(0.7);

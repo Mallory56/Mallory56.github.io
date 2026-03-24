@@ -2,21 +2,51 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title> Mallory 5 </title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mallory Le Corre — Bioinformaticienne</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
+:root {
+  --teal:    #4fd1c5;
+  --teal-dim: rgba(79,209,197,0.18);
+  --teal-faint: rgba(79,209,197,0.07);
+  --white60: rgba(255,255,255,0.6);
+  --white35: rgba(255,255,255,0.35);
+  --white12: rgba(255,255,255,0.12);
+  --white08: rgba(255,255,255,0.08);
+}
+
 *, *::before, *::after { box-sizing: border-box; }
 
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Lora', Georgia, serif;
   color: white;
   overflow-x: hidden;
+  cursor: default;
 }
 
+/* ─── TYPOGRAPHY ─────────────────────────────── */
+.font-mono   { font-family: 'DM Mono', monospace; }
+.font-display{ font-family: 'Syne', sans-serif; }
+.font-serif  { font-family: 'Lora', Georgia, serif; }
+
+.label-mono {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--teal);
+}
+
+/* ─── ZONES ──────────────────────────────────── */
 .sky-zone {
   background: linear-gradient(to bottom, #cce8f4, #87CEEB, #4ab8e8, #1E90FF);
+  position: relative;
+  overflow: hidden;
 }
 
 .ocean-zone {
@@ -25,17 +55,276 @@ body {
   overflow: hidden;
 }
 
+/* ─── NAV ────────────────────────────────────── */
 nav {
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(255,255,255,0.07);
-  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
   z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 2.5rem;
 }
-nav a { transition: 0.3s; }
-nav a:hover { color: #4fd1c5; }
 
+.nav-logo {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  color: var(--teal);
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-links a {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  transition: color 0.25s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; left: 0;
+  width: 0; height: 1px;
+  background: var(--teal);
+  transition: width 0.25s;
+}
+.nav-links a:hover { color: white; }
+.nav-links a:hover::after { width: 100%; }
+
+/* ─── HERO ───────────────────────────────────── */
+#home {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 7rem 1.5rem 5rem;
+  position: relative;
+  z-index: 10;
+}
+
+.hero-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 1.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.hero-eyebrow::before,
+.hero-eyebrow::after {
+  content: '';
+  display: block;
+  width: 32px; height: 1px;
+  background: var(--teal);
+  opacity: 0.5;
+}
+
+.hero-name {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(3rem, 9vw, 6.5rem);
+  font-weight: 800;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.5rem;
+  background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.75) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-title {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  color: rgba(255,255,255,0.55);
+  margin: 0 0 2.2rem;
+  letter-spacing: 0.02em;
+}
+
+.hero-tagline {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.4);
+  max-width: 480px;
+  line-height: 1.8;
+  margin: 0 auto 2.8rem;
+}
+
+/* Hero pills */
+.hero-pills {
+  display: flex;
+  gap: 0.6rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2.8rem;
+}
+.hero-pill {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  padding: 5px 14px;
+  border-radius: 30px;
+  border: 1px solid rgba(79,209,197,0.3);
+  color: rgba(255,255,255,0.6);
+  background: rgba(79,209,197,0.06);
+}
+
+/* Hero social buttons */
+.hero-socials {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-social {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.55rem 1.2rem;
+  border-radius: 40px;
+  border: 1px solid rgba(79,209,197,0.35);
+  color: var(--teal);
+  text-decoration: none;
+  background: rgba(79,209,197,0.06);
+  transition: all 0.25s;
+  cursor: pointer;
+}
+.btn-social:hover {
+  background: rgba(79,209,197,0.15);
+  border-color: var(--teal);
+  color: #fff;
+  transform: translateY(-2px);
+}
+.btn-social svg {
+  width: 14px; height: 14px;
+  fill: currentColor;
+}
+.btn-social.outline-white {
+  border-color: rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.04);
+}
+.btn-social.outline-white:hover {
+  border-color: rgba(255,255,255,0.6);
+  color: white;
+  background: rgba(255,255,255,0.08);
+}
+
+/* ─── SCROLL INDICATOR ───────────────────────── */
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  z-index: 20;
+  opacity: 0.5;
+  animation: fadeInDown 1.2s 1s ease both;
+}
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+  to   { opacity: 0.5; transform: translateX(-50%) translateY(0); }
+}
+
+.scroll-indicator span {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+}
+
+.scroll-mouse {
+  width: 20px; height: 32px;
+  border: 1.5px solid rgba(255,255,255,0.4);
+  border-radius: 10px;
+  position: relative;
+}
+.scroll-mouse::after {
+  content: '';
+  position: absolute;
+  top: 5px; left: 50%;
+  transform: translateX(-50%);
+  width: 3px; height: 6px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 2px;
+  animation: scrollDot 1.6s ease-in-out infinite;
+}
+@keyframes scrollDot {
+  0%   { opacity: 1; transform: translateX(-50%) translateY(0); }
+  80%  { opacity: 0; transform: translateX(-50%) translateY(12px); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(0); }
+}
+
+/* ─── ZONE DIVIDER ───────────────────────────── */
+.zone-divider {
+  position: relative;
+  height: 80px;
+  overflow: hidden;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* ─── SECTION SEPARATOR LINE ─────────────────── */
+.section-sep {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  max-width: 1100px;
+  width: 95%;
+  margin: 0 auto;
+  padding: 0.5rem 0;
+}
+.section-sep .sep-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(79,209,197,0.5);
+  white-space: nowrap;
+}
+.section-sep .sep-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, rgba(79,209,197,0.3), transparent);
+}
+.section-sep .sep-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: rgba(79,209,197,0.4);
+  flex-shrink: 0;
+}
+
+/* ─── GENERIC SECTION ────────────────────────── */
 section {
   min-height: 100vh;
   display: flex;
@@ -48,10 +337,568 @@ section {
   padding: 6rem 1rem 3rem;
 }
 
+/* ─── SECTION LABELS ─────────────────────────── */
+.section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 0.75rem;
+}
+
+.section-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 1.2rem;
+  color: #fff;
+}
+
+/* ─── GLASS CARD ─────────────────────────────── */
+.glass-card {
+  background: var(--white08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(79,209,197,0.18);
+  border-radius: 20px;
+  padding: 2rem 2.5rem;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.07);
+}
+
+.glass-card h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.4rem;
+}
+.glass-card h2 svg {
+  width: 16px; height: 16px;
+  stroke: var(--teal); fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+/* ─── ABOUT ──────────────────────────────────── */
+.about-wrapper {
+  max-width: 1100px;
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.timeline-block {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 3rem;
+  align-items: start;
+}
+@media (max-width: 700px) {
+  .timeline-block { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+.tl-intro { text-align: left; }
+
+.btn-primary {
+  display: inline-block;
+  padding: 0.55rem 1.4rem;
+  border: 1px solid rgba(79,209,197,0.4);
+  border-radius: 40px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--teal);
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-primary:hover {
+  background: rgba(79,209,197,0.12);
+  color: #fff;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  position: relative;
+}
+
+.tl-item {
+  position: relative;
+  padding: 0 0 1.8rem 1.8rem;
+  border-left: 1px solid rgba(255,255,255,0.1);
+}
+.tl-item:last-child { padding-bottom: 0; }
+.tl-item::before {
+  content: '';
+  position: absolute;
+  left: -4px; top: 6px;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--teal);
+  box-shadow: 0 0 8px rgba(79,209,197,0.5);
+}
+
+.tl-year {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  margin: 0 0 0.2rem;
+}
+
+.tl-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 0.15rem;
+}
+
+.tl-sub {
+  font-family: 'Lora', serif;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.4);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ─── ABOUT GRID ─────────────────────────────── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+@media (max-width: 640px) { .about-grid { grid-template-columns: 1fr; } }
+
+/* ─── SKILLS ─────────────────────────────────── */
+.skills-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; text-align: left; }
+
+.skill-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(79,209,197,0.08);
+  border: 1px solid rgba(79,209,197,0.22);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.8);
+  transition: background 0.2s, border-color 0.2s;
+}
+.skill-tag:hover {
+  background: rgba(79,209,197,0.16);
+  border-color: rgba(79,209,197,0.45);
+}
+.skill-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--teal);
+  flex-shrink: 0;
+}
+
+/* ─── ACCORDION ──────────────────────────────── */
+.accordion-card {
+  background: var(--white08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(79,209,197,0.18);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.07);
+  text-align: left;
+}
+
+.accordion-card h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1.4rem;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.accordion-card h2 svg {
+  width: 16px; height: 16px;
+  stroke: var(--teal); fill: none;
+  stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+.accordion-item { border-bottom: 1px solid rgba(79,209,197,0.1); overflow: hidden; }
+.accordion-item:last-child { border-bottom: none; }
+
+.accordion-btn {
+  width: 100%; background: none; border: none; color: white;
+  text-align: left; padding: 0.85rem 0;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.8rem; letter-spacing: 0.06em;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  transition: color 0.25s;
+}
+.accordion-btn:hover { color: var(--teal); }
+
+.acc-label { display: flex; align-items: center; gap: 0.75rem; font-weight: 500; }
+.acc-emoji { font-size: 1rem; width: 1.4rem; text-align: center; }
+
+.acc-icon {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.2);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.25s;
+  background: rgba(255,255,255,0.04);
+}
+.acc-icon svg {
+  width: 10px; height: 10px;
+  transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+  stroke: currentColor; fill: none; stroke-width: 2.5;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+.accordion-btn[aria-expanded="true"] .acc-icon svg { transform: rotate(180deg); }
+.accordion-btn[aria-expanded="true"] { color: var(--teal); }
+.accordion-btn[aria-expanded="true"] .acc-icon {
+  background: rgba(79,209,197,0.12);
+  border-color: rgba(79,209,197,0.4);
+}
+
+.accordion-body { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.35s ease; opacity: 0; }
+.accordion-body.open { opacity: 1; }
+
+.accordion-body-inner {
+  padding: 0 0 1rem 2.15rem;
+  font-family: 'Lora', serif;
+  font-size: 0.82rem;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.6);
+}
+
+.acc-tag {
+  display: inline-block;
+  background: rgba(79,209,197,0.1);
+  border: 1px solid rgba(79,209,197,0.22);
+  border-radius: 20px;
+  padding: 2px 9px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  color: var(--teal);
+  margin-top: 0.4rem; margin-right: 3px;
+}
+
+/* ─── WHALE DECO ─────────────────────────────── */
+@keyframes whaleFloat {
+  0%, 100% { transform: translateY(0px) rotate(-1deg); }
+  50%       { transform: translateY(-12px) rotate(1deg); }
+}
+.whale-deco { animation: whaleFloat 6s ease-in-out infinite; }
+
+/* ─── PROJECTS ───────────────────────────────── */
+.projects-wrapper {
+  max-width: 1100px;
+  width: 98%;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.projects-list { display: flex; flex-direction: column; gap: 1.2rem; }
+
+.project-item {
+  display: grid;
+  grid-template-columns: 90px 1fr auto;
+  gap: 1.5rem;
+  align-items: start;
+  background: var(--white08);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(79,209,197,0.14);
+  border-radius: 18px;
+  padding: 1.5rem 1.8rem;
+  transition: transform 0.25s, border-color 0.25s, background 0.25s;
+  text-align: left;
+}
+.project-item:hover {
+  transform: translateY(-3px);
+  border-color: rgba(79,209,197,0.35);
+  background: rgba(255,255,255,0.1);
+}
+
+.project-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.28);
+  padding-top: 3px;
+}
+
+.project-body h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0 0 0.4rem;
+  color: #fff;
+}
+.project-body p {
+  font-family: 'Lora', serif;
+  font-size: 0.8rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.5);
+  margin: 0 0 0.8rem;
+}
+
+.project-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.chip {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.66rem;
+  padding: 2px 9px;
+  border-radius: 20px;
+  background: rgba(79,209,197,0.08);
+  border: 1px solid rgba(79,209,197,0.2);
+  color: var(--teal);
+}
+
+.project-link {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--teal);
+  text-decoration: none;
+  align-self: center;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+.project-link:hover { opacity: 0.65; }
+
+@media (max-width: 700px) {
+  .project-item { grid-template-columns: 1fr; }
+  .project-link { margin-top: 0.6rem; }
+}
+
+/* ─── PROJECT META COLUMN ────────────────────── */
+.proj-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding-top: 2px;
+}
+.proj-year {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.25);
+  text-transform: uppercase;
+}
+.proj-ctx {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  color: var(--teal);
+  opacity: 0.75;
+}
+.proj-data {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  color: rgba(255,255,255,0.22);
+  line-height: 1.5;
+  margin-top: 2px;
+}
+
+/* ─── PROJECT FILTERS ────────────────────────── */
+.proj-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.2rem 0 2.5rem;
+}
+.proj-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 5px 13px;
+  border-radius: 30px;
+  border: 1px solid rgba(79,209,197,0.2);
+  color: rgba(255,255,255,0.45);
+  background: rgba(79,209,197,0.04);
+  cursor: pointer;
+  transition: all 0.2s;
+  outline: none;
+}
+.proj-filter:hover {
+  border-color: rgba(79,209,197,0.45);
+  color: rgba(255,255,255,0.8);
+}
+.proj-filter.active {
+  background: rgba(79,209,197,0.13);
+  border-color: var(--teal);
+  color: #fff;
+}
+.fdot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ─── PROJECT GROUPS ─────────────────────────── */
+.proj-group { margin-bottom: 2.5rem; }
+.proj-group.hidden { display: none; }
+
+.proj-group-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+.proj-group-icon {
+  width: 28px; height: 28px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+.proj-group-name {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  white-space: nowrap;
+}
+.proj-group-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(255,255,255,0.07);
+}
+
+/* ─── BAUDROIE ───────────────────────────────── */
+@keyframes baudroiePulse { 0%,100%{opacity:1;} 50%{opacity:0.2;} }
+.baudroie-lure { animation: baudroiePulse 1.6s ease-in-out infinite; }
+
+@keyframes baudroieFloat {
+  0%, 100% { transform: rotate(-2deg) translateY(0px); }
+  50%       { transform: rotate(2deg) translateY(-8px); }
+}
+.baudroie-float { animation: baudroieFloat 4s ease-in-out infinite; transform-origin: center center; }
+
+/* ─── CONTACT CARD ───────────────────────────── */
+.contact-card {
+  background: var(--white08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(79,209,197,0.18);
+  border-radius: 20px;
+  padding: 2.5rem 2.8rem;
+  flex: 1; min-width: 260px; max-width: 420px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.07);
+}
+
+.contact-card h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 0 0 1.6rem;
+  color: #fff;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.9rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.55);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.contact-item:hover { color: var(--teal); }
+.contact-item svg {
+  width: 15px; height: 15px;
+  stroke: var(--teal); fill: none;
+  stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+.contact-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.08);
+  margin: 1.2rem 0;
+}
+
+.contact-socials { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+
+/* ─── FOOTER ─────────────────────────────────── */
+footer {
+  position: relative;
+  z-index: 10;
+  background: rgba(0,0,0,0.35);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 1.8rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-left {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+}
+
+.footer-center {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.footer-dot {
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--teal);
+  opacity: 0.5;
+}
+
+.footer-right {
+  display: flex;
+  gap: 1.2rem;
+}
+.footer-right a {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-right a:hover { color: var(--teal); }
+
+/* ─── PARTICLES / ENV ────────────────────────── */
 .whale-video {
   position: absolute;
-  bottom: 50px;
-  left: -400px;
+  bottom: 50px; left: -400px;
   width: 400px;
   mix-blend-mode: screen;
   animation: swim 20s linear infinite;
@@ -64,7 +911,7 @@ section {
 
 .bubble {
   position: absolute;
-  background: rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.3);
   border-radius: 50%;
   pointer-events: none;
   bottom: 0;
@@ -72,16 +919,10 @@ section {
 
 .dna {
   position: fixed;
-  right: 20px;
-  top: 0;
-  width: 10px;
-  height: 100vh;
-  background: repeating-linear-gradient(
-    to bottom,
-    #4fd1c5, #4fd1c5 5px,
-    transparent 5px, transparent 10px
-  );
-  opacity: 0.5;
+  right: 20px; top: 0;
+  width: 10px; height: 100vh;
+  background: repeating-linear-gradient(to bottom, var(--teal), var(--teal) 5px, transparent 5px, transparent 10px);
+  opacity: 0.35;
   animation: scrollDNA 5s linear infinite;
   z-index: 50;
 }
@@ -93,7 +934,7 @@ section {
 .cloud {
   position: absolute;
   border-radius: 50px;
-  background: rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.22);
   filter: blur(8px);
   pointer-events: none;
   animation: drift linear infinite;
@@ -116,12 +957,11 @@ section {
 }
 .fish.left  { animation-direction: normal; }
 .fish.right { animation-direction: reverse; transform: scaleX(-1); }
-
 @keyframes swimFish {
-  0%   { left: -80px;  opacity: 0; }
+  0%   { left: -80px; opacity: 0; }
   5%   { opacity: 1; }
   95%  { opacity: 1; }
-  100% { left: 110%;   opacity: 0; }
+  100% { left: 110%; opacity: 0; }
 }
 
 .biolum {
@@ -131,522 +971,46 @@ section {
   animation: pulse ease-in-out infinite;
 }
 @keyframes pulse {
-  0%   { opacity: 0;    transform: scale(0.6); }
-  50%  { opacity: 1;    transform: scale(1.2); }
-  100% { opacity: 0;    transform: scale(0.6); }
-}
-
-/* ===== CARTE GÉNÉRIQUE ===== */
-.glass-card {
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(79, 209, 197, 0.2);
-  border-radius: 24px;
-  padding: 2rem 2.5rem;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1);
-}
-
-.glass-card h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1.4rem;
-  letter-spacing: 0.05em;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-
-.glass-card h2 svg {
-  width: 20px;
-  height: 20px;
-  stroke: #4fd1c5;
-  fill: none;
-  stroke-width: 1.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  flex-shrink: 0;
-}
-
-/* ===== SECTION ABOUT — layout vertical ===== */
-.about-wrapper {
-  max-width: 1100px;
-  width: 95%;
-  display: flex;
-  flex-direction: column;
-  gap: 3.5rem;
-}
-
-/* --- Timeline block (haut) --- */
-.timeline-block {
-  display: grid;
-  grid-template-columns: 1fr 1.6fr;
-  gap: 3rem;
-  align-items: start;
-}
-@media (max-width: 700px) {
-  .timeline-block { grid-template-columns: 1fr; gap: 2rem; }
-}
-
-.tl-intro {
-  text-align: left;
-}
-
-.section-label {
-  font-size: 0.7rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #4fd1c5;
-  margin-bottom: 0.75rem;
-}
-
-.section-title {
-  font-size: 2.2rem;
-  font-weight: 700;
-  line-height: 1.2;
-  margin: 0 0 1.2rem;
-  color: #fff;
-}
-
-.btn-primary {
-  display: inline-block;
-  padding: 0.55rem 1.4rem;
-  border: 1px solid rgba(79,209,197,0.5);
-  border-radius: 40px;
-  font-size: 0.82rem;
-  color: #4fd1c5;
-  letter-spacing: 0.06em;
-  text-decoration: none;
-  transition: background 0.2s, color 0.2s;
-}
-.btn-primary:hover {
-  background: rgba(79,209,197,0.15);
-  color: #fff;
-}
-
-/* Timeline items */
-.timeline {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  text-align: left;
-  position: relative;
-}
-
-.tl-item {
-  position: relative;
-  padding: 0 0 1.8rem 1.8rem;
-  border-left: 1px solid rgba(255,255,255,0.12);
-}
-.tl-item:last-child {
-  padding-bottom: 0;
-}
-.tl-item::before {
-  content: '';
-  position: absolute;
-  left: -4px;
-  top: 6px;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #4fd1c5;
-  box-shadow: 0 0 8px rgba(79,209,197,0.6);
-}
-
-.tl-year {
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.35);
-  margin: 0 0 0.2rem;
-}
-
-.tl-title {
-  font-size: 0.92rem;
-  font-weight: 600;
-  color: #fff;
-  margin: 0 0 0.15rem;
-}
-
-.tl-sub {
-  font-size: 0.78rem;
-  color: rgba(255,255,255,0.45);
-  margin: 0;
-  line-height: 1.5;
-}
-
-/* --- Blocs Skills + Technical (bas) --- */
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-}
-@media (max-width: 640px) {
-  .about-grid { grid-template-columns: 1fr; }
-}
-
-/* ===== SKILLS ===== */
-.skills-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  text-align: left;
-}
-
-.skill-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  background: rgba(79, 209, 197, 0.1);
-  border: 1px solid rgba(79, 209, 197, 0.25);
-  border-radius: 20px;
-  padding: 4px 12px;
-  font-size: 0.8rem;
-  color: rgba(255,255,255,0.85);
-  transition: background 0.2s, border-color 0.2s;
-}
-.skill-tag:hover {
-  background: rgba(79, 209, 197, 0.2);
-  border-color: rgba(79, 209, 197, 0.5);
-}
-.skill-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #4fd1c5;
-  flex-shrink: 0;
-}
-
-/* ===== EXPÉRIENCE ===== */
-.exp-list {
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-}
-
-.exp-item {
-  position: relative;
-  padding-left: 1.1rem;
-  border-left: 2px solid rgba(79, 209, 197, 0.3);
-}
-
-.exp-title {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #fff;
-  margin-bottom: 0.15rem;
-}
-
-.exp-org {
-  font-size: 0.75rem;
-  color: #4fd1c5;
-  margin-bottom: 0.4rem;
-  letter-spacing: 0.03em;
-}
-
-.exp-bullets {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-}
-
-.exp-bullets li {
-  font-size: 0.78rem;
-  color: rgba(255,255,255,0.6);
-  padding-left: 0.9rem;
-  position: relative;
-  line-height: 1.45;
-}
-.exp-bullets li::before {
-  content: '›';
-  position: absolute;
-  left: 0;
-  color: #4fd1c5;
-  font-weight: bold;
-}
-
-/* ===== BALEINE DÉCORATIVE ===== */
-@keyframes whaleFloat {
-  0%, 100% { transform: translateY(0px) rotate(-1deg); }
-  50%       { transform: translateY(-12px) rotate(1deg); }
-}
-.whale-deco {
-  animation: whaleFloat 6s ease-in-out infinite;
-}
-
-@keyframes abyssFloat {
-  0%, 100% { transform: translateY(0px) rotate(-1deg); }
-  50%       { transform: translateY(-12px) rotate(1deg); }
-}
-.abyss-deco {
-  animation: abyssFloat 6s ease-in-out infinite;
-}
-
-/* ===== ACCORDION INTÉGRÉ DANS LA GRILLE ===== */
-.accordion-card {
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(79, 209, 197, 0.2);
-  border-radius: 24px;
-  padding: 2rem 2rem;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1);
-  text-align: left;
-}
-
-.accordion-card h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1.4rem;
-  letter-spacing: 0.05em;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-
-.accordion-card h2 svg {
-  width: 20px;
-  height: 20px;
-  stroke: #4fd1c5;
-  fill: none;
-  stroke-width: 1.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  flex-shrink: 0;
-}
-
-.accordion-item {
-  border-bottom: 1px solid rgba(79, 209, 197, 0.15);
-  overflow: hidden;
-}
-.accordion-item:last-child { border-bottom: none; }
-
-.accordion-btn {
-  width: 100%;
-  background: none;
-  border: none;
-  color: white;
-  text-align: left;
-  padding: 0.85rem 0;
-  font-size: 0.92rem;
-  font-family: 'Segoe UI', sans-serif;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  transition: color 0.25s;
-}
-.accordion-btn:hover { color: #4fd1c5; }
-.accordion-btn:hover .acc-icon {
-  background: rgba(79, 209, 197, 0.2);
-  border-color: rgba(79, 209, 197, 0.6);
-}
-
-.acc-label {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.03em;
-}
-
-.acc-emoji {
-  font-size: 1.1rem;
-  width: 1.6rem;
-  text-align: center;
-}
-
-.acc-icon {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.25);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  transition: all 0.25s;
-  background: rgba(255,255,255,0.05);
-}
-.acc-icon svg {
-  width: 12px;
-  height: 12px;
-  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  stroke: currentColor;
-  fill: none;
-  stroke-width: 2.5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-.accordion-btn[aria-expanded="true"] .acc-icon svg { transform: rotate(180deg); }
-.accordion-btn[aria-expanded="true"] { color: #4fd1c5; }
-.accordion-btn[aria-expanded="true"] .acc-icon {
-  background: rgba(79, 209, 197, 0.15);
-  border-color: rgba(79, 209, 197, 0.5);
-}
-
-.accordion-body {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease;
-  opacity: 0;
-}
-.accordion-body.open { opacity: 1; }
-
-.accordion-body-inner {
-  padding: 0 0 1rem 2.35rem;
-  font-size: 0.82rem;
-  line-height: 1.7;
-  color: rgba(255,255,255,0.65);
-}
-
-.acc-tag {
-  display: inline-block;
-  background: rgba(79, 209, 197, 0.12);
-  border: 1px solid rgba(79, 209, 197, 0.25);
-  border-radius: 20px;
-  padding: 2px 10px;
-  font-size: 0.72rem;
-  color: #4fd1c5;
-  margin-top: 0.5rem;
-  margin-right: 4px;
-}
-
-/* ===== PROJECTS ===== */
-
-.projects-wrapper {
-  max-width: 1100px;
-  width: 98%;
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-}
-
-/* Liste */
-.projects-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-/* Carte projet */
-.project-item {
-  display: grid;
-  grid-template-columns: 60px 1fr auto;
-  gap: 1.5rem;
-  align-items: start;
-
-  background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(18px);
-  border: 1px solid rgba(79, 209, 197, 0.18);
-  border-radius: 20px;
-  padding: 1.6rem 1.8rem;
-
-  transition: transform 0.25s, border-color 0.25s, background 0.25s;
-}
-
-.project-item:hover {
-  transform: translateY(-4px);
-  border-color: rgba(79, 209, 197, 0.4);
-  background: rgba(255,255,255,0.09);
-}
-
-/* Numéro */
-.project-num {
-  font-size: 0.8rem;
-  letter-spacing: 0.15em;
-  color: rgba(255,255,255,0.35);
-}
-
-/* Contenu */
-.project-body h3 {
-  margin: 0 0 0.4rem;
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-.project-body p {
-  margin: 0 0 0.8rem;
-  font-size: 0.82rem;
-  line-height: 1.6;
-  color: rgba(255,255,255,0.6);
-}
-
-/* Chips */
-.project-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-}
-
-.chip {
-  font-size: 0.7rem;
-  padding: 3px 10px;
-  border-radius: 20px;
-  background: rgba(79, 209, 197, 0.12);
-  border: 1px solid rgba(79, 209, 197, 0.25);
-  color: #4fd1c5;
-}
-
-/* Lien */
-.project-link {
-  font-size: 0.8rem;
-  color: #4fd1c5;
-  text-decoration: none;
-  align-self: center;
-  transition: opacity 0.2s;
-}
-.project-link:hover {
-  opacity: 0.7;
-}
-
-/* Responsive */
-@media (max-width: 700px) {
-  .project-item {
-    grid-template-columns: 1fr;
-  }
-
-  .project-link {
-    margin-top: 0.8rem;
-  }
-}
-  
-/* ===== BAUDROIE ===== */
-@keyframes baudroiePulse { 0%,100%{opacity:1;} 50%{opacity:0.25;} }
-.baudroie-lure { animation: baudroiePulse 1.6s ease-in-out infinite; }
-
-@keyframes baudroieFloat {
-  0%, 100% { transform: rotate(-2deg) translateY(0px); }
-  50%       { transform: rotate(2deg) translateY(-8px); }
-}
-.baudroie-float {
-  animation: baudroieFloat 4s ease-in-out infinite;
-  transform-origin: center center;
+  0%   { opacity: 0; transform: scale(0.6); }
+  50%  { opacity: 1; transform: scale(1.2); }
+  100% { opacity: 0; transform: scale(0.6); }
 }
 </style>
 </head>
 
 <body>
 
-<!-- Navbar -->
-<nav class="flex justify-center space-x-6 p-4">
-  <a href="#home"     class="font-bold">Accueil</a>
-  <a href="#about"    class="font-bold">À propos</a>
-  <a href="#skills"   class="font-bold">Skills</a>
-  <a href="#contact"  class="font-bold">Contact</a>
+<!-- ═══ NAV ═══ -->
+<nav>
+  <span class="nav-logo">M. Le Corre</span>
+  <div class="nav-links">
+    <a href="#home">Accueil</a>
+    <a href="#about">Parcours</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projets</a>
+    <a href="#contact">Contact</a>
+  </div>
 </nav>
 
-
-<!-- ===== ZONE CIEL ===== -->
+<!-- ═══ ZONE CIEL ═══ -->
 <div class="sky-zone" id="sky-wrapper" style="position:relative; overflow:hidden;">
-  <section id="home" style="padding-top:4rem;">
-    <h1 class="text-6xl font-bold mb-4">Mallory Le Corre</h1>
-    <p class="text-xl opacity-80">Bio-informaticienne 🌊</p>
+  <section id="home">
+
+    <div class="hero-eyebrow">Bio-informatique marine</div>
+
+    <h1 class="hero-name">Mallory<br>Le Corre</h1>
+    <p class="hero-title">Bio-informaticienne &amp; chercheuse en omique marine</p>
+
+    <p class="hero-tagline">
+      Séquences · Écosystèmes · Données —<br>
+      du métagénome de surface aux abysses.
+    </p>
+
   </section>
-  <!-- Vague visible depuis l'accueil -->
+</div>
+
+
+  <!-- Vague -->
   <div style="position:absolute; bottom:0; left:0; width:100%; height:120px; overflow:hidden; z-index:5; pointer-events:none;">
     <svg viewBox="0 0 2880 120" preserveAspectRatio="none"
          style="position:absolute; bottom:0; left:0; width:200%; height:120px; animation: waveSlide 9s linear infinite;">
@@ -656,63 +1020,77 @@ section {
   </div>
 </div>
 
-
-<!-- ===== ZONE OCÉAN ===== -->
+<!-- ═══ ZONE OCÉAN ═══ -->
 <div class="ocean-zone">
 
-  <!-- Section À propos -->
+  <!-- ── Séparateur About ── -->
+  <div style="padding-top: 3rem; padding-bottom: 0;">
+    <div class="section-sep">
+      <span class="sep-dot"></span>
+      <span class="sep-label">01 — Parcours</span>
+      <div class="sep-line"></div>
+    </div>
+  </div>
+
+  <!-- ─── ABOUT ─── -->
   <section id="about">
     <div class="about-wrapper">
 
-      <!-- HAUT : Timeline -->
       <div class="timeline-block">
         <div class="tl-intro">
           <p class="section-label">Background</p>
-          <h2 class="section-title">Education &<br>Experience</h2>
-          <p style="color:rgba(255,255,255,0.45); font-size:0.88rem; max-width:300px; line-height:1.8; margin-bottom:1.8rem;">
-            A path built at the intersection of computational biology and marine science — from sequence data to cetacean conservation.
+          <h2 class="section-title">Éducation &amp;<br>Expériences</h2>
+          <p style="font-family:'Lora',serif; color:rgba(255,255,255,0.4); font-size:0.85rem; font-style:italic; max-width:300px; line-height:1.85; margin-bottom:1.8rem;">
+            À l'intersection de la biologie computationnelle et des sciences marines — des données de séquençage à la conservation.
           </p>
-          <a href="#" class="btn-primary">Full CV (PDF)</a>
+          <a href="#" class="btn-primary">Télécharger le CV</a>
         </div>
+
         <div class="timeline">
           <div class="tl-item">
             <p class="tl-year">2021</p>
-            <p class="tl-title"> Petit débrouilllards</p>
-            <p class="tl-sub"> Diplome médiation scientifique + atelier fête de la science etc</p>
+            <p class="tl-title">Les Petits Débrouillards</p>
+            <p class="tl-sub">Diplôme médiation scientifique · Fête de la science</p>
           </div>
           <div class="tl-item">
             <p class="tl-year">2022 – 2024</p>
-            <p class="tl-title">M.Sc. Bioinformatics</p>
+            <p class="tl-title">M.Sc. Bioinformatique</p>
             <p class="tl-sub">Université de Bordeaux · Bordeaux, France</p>
           </div>
           <div class="tl-item">
             <p class="tl-year">2024</p>
-            <p class="tl-title">Research Internship — Marine Omics</p>
-            <p class="tl-sub">MIO · Metabarcoding </p>
+            <p class="tl-title">Stage de recherche — Marine Omics</p>
+            <p class="tl-sub">MIO · Métabarcoding</p>
           </div>
           <div class="tl-item">
-            <p class="tl-year">2024 - Present</p>
-            <p class="tl-title">VSC bioinformatics</p>
-            <p class="tl-sub">IFREMER - UMR Entropie · Data processing, omics analyse </p>
+            <p class="tl-year">2024 – Présent</p>
+            <p class="tl-title">VSC Bioinformatique</p>
+            <p class="tl-sub">IFREMER – UMR Entropie · Traitement de données, analyses omiques</p>
           </div>
+        </div>
       </div>
 
-    </div><!-- end about-wrapper -->
+    </div>
   </section>
 
-  <!-- ===== SECTION SKILLS ===== -->
+  <!-- ── Séparateur Skills ── -->
+  <div class="section-sep" style="margin-top:-2rem;">
+    <span class="sep-dot"></span>
+    <span class="sep-label">02 — Compétences</span>
+    <div class="sep-line"></div>
+  </div>
+
+  <!-- ─── SKILLS ─── -->
   <section id="skills">
     <div class="about-grid" style="max-width:1100px; width:95%;">
 
-      <!-- Boîte Skills -->
       <div class="glass-card">
         <h2>
           <svg viewBox="0 0 24 24">
             <circle cx="12" cy="8" r="3"/>
             <path d="M6 20v-1a6 6 0 0 1 12 0v1"/>
-            <path d="M17 11l2 2 4-4" stroke-width="2"/>
           </svg>
-          Skills
+          Outils &amp; Langages
         </h2>
         <div class="skills-grid">
           <span class="skill-tag"><span class="skill-dot"></span>Python</span>
@@ -726,306 +1104,287 @@ section {
         </div>
       </div>
 
-      <!-- Boîte Technical Experience (accordion) -->
       <div class="accordion-card">
         <h2>
           <svg viewBox="0 0 24 24">
             <path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/>
           </svg>
-          Technical Experience
+          Expérience Technique
         </h2>
 
-        <!-- Métabarcoding -->
         <div class="accordion-item">
           <button class="accordion-btn" aria-expanded="false" onclick="toggleAcc(this)">
-            <span class="acc-label">
-              <span class="acc-emoji">🧬</span>
-              Métabarcoding
-            </span>
-            <span class="acc-icon">
-              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-            </span>
+            <span class="acc-label"><span class="acc-emoji">🧬</span>Métabarcoding</span>
+            <span class="acc-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
           </button>
           <div class="accordion-body">
             <div class="accordion-body-inner">
-              Analyse de la diversité microbienne et eucaryote en milieu marin via contrôle qualité des reads, débruitage (DADA2), déreplication (vsearch) et assignation taxonomique.
+              Analyse de la diversité microbienne et eucaryote en milieu marin via contrôle qualité, débruitage (DADA2), déreplication (vsearch) et assignation taxonomique.
               <div style="margin-top:0.8rem;">
-                <div style="font-size:0.65rem; color:rgba(255,255,255,0.35); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.35rem;">Marqueurs</div>
-                <span class="acc-tag">16S</span>
-                <span class="acc-tag">18S</span>
-                <span class="acc-tag">ITS</span>
-                <span class="acc-tag">Archées</span>
+                <div style="font-family:'DM Mono',monospace; font-size:0.6rem; color:rgba(255,255,255,0.3); letter-spacing:0.14em; text-transform:uppercase; margin-bottom:0.35rem;">Marqueurs</div>
+                <span class="acc-tag">16S</span><span class="acc-tag">18S</span><span class="acc-tag">ITS</span><span class="acc-tag">Archées</span>
               </div>
               <div style="margin-top:0.8rem;">
-                <div style="font-size:0.65rem; color:rgba(255,255,255,0.35); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.35rem;">Reads</div>
-                <span class="acc-tag">Long reads</span>
-                <span class="acc-tag">Short reads</span>
+                <div style="font-family:'DM Mono',monospace; font-size:0.6rem; color:rgba(255,255,255,0.3); letter-spacing:0.14em; text-transform:uppercase; margin-bottom:0.35rem;">Technos</div>
+                <span class="acc-tag">Illumina</span><span class="acc-tag">PacBio</span><span class="acc-tag">Nanopore</span>
               </div>
               <div style="margin-top:0.8rem;">
-                <div style="font-size:0.65rem; color:rgba(255,255,255,0.35); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.35rem;">Technos</div>
-                <span class="acc-tag">Illumina</span>
-                <span class="acc-tag">Pacbio</span>
-                <span class="acc-tag">Nanopore</span>
-              </div>
-              <div style="margin-top:0.8rem;">
-                <div style="font-size:0.65rem; color:rgba(255,255,255,0.35); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.35rem;">Outils</div>
-                <span class="acc-tag">QIIME2</span>
-                <span class="acc-tag">DADA2</span>
-                <span class="acc-tag">vsearch</span>
-                <span class="acc-tag">Nextflow</span>
-              </div>
-              <div style="margin-top:0.8rem;">
-                <div style="font-size:0.65rem; color:rgba(255,255,255,0.35); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.35rem;">Environnements</div>
-                <span class="acc-tag">Colonne d'eau</span>
-                <span class="acc-tag">Sédiments</span>
+                <div style="font-family:'DM Mono',monospace; font-size:0.6rem; color:rgba(255,255,255,0.3); letter-spacing:0.14em; text-transform:uppercase; margin-bottom:0.35rem;">Outils</div>
+                <span class="acc-tag">QIIME2</span><span class="acc-tag">DADA2</span><span class="acc-tag">vsearch</span><span class="acc-tag">Nextflow</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Transcriptomique -->
         <div class="accordion-item">
           <button class="accordion-btn" aria-expanded="false" onclick="toggleAcc(this)">
-            <span class="acc-label">Transcriptomique</span>
-            <span class="acc-icon">
-              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-            </span>
+            <span class="acc-label"><span class="acc-emoji">📊</span>Transcriptomique</span>
+            <span class="acc-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
           </button>
           <div class="accordion-body">
             <div class="accordion-body-inner">
-              Texte
-              <br>
-              <span class="acc-tag">assemblage</span>
-              <span class="acc-tag">de novo</span>
+              Assemblage de novo, quantification et analyse différentielle.
+              <br><span class="acc-tag">assemblage</span><span class="acc-tag">de novo</span><span class="acc-tag">RNA-seq</span>
             </div>
           </div>
         </div>
 
-        <!-- Génomique -->
         <div class="accordion-item">
           <button class="accordion-btn" aria-expanded="false" onclick="toggleAcc(this)">
-            <span class="acc-label">Génomique</span>
-            <span class="acc-icon">
-              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-            </span>
+            <span class="acc-label"><span class="acc-emoji">🔬</span>Génomique</span>
+            <span class="acc-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
           </button>
           <div class="accordion-body">
             <div class="accordion-body-inner">
-              Texte
-              <br>
-              <span class="acc-tag">annotation fonctionnelle</span>
-              <span class="acc-tag">Pipeline</span>
+              Assembly, annotation fonctionnelle et pipelines automatisés.
+              <br><span class="acc-tag">annotation</span><span class="acc-tag">pipeline</span><span class="acc-tag">GATK</span>
             </div>
           </div>
         </div>
 
-        <!-- Machine Learning -->
         <div class="accordion-item">
           <button class="accordion-btn" aria-expanded="false" onclick="toggleAcc(this)">
-            <span class="acc-label">Machine Learning</span>
-            <span class="acc-icon">
-              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-            </span>
+            <span class="acc-label"><span class="acc-emoji">🤖</span>Machine Learning</span>
+            <span class="acc-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
           </button>
           <div class="accordion-body">
             <div class="accordion-body-inner">
-              <span class="acc-tag">CNN</span>
+              Modèles de classification appliqués aux données biologiques.
+              <br><span class="acc-tag">CNN</span><span class="acc-tag">classification</span>
             </div>
           </div>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- Baleine déco -->
+  <div style="display:flex; justify-content:flex-end; align-items:center; padding-right:2rem; z-index:10; position:relative;">
+    <img src="image/humpback-whale-isolated-white-background.png" alt="Baleine à bosse"
+         class="whale-deco"
+         style="width:min(450px,31vw); filter:brightness(0.55) saturate(0.6); mix-blend-mode:screen;">
+  </div>
+
+  <!-- ── Séparateur Projects ── -->
+  <div class="section-sep">
+    <span class="sep-dot"></span>
+    <span class="sep-label">03 — Projets</span>
+    <div class="sep-line"></div>
+  </div>
+
+  <!-- ─── PROJECTS ─── -->
+  <section id="projects">
+    <div class="projects-wrapper">
+
+      <div style="text-align:left; max-width:1100px; width:100%;">
+        <p class="section-label">Selected Work</p>
+        <h2 class="section-title">Projets &amp; Analyses</h2>
+
+        <!-- FILTRES -->
+        <div class="proj-filters">
+          <button class="proj-filter active" data-filter="all" onclick="setFilter('all',this)">
+            <span class="fdot" style="background:rgba(255,255,255,0.35)"></span>Tous
+          </button>
+          <button class="proj-filter" data-filter="metabarcoding" onclick="setFilter('metabarcoding',this)">
+            <span class="fdot" style="background:#4fd1c5"></span>Métabarcoding
+          </button>
+          <button class="proj-filter" data-filter="genomics" onclick="setFilter('genomics',this)">
+            <span class="fdot" style="background:#7b8ef7"></span>Génomique &amp; Transcriptomique
+          </button>
+          <button class="proj-filter" data-filter="dataviz" onclick="setFilter('dataviz',this)">
+            <span class="fdot" style="background:#f6a94e"></span>Data &amp; Viz
+          </button>
+          <button class="proj-filter" data-filter="ml" onclick="setFilter('ml',this)">
+            <span class="fdot" style="background:#e07cb5"></span>Machine Learning
+          </button>
+        </div>
+      </div>
+
+      <!-- GROUPE Métabarcoding -->
+      <div class="proj-group" data-group="metabarcoding" style="max-width:1100px;width:100%;">
+        <div class="proj-group-header">
+          <div class="proj-group-icon" style="background:rgba(79,209,197,0.1);color:#4fd1c5;">🧬</div>
+          <span class="proj-group-name">Métabarcoding</span>
+          <div class="proj-group-line"></div>
+        </div>
+
+        <div class="project-item">
+          <div class="proj-meta">
+            <span class="proj-year">2024</span>
+            <span class="proj-ctx">Stage · MIO</span>
+            <span class="proj-data">16S · Long &amp; short reads</span>
+          </div>
+          <div class="project-body">
+            <h3>Metabarcoding Long-Reads Pipeline</h3>
+            <p>Pipeline automatisé avec évaluation comparative des technologies de séquençage sur Nanopore, Illumina et PacBio.</p>
+            <div class="project-chips">
+              <span class="chip">16S</span><span class="chip">Nanopore</span><span class="chip">Illumina</span><span class="chip">PacBio</span><span class="chip">Bash</span><span class="chip">QIIME2</span>
+            </div>
+          </div>
+          <a href="#" class="project-link">GitHub →</a>
+        </div>
+
+        <div class="project-item">
+          <div class="proj-meta">
+            <span class="proj-year">2025</span>
+            <span class="proj-ctx">VSC · IFREMER</span>
+            <span class="proj-data">16S rRNA · Illumina</span>
+          </div>
+          <div class="project-body">
+            <h3>Métabarcoding — Bassins à crevettes</h3>
+            <p>Monitoring des communautés microbiennes sur quatre compartiments de bassins via 16S Illumina.</p>
+            <div class="project-chips">
+              <span class="chip">Python</span><span class="chip">Bash</span><span class="chip">16S rRNA</span><span class="chip">DADA2</span>
+            </div>
+          </div>
+          <a href="#" class="project-link">GitHub →</a>
+        </div>
+
+        <div class="project-item">
+          <div class="proj-meta">
+            <span class="proj-year">2026</span>
+            <span class="proj-ctx">VSC · IFREMER</span>
+            <span class="proj-data">Multi-marqueurs · Illumina</span>
+          </div>
+          <div class="project-body">
+            <h3>Métabarcoding — Adelaide Dataset</h3>
+            <p>QC, assignation taxonomique et visualisation de communautés microbiennes sur échantillons Adélaïde.</p>
+            <div class="project-chips">
+              <span class="chip">Python</span><span class="chip">Bash</span><span class="chip">vsearch</span><span class="chip">R</span>
+            </div>
+          </div>
+          <a href="#" class="project-link">GitHub →</a>
+        </div>
+      </div>
+
+      <!-- GROUPE Génomique & Transcriptomique -->
+      <div class="proj-group" data-group="genomics" style="max-width:1100px;width:100%;">
+        <div class="proj-group-header">
+          <div class="proj-group-icon" style="background:rgba(123,142,247,0.12);color:#7b8ef7;">🔬</div>
+          <span class="proj-group-name">Génomique &amp; Transcriptomique</span>
+          <div class="proj-group-line"></div>
+        </div>
+
+        <div class="project-item">
+          <div class="proj-meta">
+            <span class="proj-year">2023–24</span>
+            <span class="proj-ctx">Master · Bordeaux</span>
+            <span class="proj-data">WGS · ADN</span>
+          </div>
+          <div class="project-body">
+            <h3>Functional Genomics Pipeline</h3>
+            <p>Pipeline complet : assemblage génomique, annotation fonctionnelle et analyses aval.</p>
+            <div class="project-chips">
+              <span class="chip">GATK</span><span class="chip">Docker</span><span class="chip">Nextflow</span><span class="chip">Python</span>
+            </div>
+          </div>
+          <a href="#" class="project-link">GitHub →</a>
+        </div>
+
+        <div class="project-item">
+          <div class="proj-meta">
+            <span class="proj-year">2025–26</span>
+            <span class="proj-ctx">VSC · IFREMER</span>
+            <span class="proj-data">ARNm · RNA-seq</span>
+          </div>
+          <div class="project-body">
+            <h3>De Novo Transcriptome — Crevettes</h3>
+            <p>Assemblage et annotation de transcriptomes pour analyses d'expression génique.</p>
+            <div class="project-chips">
+              <span class="chip">Trinity</span><span class="chip">Bash</span><span class="chip">Python</span><span class="chip">RNA-seq</span>
+            </div>
+          </div>
+          <a href="#" class="project-link">GitHub →</a>
+        </div>
+      </div>
+
+      <!-- GROUPE Data & Viz -->
+      <div class="proj-group" data-group="dataviz" style="max-width:1100px;width:100%;">
+        <div class="proj-group-header">
+          <div class="proj-group-icon" style="background:rgba(246,169,78,0.12);color:#f6a94e;">📊</div>
+          <span class="proj-group-name">Data &amp; Visualisation</span>
+          <div class="proj-group-line"></div>
+        </div>
+
+        <div class="project-item">
+          <div class="proj-meta">
+            <span class="proj-year">2024</span>
+            <span class="proj-ctx">VSC · IFREMER</span>
+            <span class="proj-data">Physico-chimie · Séries temp.</span>
+          </div>
+          <div class="project-body">
+            <h3>Dashboard — Qualité de l'eau</h3>
+            <p>Traitement et visualisation des paramètres physiques de bassins d'élevage ; dashboard interactif de suivi.</p>
+            <div class="project-chips">
+              <span class="chip">Python</span><span class="chip">Quarto</span><span class="chip">Plotly</span>
+            </div>
+          </div>
+          <a href="#" class="project-link">GitHub →</a>
+        </div>
+      </div>
+
+      <!-- GROUPE Machine Learning -->
+      <div class="proj-group" data-group="ml" style="max-width:1100px;width:100%;">
+        <div class="proj-group-header">
+          <div class="proj-group-icon" style="background:rgba(224,124,181,0.12);color:#e07cb5;">🤖</div>
+          <span class="proj-group-name">Machine Learning</span>
+          <div class="proj-group-line"></div>
+        </div>
+
+        <div class="project-item">
+          <div class="proj-meta">
+            <span class="proj-year">2023</span>
+            <span class="proj-ctx">Master · Bordeaux</span>
+            <span class="proj-data">Images · Séquences</span>
+          </div>
+          <div class="project-body">
+            <h3>Master AI Project</h3>
+            <p>Modèle CNN pour la classification de données biologiques — entraînement, validation et interprétation.</p>
+            <div class="project-chips">
+              <span class="chip">Python</span><span class="chip">CNN</span><span class="chip">TensorFlow</span>
+            </div>
+          </div>
+          <a href="#" class="project-link">GitHub →</a>
+        </div>
       </div>
 
     </div>
   </section>
 
-  <!-- ===== BALEINE DÉCORATIVE ===== -->
-  <div style="
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 0rem -5rem 0rem 0rem;
-    z-index: 10;
-  ">
-    <img
-      src="image/humpback-whale-isolated-white-background.png"
-      alt="Baleine à bosse"
-      class="whale-deco"
-      style="
-        width: min(450px, 31vw);
-        filter: brightness(0.6) saturate(0.7);
-        mix-blend-mode: screen;
-      "
-    >
+  <!-- ── Séparateur Contact ── -->
+  <div class="section-sep">
+    <span class="sep-dot"></span>
+    <span class="sep-label">04 — Contact</span>
+    <div class="sep-line"></div>
   </div>
 
-<!-- ===== SECTION PROJECTS ===== -->
-<section id="projects">
-  <div class="projects-wrapper">
-
-    <p class="section-label">Selected Work</p>
-    <h2 class="section-title">Projects & Analyses</h2>
-
-    <div class="projects-list">
-
-      <!-- Project 01 -->
-      <div class="project-item">
-        <span class="project-num">2023</span>
-
-        <div class="project-body">
-          <h3>Master AI Project</h3>
-          <p>
-            Developed an AI-based solution to [brief description of the problem and outcome], implementing machine learning algorithms for predictive modeling.
-          </p>
-
-          <div class="project-chips">
-            <span class="chip">Python</span>
-            <span class="chip">AI</span>
-            <span class="chip">Machine Learning</span>
-          </div>
-        </div>
-
-        <a href="#" class="project-link">GitHub →</a>
-      </div>
-
-      <!-- Project 02 -->
-      <div class="project-item">
-        <span class="project-num">2023-2024</span>
-
-        <div class="project-body">
-          <h3>Functional Genomics Pipeline</h3>
-          <p>
-            Developed a genomics pipeline covering genome assembly, annotation, and downstream analyses for functional genomics studies.
-          </p>
-
-          <div class="project-chips">
-            <span class="chip">GATK</span>
-            <span class="chip">Docker</span>
-            <span class="chip">Genomics</span>
-            <span class="chip">Bioinformatics</span>
-          </div>
-        </div>
-
-        <a href="#" class="project-link">GitHub →</a>
-      </div>
-
-      <!-- Project 03 -->
-      <div class="project-item">
-        <span class="project-num">2024</span>
-
-        <div class="project-body">
-          <h3>Metabarcoding Long-Reads Pipeline</h3>
-          <p>
-            Developed an automated metabarcoding pipeline with comparative evaluation of sequencing technologies using 16S data from Nanopore, Illumina, and PacBio platforms.
-          </p>
-
-          <div class="project-chips">
-            <span class="chip">16S</span>
-            <span class="chip">Nanopore</span>
-            <span class="chip">Illumina</span>
-            <span class="chip">PacBio</span>
-            <span class="chip">Bash</span>
-          </div>
-        </div>
-
-        <a href="#" class="project-link">GitHub →</a>
-      </div>
-
-      <!-- Project 04 -->
-      <div class="project-item">
-        <span class="project-num">2024</span>
-
-        <div class="project-body">
-          <h3>Physics Data Processing for Shrimp Tanks</h3>
-          <p>
-            Processed and visualized physical parameters of shrimp culture tanks; developed an interactive dashboard for monitoring water quality and growth.
-          </p>
-
-          <div class="project-chips">
-            <span class="chip">Python</span>
-            <span class="chip">Quarto</span>
-            <span class="chip">Data Visualization</span>
-          </div>
-        </div>
-
-        <a href="#" class="project-link">GitHub →</a>
-      </div>
-
-      <!-- Project 05 -->
-      <div class="project-item">
-        <span class="project-num">2025</span>
-
-        <div class="project-body">
-          <h3>Metabarcoding Analysis of Shrimp Tanks</h3>
-          <p>
-            Performed metabarcoding on Illumina data from four shrimp tank compartments to monitor microbial community dynamics over time.
-          </p>
-
-          <div class="project-chips">
-            <span class="chip">Python</span>
-            <span class="chip">Bash</span>
-            <span class="chip">Metabarcoding</span>
-            <span class="chip">16S rRNA</span>
-          </div>
-        </div>
-
-        <a href="#" class="project-link">GitHub →</a>
-      </div>
-
-      <!-- Project 06 -->
-      <div class="project-item">
-        <span class="project-num">2025-2026</span>
-
-        <div class="project-body">
-          <h3>De Novo Transcriptome Assembly of Shrimp</h3>
-          <p>
-            Conducted de novo assembly and annotation of shrimp transcriptomes to support gene expression analyses.
-          </p>
-
-          <div class="project-chips">
-            <span class="chip">Python</span>
-            <span class="chip">Bash</span>
-            <span class="chip">RNA-seq</span>
-            <span class="chip">Bioinformatics</span>
-          </div>
-        </div>
-
-        <a href="#" class="project-link">GitHub →</a>
-      </div>
-
-      <!-- Project 07 -->
-      <div class="project-item">
-        <span class="project-num">2026</span>
-
-        <div class="project-body">
-          <h3>Metabarcoding Analysis – Adelaide Dataset</h3>
-          <p>
-            Analyzed microbial communities from Adelaide shrimp tank samples; implemented pipelines for quality control, taxonomic assignment, and visualization.
-          </p>
-
-          <div class="project-chips">
-            <span class="chip">Python</span>
-            <span class="chip">Bash</span>
-            <span class="chip">Metabarcoding</span>
-            <span class="chip">Bioinformatics</span>
-          </div>
-        </div>
-
-        <a href="#" class="project-link">GitHub →</a>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-  
-
-  <!-- Section Contact -->
+  <!-- ─── CONTACT ─── -->
   <section id="contact">
     <div style="display:flex; align-items:center; gap:3rem; max-width:860px; width:95%; flex-wrap:wrap; justify-content:center;">
 
       <!-- Baudroie -->
-      <div class="baudroie-float" style="flex-shrink:0; width:240px; filter: drop-shadow(0 0 20px rgba(79,209,197,0.4));">
+      <div class="baudroie-float" style="flex-shrink:0; width:220px; filter:drop-shadow(0 0 20px rgba(79,209,197,0.35));">
         <svg width="100%" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.001 512.001">
           <path style="fill:#2a7a72;" d="M377.511,183.315c-1.539,0-3.094-0.427-4.48-1.329c-3.827-2.481-4.915-7.589-2.433-11.408c25.525-39.358,52.894-59.147,54.046-59.968c3.698-2.65,8.846-1.788,11.497,1.91c2.65,3.698,1.797,8.855-1.902,11.505c-0.258,0.194-26.089,18.967-49.8,55.529C382.861,181.993,380.21,183.315,377.511,183.315z"/>
           <path style="fill:#4fd1c5;" d="M400.594,301.664l-16.017-10.885c-3.779-2.562-8.903-1.579-11.465,2.183c-2.562,3.77-1.579,8.903,2.183,11.465l16.017,10.885c1.426,0.967,3.037,1.426,4.633,1.426c2.643,0,5.237-1.265,6.832-3.61C405.339,309.358,404.357,304.225,400.594,301.664z"/>
@@ -1042,31 +1401,61 @@ section {
           <path style="fill:#2a7a72;" d="M272.682,175.072c-6.703-11.86-89.306,12.439-90.754,24.751c-0.688,5.843,4.109,37.12,16.501,41.252c24.751,8.25,66.003,8.25,74.253,8.25C280.932,249.326,290.916,207.334,272.682,175.072z"/>
           <path style="fill:#155e57;" d="M272.682,257.576c-2.111,0-4.23-0.805-5.841-2.426c-0.266-0.266-27.144-27.103-48.012-40.068c-3.876-2.409-5.06-7.493-2.659-11.361c2.401-3.876,7.493-5.06,11.361-2.659c22.511,13.986,49.84,41.275,50.992,42.436c3.215,3.223,3.215,8.444-0.016,11.666C276.896,256.771,274.793,257.576,272.682,257.576z"/>
           <circle style="fill:#0d2020;" cx="351.062" cy="236.95" r="20.626"/>
-          <circle class="baudroie-lure" style="fill:rgba(79,209,197,0.2);" cx="429.441" cy="117.32" r="32"/>
+          <circle class="baudroie-lure" style="fill:rgba(79,209,197,0.18);" cx="429.441" cy="117.32" r="32"/>
           <circle class="baudroie-lure" style="fill:#4fd1c5;" cx="429.441" cy="117.32" r="16.501"/>
         </svg>
       </div>
 
-      <!-- Boîte contact -->
-      <div class="bg-white/10 backdrop-blur-xl p-10 rounded-3xl shadow-xl" style="flex:1; min-width:260px; max-width:400px;">
-        <h2 class="text-3xl mb-4">Contact</h2>
-        <p>mallory.lecorre56@gmail.com</p>
-        <p>lienLinkedIn</p>
-        <p>lienCV</p>
+      <!-- Contact card -->
+      <div class="contact-card">
+        <h2>Contactez-moi</h2>
+
+        <a href="/cdn-cgi/l/email-protection#f5989499999a878cdb9990969a878790c0c3b59298949c99db969a98" class="contact-item">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <span class="__cf_email__" data-cfemail="9af7fbf6f6f5e8e3b4f6fff9f5e8e8ffafacdafdf7fbf3f6b4f9f5f7">[email&#160;protected]</span>
+        </a>
+
+        <div class="contact-divider"></div>
+
+        <div class="contact-socials">
+          <a href="#" class="btn-social">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
+          <a href="#" class="btn-social">
+            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+          <a href="#" class="btn-social outline-white">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="fill:none !important;">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>
+            </svg>
+            CV PDF
+          </a>
+        </div>
       </div>
 
     </div>
   </section>
 
-  <!-- Vidéo baleine -->
-  <video autoplay loop muted playsinline class="whale-video">
-    <source src="whale.mp4" type="video/mp4">
-  </video>
+<!-- ═══ DNA STRIP ═══ -->
+<div class="dna"></div>
 
-</div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+/* ── Project filters ── */
+function setFilter(cat, btn) {
+  document.querySelectorAll('.proj-filter').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.proj-group').forEach(g => {
+    if (cat === 'all' || g.dataset.group === cat) {
+      g.classList.remove('hidden');
+    } else {
+      g.classList.add('hidden');
+    }
+  });
+}
 
-<script>
-/* ===== ACCORDION ===== */
+/* ── Accordion ── */
 function toggleAcc(btn) {
   const body = btn.nextElementSibling;
   const isOpen = btn.getAttribute('aria-expanded') === 'true';
@@ -1089,42 +1478,33 @@ function toggleAcc(btn) {
   }
 }
 
-/* --- Bulles --- */
+/* ── Bulles ── */
 function createBubble() {
   const oceanZone = document.querySelector('.ocean-zone');
-  const oceanH    = oceanZone.offsetHeight;
-  const bubble    = document.createElement('div');
+  const oceanH = oceanZone.offsetHeight;
+  const bubble = document.createElement('div');
   bubble.classList.add('bubble');
-  const size     = Math.random() * 15 + 5;
+  const size = Math.random() * 15 + 5;
   const duration = Math.random() * 5 + 5;
-  bubble.style.width  = size + 'px';
+  bubble.style.width = size + 'px';
   bubble.style.height = size + 'px';
-  bubble.style.left   = Math.random() * window.innerWidth + 'px';
+  bubble.style.left = Math.random() * window.innerWidth + 'px';
   bubble.style.animation = `rise ${duration}s linear forwards`;
   bubble.style.setProperty('--rise', `-${oceanH}px`);
   oceanZone.appendChild(bubble);
   setTimeout(() => bubble.remove(), duration * 1000 + 200);
 }
 const styleSheet = document.createElement('style');
-styleSheet.textContent = `
-  @keyframes rise {
-    0%   { transform: translateY(0) scale(0.5); opacity: 0; }
-    5%   { opacity: 0.6; }
-    90%  { opacity: 0.4; }
-    100% { transform: translateY(var(--rise)) scale(1); opacity: 0; }
-  }
-`;
+styleSheet.textContent = `@keyframes rise { 0% { transform:translateY(0) scale(0.5);opacity:0; } 5% { opacity:0.5; } 90% { opacity:0.3; } 100% { transform:translateY(var(--rise)) scale(1);opacity:0; } }`;
 document.head.appendChild(styleSheet);
-setInterval(createBubble, 600);
+setInterval(createBubble, 700);
 
-/* --- Poissons --- */
+/* ── Poissons ── */
 const fishShapes = [
   `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 50" width="60" height="30"><path fill="currentColor" d="M72,25 C72,25 85,10 100,8 C95,18 94,25 95,32 C100,42 85,40 72,25 Z M72,25 C65,14 50,8 32,10 C18,12 8,18 4,25 C8,32 18,38 32,40 C50,42 65,36 72,25 Z M10,22 C10,22 6,20 4,25 C6,30 10,28 10,28 Z"/></svg>`,
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 60" width="55" height="33"><path fill="currentColor" d="M65,30 C65,30 80,12 100,10 C94,22 93,30 94,38 C100,50 80,48 65,30 Z M65,30 C58,18 42,10 25,13 C12,15 4,22 2,30 C4,38 12,45 25,47 C42,50 58,42 65,30 Z M35,13 C38,6 48,4 55,8 C52,13 45,14 35,13 Z M8,27 C8,27 4,24 2,30 C4,36 8,33 8,33 Z"/></svg>`,
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" width="70" height="24"><path fill="currentColor" d="M88,20 C88,20 100,8 120,6 C116,15 115,20 116,25 C120,34 100,32 88,20 Z M88,20 C80,12 62,6 40,8 C22,10 8,15 4,20 C8,25 22,30 40,32 C62,34 80,28 88,20 Z M6,18 C6,18 3,16 2,20 C3,24 6,22 6,22 Z"/></svg>`,
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 60" width="46" height="35"><path fill="currentColor" d="M52,30 C52,30 62,16 78,14 C74,22 73,30 74,38 C78,46 62,44 52,30 Z M52,30 C46,18 34,10 22,12 C12,14 5,21 4,30 C5,39 12,46 22,48 C34,50 46,42 52,30 Z M24,12 C26,5 36,3 42,8 C40,12 33,13 24,12 Z M24,48 C26,55 36,57 42,52 C40,48 33,47 24,48 Z M8,27 C8,27 4,24 4,30 C4,36 8,33 8,33 Z"/></svg>`,
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 60" width="46" height="35"><path fill="currentColor" d="M52,30 C52,30 62,16 78,14 C74,22 73,30 74,38 C78,46 62,44 52,30 Z M52,30 C46,18 34,10 22,12 C12,14 5,21 4,30 C5,39 12,46 22,48 C34,50 46,42 52,30 Z"/></svg>`,
 ];
-const fishColors = ['rgba(255,255,255,0.12)','rgba(100,200,255,0.10)','rgba(150,220,255,0.10)','rgba(255,255,255,0.08)','rgba(80,180,220,0.12)'];
+const fishColors = ['rgba(255,255,255,0.10)','rgba(100,200,255,0.08)','rgba(79,209,197,0.08)'];
 
 function createFish() {
   const oceanZone = document.querySelector('.ocean-zone');
@@ -1139,60 +1519,58 @@ function createFish() {
   fish.style.top = (Math.random() * 85 + 5) + '%';
   const duration = Math.random() * 27 + 18;
   fish.style.animationDuration = duration + 's';
-  fish.style.animationDelay    = (Math.random() * -20) + 's';
+  fish.style.animationDelay = (Math.random() * -20) + 's';
   oceanZone.appendChild(fish);
   setTimeout(() => fish.remove(), (duration + 20) * 1000);
 }
 for (let i = 0; i < 3; i++) setTimeout(createFish, i * 3000);
 setInterval(createFish, 9000);
 
-/* --- Bioluminescence --- */
-const bioColors = ['rgba(0,255,180,VAL)','rgba(80,180,255,VAL)','rgba(180,100,255,VAL)','rgba(0,220,255,VAL)','rgba(100,255,200,VAL)'];
-
+/* ── Bioluminescence ── */
+const bioColors = ['rgba(0,255,180,VAL)','rgba(80,180,255,VAL)','rgba(0,220,255,VAL)','rgba(79,209,197,VAL)'];
 function createBiolum() {
   const oceanZone = document.querySelector('.ocean-zone');
-  const oceanH = oceanZone.offsetHeight;
-  const oceanW = oceanZone.offsetWidth;
   const dot = document.createElement('div');
   dot.classList.add('biolum');
   const size = Math.random() * 4 + 2;
-  dot.style.width  = size + 'px';
+  dot.style.width = size + 'px';
   dot.style.height = size + 'px';
-  dot.style.left = (Math.random() * oceanW) + 'px';
-  dot.style.top  = (Math.random() * oceanH * 0.7 + oceanH * 0.3) + 'px';
+  dot.style.left = (Math.random() * oceanZone.offsetWidth) + 'px';
+  dot.style.top = (Math.random() * oceanZone.offsetHeight * 0.7 + oceanZone.offsetHeight * 0.3) + 'px';
   const col = bioColors[Math.floor(Math.random() * bioColors.length)];
   const opacity = Math.random() * 0.4 + 0.2;
   dot.style.background = col.replace('VAL', opacity);
-  dot.style.boxShadow = `0 0 ${size * 3}px ${size}px ${col.replace('VAL', 0.15)}`;
+  dot.style.boxShadow = `0 0 ${size*3}px ${size}px ${col.replace('VAL', 0.12)}`;
   const duration = Math.random() * 4 + 2;
   dot.style.animationDuration = duration + 's';
-  dot.style.animationDelay    = (Math.random() * -6) + 's';
+  dot.style.animationDelay = (Math.random() * -6) + 's';
   oceanZone.appendChild(dot);
   setTimeout(() => dot.remove(), (duration * 4 + 2) * 1000);
 }
 for (let i = 0; i < 40; i++) setTimeout(createBiolum, i * 150);
 setInterval(createBiolum, 800);
 
-/* --- Nuages --- */
+/* ── Nuages ── */
 function createCloud() {
   const skyZone = document.getElementById('sky-wrapper');
   const cloud = document.createElement('div');
   cloud.classList.add('cloud');
   const w = Math.random() * 180 + 80;
-  const h = w * 0.35;
-  cloud.style.width  = w + 'px';
-  cloud.style.height = h + 'px';
-  cloud.style.top    = (Math.random() * 60 + 5) + '%';
-  cloud.style.left   = '-220px';
+  cloud.style.width = w + 'px';
+  cloud.style.height = (w * 0.35) + 'px';
+  cloud.style.top = (Math.random() * 60 + 5) + '%';
+  cloud.style.left = '-220px';
   const duration = Math.random() * 40 + 30;
   cloud.style.animationDuration = duration + 's';
-  cloud.style.opacity = (Math.random() * 0.3 + 0.1).toString();
+  cloud.style.opacity = (Math.random() * 0.25 + 0.08).toString();
   skyZone.appendChild(cloud);
   setTimeout(() => cloud.remove(), duration * 1000 + 1000);
 }
 for (let i = 0; i < 4; i++) setTimeout(createCloud, i * 4000);
 setInterval(createCloud, 8000);
-</script>
 
-</body>
-</html>
+/* ── Nav active ── */
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+const observer = new IntersectionObserver((entries) => {
+  entri

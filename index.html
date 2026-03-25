@@ -292,14 +292,6 @@ nav {
   margin: 0 auto;
   padding: 0.5rem 0;
 }
-.section-sep .sep-label {
-  font-family: 'DM Mono', monospace;
-  font-size: 1rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(79,209,197,0.75);
-  white-space: nowrap;
-}
 .section-sep .sep-line {
   flex: 1;
   height: 1px;
@@ -543,7 +535,6 @@ section {
 .accordion-btn:hover { color: var(--teal); }
 
 .acc-label { display: flex; align-items: center; gap: 0.75rem; font-weight: 500; }
-.acc-emoji { font-size: 1rem; width: 1.4rem; text-align: center; }
 
 .acc-icon {
   width: 22px; height: 22px;
@@ -960,7 +951,6 @@ footer {
   <div style="padding-top: 3rem; padding-bottom: 0;">
     <div class="section-sep">
       <span class="sep-dot"></span>
-      <span class="sep-label">01 — Parcours</span>
       <div class="sep-line"></div>
     </div>
   </div>
@@ -1007,12 +997,15 @@ footer {
   <!-- ── Séparateur Skills ── -->
   <div class="section-sep" style="margin-top:-2rem;">
     <span class="sep-dot"></span>
-    <span class="sep-label">02 — Compétences</span>
     <div class="sep-line"></div>
   </div>
 
   <!-- ─── SKILLS ─── -->
   <section id="skills">
+    <div style="max-width:1100px; width:95%; text-align:left; margin-bottom:2rem;">
+      <p class="section-label">Compétences</p>
+      <h2 class="section-title">Skills</h2>
+    </div>
     <div class="about-grid" style="max-width:1100px; width:95%;">
 
       <div class="glass-card">
@@ -1045,7 +1038,7 @@ footer {
 
         <div class="accordion-item">
           <button class="accordion-btn" aria-expanded="false" onclick="toggleAcc(this)">
-            <span class="acc-label"><span class="acc-emoji">🧬</span>Métabarcoding</span>
+            <span class="acc-label">Métabarcoding</span>
             <span class="acc-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
           </button>
           <div class="accordion-body">
@@ -1069,7 +1062,7 @@ footer {
 
         <div class="accordion-item">
           <button class="accordion-btn" aria-expanded="false" onclick="toggleAcc(this)">
-            <span class="acc-label"><span class="acc-emoji">🔬</span>Transcriptomique</span>
+            <span class="acc-label">Transcriptomique</span>
             <span class="acc-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
           </button>
           <div class="accordion-body">
@@ -1082,7 +1075,7 @@ footer {
 
         <div class="accordion-item">
           <button class="accordion-btn" aria-expanded="false" onclick="toggleAcc(this)">
-            <span class="acc-label"><span class="acc-emoji">🧪</span>Génomique</span>
+            <span class="acc-label">Génomique</span>
             <span class="acc-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
           </button>
           <div class="accordion-body">
@@ -1095,7 +1088,7 @@ footer {
 
         <div class="accordion-item">
           <button class="accordion-btn" aria-expanded="false" onclick="toggleAcc(this)">
-            <span class="acc-label"><span class="acc-emoji">🤖</span>Machine Learning</span>
+            <span class="acc-label">Machine Learning</span>
             <span class="acc-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
           </button>
           <div class="accordion-body">
@@ -1120,7 +1113,6 @@ footer {
   <!-- ── Séparateur Projects ── -->
   <div class="section-sep">
     <span class="sep-dot"></span>
-    <span class="sep-label">03 — Projets</span>
     <div class="sep-line"></div>
   </div>
 
@@ -1134,7 +1126,9 @@ footer {
         <!-- GROUPE Métabarcoding -->
         <div class="proj-group" data-group="metabarcoding" style="max-width:1100px;width:100%;">
           <div class="proj-group-header">
-            <div class="proj-group-icon" style="background:rgba(79,209,197,0.1);color:#4fd1c5;">🧬</div>
+            <div class="proj-group-icon" style="background:rgba(79,209,197,0.1);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4fd1c5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4M8 6a4 4 0 0 1 4-4M12 22a4 4 0 0 1-4-4M16 18a4 4 0 0 1-4 4M2 12a4 4 0 0 1 4-4M6 16a4 4 0 0 1-4-4M22 12a4 4 0 0 1-4 4M18 8a4 4 0 0 1 4 4"/></svg>
+            </div>
             <span class="proj-group-name">Métabarcoding</span>
             <div class="proj-group-line"></div>
           </div>
@@ -1228,7 +1222,9 @@ footer {
         <!-- GROUPE Génomique & Transcriptomique -->
         <div class="proj-group" data-group="genomics" style="max-width:1100px;width:100%;">
           <div class="proj-group-header">
-            <div class="proj-group-icon" style="background:rgba(123,142,247,0.12);color:#7b8ef7;">🔬</div>
+            <div class="proj-group-icon" style="background:rgba(123,142,247,0.12);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7b8ef7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+            </div>
             <span class="proj-group-name">Génomique &amp; Transcriptomique</span>
             <div class="proj-group-line"></div>
           </div>
@@ -1277,7 +1273,9 @@ footer {
         <!-- GROUPE Data & Viz -->
         <div class="proj-group" data-group="dataviz" style="max-width:1100px;width:100%;">
           <div class="proj-group-header">
-            <div class="proj-group-icon" style="background:rgba(246,169,78,0.12);color:#f6a94e;">📊</div>
+            <div class="proj-group-icon" style="background:rgba(246,169,78,0.12);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f6a94e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            </div>
             <span class="proj-group-name">Data &amp; Visualisation</span>
             <div class="proj-group-line"></div>
           </div>
@@ -1306,7 +1304,9 @@ footer {
         <!-- GROUPE Machine Learning -->
         <div class="proj-group" data-group="ml" style="max-width:1100px;width:100%;">
           <div class="proj-group-header">
-            <div class="proj-group-icon" style="background:rgba(224,124,181,0.12);color:#e07cb5;">🤖</div>
+            <div class="proj-group-icon" style="background:rgba(224,124,181,0.12);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e07cb5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg>
+            </div>
             <span class="proj-group-name">Machine Learning</span>
             <div class="proj-group-line"></div>
           </div>
@@ -1339,12 +1339,15 @@ footer {
   <!-- ── Séparateur Contact ── -->
   <div class="section-sep">
     <span class="sep-dot"></span>
-    <span class="sep-label">04 — Contact</span>
     <div class="sep-line"></div>
   </div>
 
   <!-- ─── CONTACT ─── -->
   <section id="contact">
+    <div style="max-width:1100px; width:95%; text-align:left; margin-bottom:2.5rem;">
+      <p class="section-label">Contact</p>
+      <h2 class="section-title">Me Contacter</h2>
+    </div>
     <div style="display:flex; align-items:center; gap:3rem; max-width:860px; width:95%; flex-wrap:wrap; justify-content:center;">
 
       <!-- Baudroie -->
@@ -1373,9 +1376,9 @@ footer {
       <!-- Contact card -->
       <div class="contact-card">
         <h2>Contacts</h2>
-        <a href="/cdn-cgi/l/email-protection#c3aea2afafacb1baedafa6a0acb1b1a6f6f583a4aea2aaafeda0acae" class="contact-item">
+        <a href="mailto:mallory.lecorre@example.com" class="contact-item">
           <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          <span class="__cf_email__" data-cfemail="8de0ece1e1e2fff4a3e1e8eee2ffffe8b8bbcdeae0ece4e1a3eee2e0">[email&#160;protected]</span>
+          mallory.lecorre@example.com
         </a>
 
         <div class="contact-divider"></div>
@@ -1401,12 +1404,10 @@ footer {
     </div>
   </section>
 
-
-
 </div>
 <!-- /.ocean-zone -->
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 /* ── Accordion ── */
 function toggleAcc(btn) {
   const body = btn.nextElementSibling;

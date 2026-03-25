@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mallory Le Corre 4 — BioinfoOOOOOOOmaticienne</title>
+<title>Mallory Le Corre — Bio-informaticienne</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
@@ -29,7 +29,6 @@ body {
   cursor: default;
 }
 
-/* ─── TYPOGRAPHY ─────────────────────────────── */
 .font-mono   { font-family: 'DM Mono', monospace; }
 .font-display{ font-family: 'Syne', sans-serif; }
 .font-serif  { font-family: 'Lora', Georgia, serif; }
@@ -171,7 +170,6 @@ nav {
   margin: 0 auto 2.8rem;
 }
 
-/* Hero pills */
 .hero-pills {
   display: flex;
   gap: 0.6rem;
@@ -190,7 +188,6 @@ nav {
   background: rgba(79,209,197,0.06);
 }
 
-/* Hero social buttons */
 .hero-socials {
   display: flex;
   gap: 0.75rem;
@@ -285,15 +282,6 @@ nav {
   100% { opacity: 0; transform: translateX(-50%) translateY(0); }
 }
 
-/* ─── ZONE DIVIDER ───────────────────────────── */
-.zone-divider {
-  position: relative;
-  height: 80px;
-  overflow: hidden;
-  z-index: 5;
-  pointer-events: none;
-}
-
 /* ─── SECTION SEPARATOR LINE ─────────────────── */
 .section-sep {
   display: flex;
@@ -337,7 +325,6 @@ section {
   padding: 6rem 1rem 3rem;
 }
 
-/* ─── SECTION LABELS ─────────────────────────── */
 .section-label {
   font-family: 'DM Mono', monospace;
   font-size: 0.65rem;
@@ -640,12 +627,31 @@ section {
   background: rgba(255,255,255,0.1);
 }
 
-.project-num {
+.proj-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding-top: 2px;
+}
+.proj-year {
   font-family: 'DM Mono', monospace;
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   letter-spacing: 0.12em;
-  color: rgba(255,255,255,0.28);
-  padding-top: 3px;
+  color: rgba(255,255,255,0.25);
+  text-transform: uppercase;
+}
+.proj-ctx {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  color: var(--teal);
+  opacity: 0.75;
+}
+.proj-data {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem;
+  color: rgba(255,255,255,0.22);
+  line-height: 1.5;
+  margin-top: 2px;
 }
 
 .project-body h3 {
@@ -661,6 +667,14 @@ section {
   line-height: 1.65;
   color: rgba(255,255,255,0.5);
   margin: 0 0 0.8rem;
+}
+.project-body ul {
+  font-family: 'Lora', serif;
+  font-size: 0.8rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.5);
+  margin: 0 0 0.8rem;
+  padding-left: 1.2rem;
 }
 
 .project-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
@@ -689,73 +703,6 @@ section {
 @media (max-width: 700px) {
   .project-item { grid-template-columns: 1fr; }
   .project-link { margin-top: 0.6rem; }
-}
-
-/* ─── PROJECT META COLUMN ────────────────────── */
-.proj-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  padding-top: 2px;
-}
-.proj-year {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.62rem;
-  letter-spacing: 0.12em;
-  color: rgba(255,255,255,0.25);
-  text-transform: uppercase;
-}
-.proj-ctx {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.62rem;
-  color: var(--teal);
-  opacity: 0.75;
-}
-.proj-data {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.58rem;
-  color: rgba(255,255,255,0.22);
-  line-height: 1.5;
-  margin-top: 2px;
-}
-
-/* ─── PROJECT FILTERS ────────────────────────── */
-.proj-filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin: 1.2rem 0 2.5rem;
-}
-.proj-filter {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-family: 'DM Mono', monospace;
-  font-size: 0.66rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 5px 13px;
-  border-radius: 30px;
-  border: 1px solid rgba(79,209,197,0.2);
-  color: rgba(255,255,255,0.45);
-  background: rgba(79,209,197,0.04);
-  cursor: pointer;
-  transition: all 0.2s;
-  outline: none;
-}
-.proj-filter:hover {
-  border-color: rgba(79,209,197,0.45);
-  color: rgba(255,255,255,0.8);
-}
-.proj-filter.active {
-  background: rgba(79,209,197,0.13);
-  border-color: var(--teal);
-  color: #fff;
-}
-.fdot {
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  flex-shrink: 0;
 }
 
 /* ─── PROJECT GROUPS ─────────────────────────── */
@@ -896,19 +843,6 @@ footer {
 .footer-right a:hover { color: var(--teal); }
 
 /* ─── PARTICLES / ENV ────────────────────────── */
-.whale-video {
-  position: absolute;
-  bottom: 50px; left: -400px;
-  width: 400px;
-  mix-blend-mode: screen;
-  animation: swim 20s linear infinite;
-  pointer-events: none;
-}
-@keyframes swim {
-  0%   { left: -400px; }
-  100% { left: 120%; }
-}
-
 .bubble {
   position: absolute;
   background: rgba(255,255,255,0.3);
@@ -980,6 +914,9 @@ footer {
 
 <body>
 
+<!-- ═══ DNA STRIP (fixed, hors flux) ═══ -->
+<div class="dna"></div>
+
 <!-- ═══ NAV ═══ -->
 <nav>
   <span class="nav-logo">M. Le Corre</span>
@@ -994,21 +931,15 @@ footer {
 
 <!-- ═══ ZONE CIEL ═══ -->
 <div class="sky-zone" id="sky-wrapper" style="position:relative; overflow:hidden;">
+
   <section id="home">
-
     <div class="hero-eyebrow">Bio-informatique marine</div>
-
     <h1 class="hero-name">Mallory<br>Le Corre</h1>
     <p class="hero-title">Bio-informaticienne &amp; Omique marine</p>
-
     <p class="hero-tagline">
-      Séquences · Écosystèmes · Données —<br>
-      
+      Séquences · Écosystèmes · Données
     </p>
-
   </section>
-</div>
-
 
   <!-- Vague -->
   <div style="position:absolute; bottom:0; left:0; width:100%; height:120px; overflow:hidden; z-index:5; pointer-events:none;">
@@ -1018,7 +949,9 @@ footer {
             d="M0,60 C240,20 480,100 720,60 C960,20 1200,100 1440,60 C1680,20 1920,100 2160,60 C2400,20 2640,100 2880,60 L2880,120 L0,120 Z"/>
     </svg>
   </div>
+
 </div>
+<!-- /.sky-zone -->
 
 <!-- ═══ ZONE OCÉAN ═══ -->
 <div class="ocean-zone">
@@ -1035,7 +968,6 @@ footer {
   <!-- ─── ABOUT ─── -->
   <section id="about">
     <div class="about-wrapper">
-
       <div class="timeline-block">
         <div class="tl-intro">
           <p class="section-label">Background</p>
@@ -1069,7 +1001,6 @@ footer {
           </div>
         </div>
       </div>
-
     </div>
   </section>
 
@@ -1138,7 +1069,7 @@ footer {
 
         <div class="accordion-item">
           <button class="accordion-btn" aria-expanded="false" onclick="toggleAcc(this)">
-            <span class="acc-label"><span class="acc-emoji"></span>Transcriptomique</span>
+            <span class="acc-label"><span class="acc-emoji">🔬</span>Transcriptomique</span>
             <span class="acc-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
           </button>
           <div class="accordion-body">
@@ -1151,7 +1082,7 @@ footer {
 
         <div class="accordion-item">
           <button class="accordion-btn" aria-expanded="false" onclick="toggleAcc(this)">
-            <span class="acc-label"><span class="acc-emoji"></span>Génomique</span>
+            <span class="acc-label"><span class="acc-emoji">🧪</span>Génomique</span>
             <span class="acc-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
           </button>
           <div class="accordion-body">
@@ -1164,7 +1095,7 @@ footer {
 
         <div class="accordion-item">
           <button class="accordion-btn" aria-expanded="false" onclick="toggleAcc(this)">
-            <span class="acc-label"><span class="acc-emoji"></span>Machine Learning</span>
+            <span class="acc-label"><span class="acc-emoji">🤖</span>Machine Learning</span>
             <span class="acc-icon"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
           </button>
           <div class="accordion-body">
@@ -1192,229 +1123,218 @@ footer {
     <span class="sep-label">03 — Projets</span>
     <div class="sep-line"></div>
   </div>
-<!-- ─── PROJECTS ─── -->
-<section id="projects">
-  <div class="projects-wrapper">
 
-    <div style="text-align:left; max-width:1100px; width:100%;">
-      <p class="section-label">Selected Work</p>
-      <h2 class="section-title">Projets &amp; Analyses</h2>
+  <!-- ─── PROJECTS ─── -->
+  <section id="projects">
+    <div class="projects-wrapper">
+      <div style="text-align:left; max-width:1100px; width:100%;">
+        <p class="section-label">Selected Work</p>
+        <h2 class="section-title">Projets &amp; Analyses</h2>
 
-      <!-- GROUPE Métabarcoding -->
-      <div class="proj-group" data-group="metabarcoding" style="max-width:1100px;width:100%;">
-        <div class="proj-group-header">
-          <div class="proj-group-icon" style="background:rgba(79,209,197,0.1);color:#4fd1c5;">🧬</div>
-          <span class="proj-group-name">Métabarcoding</span>
-          <div class="proj-group-line"></div>
-        </div>
-
-        <div class="project-item">
-          <div class="proj-meta">
-            <span class="proj-year">2024</span>
-            <span class="proj-ctx">Stage · MIO</span>
-            <span class="proj-data">16S · Long &amp; short reads</span>
+        <!-- GROUPE Métabarcoding -->
+        <div class="proj-group" data-group="metabarcoding" style="max-width:1100px;width:100%;">
+          <div class="proj-group-header">
+            <div class="proj-group-icon" style="background:rgba(79,209,197,0.1);color:#4fd1c5;">🧬</div>
+            <span class="proj-group-name">Métabarcoding</span>
+            <div class="proj-group-line"></div>
           </div>
 
-          <div class="project-body">
-            <h3>Metabarcoding Long-Reads Pipeline</h3>
-
-            <ul class="project-highlights">
-              <li>Research apprenticeship — caractérisation taxonomique de la biodiversité microbienne d’effluents liquides tunisiens par séquençage haut débit</li>
-            </ul>
-
-            <ul class="project-summary">
-              <li>Développement d’un pipeline automatisé (QC → classification → phyloseq) optimisé pour Nanopore</li>
-              <li>Benchmark de technologies de séquençage : Nanopore vs Illumina vs PacBio</li>
-              <li>Analyses exploratoires de diversité microbienne sur données environnementales 16S</li>
-            </ul>
-
-            <div class="project-chips">
-              <span class="chip">16S</span>
-              <span class="chip">Nanopore</span>
-              <span class="chip">Illumina</span>
-              <span class="chip">PacBio</span>
-              <span class="chip">Bash</span>
-              <span class="chip">R</span>
+          <div class="project-item">
+            <div class="proj-meta">
+              <span class="proj-year">2024</span>
+              <span class="proj-ctx">Stage · MIO</span>
+              <span class="proj-data">16S · Long &amp; short reads</span>
             </div>
-          </div>
-
-          <a href="#" class="project-link">Voir le code →</a>
-        </div>
-
-  <div class="project-item">
-          <div class="proj-meta">
-            <span class="proj-year">2025 - 2026</span>
-            <span class="proj-ctx">VSC · Bioinformatique · IFREMER</span>
-            <span class="proj-data">16S-18S-its-arch · illumina · Sédiments</span>
-          </div>
-
-          <div class="project-body">
-            <h3>Metabarcoding - sédiment</h3>
-
-            <ul class="project-highlights">
-              <li> Temporal analysis of microbial communities in the sediment of a commercial shrimp farm to assess community dynamics driven by both environmental factors, such as marine heatwaves, and aquaculture-related changes.</li>
-            </ul>
-
-            <ul class="project-summary">
-              <li>Sample preparation (grinding) and DNA extraction</li>
-              <li>Data processing (QC → taxonomic classification)</li>
-              <li>Statistical analyses, including alpha and beta diversity, co-occurrence patterns, and functional annotation</li>
-            </ul>
-
-            <div class="project-chips">
-              <span class="chip">16S</span>
-              <span class="chip">Eukaryote</span>
-              <span class="chip">Archée</span>
-              <span class="chip">Fungi</span>
-              <span class="chip">Illumina</span>
-              <span class="chip">R</span>
-              <span class="chip">python</span>
-              <span class="chip">bash</span>
+            <div class="project-body">
+              <h3>Metabarcoding Long-Reads Pipeline</h3>
+              <ul>
+                <li>Caractérisation taxonomique de la biodiversité microbienne d'effluents liquides tunisiens par séquençage haut débit</li>
+              </ul>
+              <ul>
+                <li>Développement d'un pipeline automatisé (QC → classification → phyloseq) optimisé pour Nanopore</li>
+                <li>Benchmark de technologies de séquençage : Nanopore vs Illumina vs PacBio</li>
+                <li>Analyses exploratoires de diversité microbienne sur données environnementales 16S</li>
+              </ul>
+              <div class="project-chips">
+                <span class="chip">16S</span>
+                <span class="chip">Nanopore</span>
+                <span class="chip">Illumina</span>
+                <span class="chip">PacBio</span>
+                <span class="chip">Bash</span>
+                <span class="chip">R</span>
+              </div>
             </div>
+            <a href="#" class="project-link">Voir le code →</a>
           </div>
 
-          <a href="#" class="project-link">Voir le code →</a>
-        </div>
-
-
-        <div class="project-item">
-          <div class="proj-meta">
-            <span class="proj-year">2026</span>
-            <span class="proj-ctx">VSC · Bioinformatique · IFREMER</span>
-            <span class="proj-data">Its sédiments pacbio</span>
-          </div>
-
-        <div class="project-body">
-            <h3>Metabarcoding - sédiment</h3>
-
-            <ul class="project-highlights">
-              <li> Analysis of environmental DNA from Eucalyptus-associated fungi in Australia, focusing on community composition, diversity, and ecological interactions.</li>
-            </ul>
-
-            <ul class="project-summary">
-              <li>Data processing using a bioinformatics pipeline to analyze various experimental and environmental parameters</li>
-            </ul>
-
-            <div class="project-chips">
-              <span class="chip">Fungi</span>
-              <span class="chip">Illumina</span>
-              <span class="chip">R</span>
-              <span class="chip">python</span>
-              <span class="chip">bash</span>
+          <div class="project-item">
+            <div class="proj-meta">
+              <span class="proj-year">2025–2026</span>
+              <span class="proj-ctx">VSC · IFREMER</span>
+              <span class="proj-data">16S-18S-ITS-Arch · Illumina · Sédiments</span>
             </div>
-          </div>
-      <!-- GROUPE Génomique & Transcriptomique -->
-      <div class="proj-group" data-group="genomics" style="max-width:1100px;width:100%;">
-        <div class="proj-group-header">
-          <div class="proj-group-icon" style="background:rgba(123,142,247,0.12);color:#7b8ef7;">🔬</div>
-          <span class="proj-group-name">Génomique &amp; Transcriptomique</span>
-          <div class="proj-group-line"></div>
-        </div>
-
-        <div class="project-item">
-          <div class="proj-meta">
-            <span class="proj-year">2023–24</span>
-            <span class="proj-ctx">Master · Bordeaux</span>
-            <span class="proj-data">WGS · ADN</span>
-          </div>
-
-          <div class="project-body">
-            <h3>Functional Genomics Pipeline</h3>
-            <p>Pipeline complet : assemblage génomique, annotation fonctionnelle et analyses downstream.</p>
-            <div class="project-chips">
-              <span class="chip">GATK</span>
-              <span class="chip">Docker</span>
-              <span class="chip">Nextflow</span>
-              <span class="chip">Python</span>
+            <div class="project-body">
+              <h3>Metabarcoding — Sédiment</h3>
+              <ul>
+                <li>Temporal analysis of microbial communities in the sediment of a commercial shrimp farm to assess community dynamics driven by both environmental factors, such as marine heatwaves, and aquaculture-related changes.</li>
+              </ul>
+              <ul>
+                <li>Sample preparation (grinding) and DNA extraction</li>
+                <li>Data processing (QC → taxonomic classification)</li>
+                <li>Statistical analyses, including alpha and beta diversity, co-occurrence patterns, and functional annotation</li>
+              </ul>
+              <div class="project-chips">
+                <span class="chip">16S</span>
+                <span class="chip">Eukaryote</span>
+                <span class="chip">Archée</span>
+                <span class="chip">Fungi</span>
+                <span class="chip">Illumina</span>
+                <span class="chip">R</span>
+                <span class="chip">Python</span>
+                <span class="chip">Bash</span>
+              </div>
             </div>
+            <a href="#" class="project-link">Voir le code →</a>
           </div>
 
-          <a href="#" class="project-link">GitHub →</a>
-        </div>
-
-        <div class="project-item">
-          <div class="proj-meta">
-            <span class="proj-year">2025–26</span>
-            <span class="proj-ctx">VSC · IFREMER</span>
-            <span class="proj-data">ARNm · RNA-seq</span>
-          </div>
-
-          <div class="project-body">
-            <h3>De Novo Transcriptome — Crevettes</h3>
-            <p>Assemblage et annotation de transcriptomes pour analyses d’expression génique.</p>
-            <div class="project-chips">
-              <span class="chip">Trinity</span>
-              <span class="chip">Bash</span>
-              <span class="chip">Python</span>
-              <span class="chip">RNA-seq</span>
+          <div class="project-item">
+            <div class="proj-meta">
+              <span class="proj-year">2026</span>
+              <span class="proj-ctx">VSC · IFREMER</span>
+              <span class="proj-data">ITS · Sédiments · PacBio</span>
             </div>
+            <div class="project-body">
+              <h3>Metabarcoding — Fungi Australie</h3>
+              <ul>
+                <li>Analysis of environmental DNA from Eucalyptus-associated fungi in Australia, focusing on community composition, diversity, and ecological interactions.</li>
+              </ul>
+              <ul>
+                <li>Data processing using a bioinformatics pipeline to analyze various experimental and environmental parameters</li>
+              </ul>
+              <div class="project-chips">
+                <span class="chip">Fungi</span>
+                <span class="chip">PacBio</span>
+                <span class="chip">R</span>
+                <span class="chip">Python</span>
+                <span class="chip">Bash</span>
+              </div>
+            </div>
+            <a href="#" class="project-link">Voir le code →</a>
           </div>
 
-          <a href="#" class="project-link">GitHub →</a>
         </div>
+        <!-- /.proj-group metabarcoding -->
+
+        <!-- GROUPE Génomique & Transcriptomique -->
+        <div class="proj-group" data-group="genomics" style="max-width:1100px;width:100%;">
+          <div class="proj-group-header">
+            <div class="proj-group-icon" style="background:rgba(123,142,247,0.12);color:#7b8ef7;">🔬</div>
+            <span class="proj-group-name">Génomique &amp; Transcriptomique</span>
+            <div class="proj-group-line"></div>
+          </div>
+
+          <div class="project-item">
+            <div class="proj-meta">
+              <span class="proj-year">2023–24</span>
+              <span class="proj-ctx">Master · Bordeaux</span>
+              <span class="proj-data">WGS · ADN</span>
+            </div>
+            <div class="project-body">
+              <h3>Functional Genomics Pipeline</h3>
+              <p>Pipeline complet : assemblage génomique, annotation fonctionnelle et analyses downstream.</p>
+              <div class="project-chips">
+                <span class="chip">GATK</span>
+                <span class="chip">Docker</span>
+                <span class="chip">Nextflow</span>
+                <span class="chip">Python</span>
+              </div>
+            </div>
+            <a href="#" class="project-link">GitHub →</a>
+          </div>
+
+          <div class="project-item">
+            <div class="proj-meta">
+              <span class="proj-year">2025–26</span>
+              <span class="proj-ctx">VSC · IFREMER</span>
+              <span class="proj-data">ARNm · RNA-seq</span>
+            </div>
+            <div class="project-body">
+              <h3>De Novo Transcriptome — Crevettes</h3>
+              <p>Assemblage et annotation de transcriptomes pour analyses d'expression génique.</p>
+              <div class="project-chips">
+                <span class="chip">Trinity</span>
+                <span class="chip">Bash</span>
+                <span class="chip">Python</span>
+                <span class="chip">RNA-seq</span>
+              </div>
+            </div>
+            <a href="#" class="project-link">GitHub →</a>
+          </div>
+
+        </div>
+        <!-- /.proj-group genomics -->
+
+        <!-- GROUPE Data & Viz -->
+        <div class="proj-group" data-group="dataviz" style="max-width:1100px;width:100%;">
+          <div class="proj-group-header">
+            <div class="proj-group-icon" style="background:rgba(246,169,78,0.12);color:#f6a94e;">📊</div>
+            <span class="proj-group-name">Data &amp; Visualisation</span>
+            <div class="proj-group-line"></div>
+          </div>
+
+          <div class="project-item">
+            <div class="proj-meta">
+              <span class="proj-year">2024</span>
+              <span class="proj-ctx">VSC · IFREMER</span>
+              <span class="proj-data">Physico-chimie · Séries temporelles</span>
+            </div>
+            <div class="project-body">
+              <h3>Dashboard — Qualité de l'eau</h3>
+              <p>Traitement et visualisation des paramètres physiques de bassins d'élevage ; dashboard interactif pour suivi en temps réel.</p>
+              <div class="project-chips">
+                <span class="chip">Python</span>
+                <span class="chip">Quarto</span>
+                <span class="chip">Plotly</span>
+              </div>
+            </div>
+            <a href="#" class="project-link">GitHub →</a>
+          </div>
+
+        </div>
+        <!-- /.proj-group dataviz -->
+
+        <!-- GROUPE Machine Learning -->
+        <div class="proj-group" data-group="ml" style="max-width:1100px;width:100%;">
+          <div class="proj-group-header">
+            <div class="proj-group-icon" style="background:rgba(224,124,181,0.12);color:#e07cb5;">🤖</div>
+            <span class="proj-group-name">Machine Learning</span>
+            <div class="proj-group-line"></div>
+          </div>
+
+          <div class="project-item">
+            <div class="proj-meta">
+              <span class="proj-year">2023</span>
+              <span class="proj-ctx">Master · Bordeaux</span>
+              <span class="proj-data">Images · Séquences</span>
+            </div>
+            <div class="project-body">
+              <h3>Master AI Project</h3>
+              <p>Modèle CNN pour la classification de données biologiques — entraînement, validation et interprétation des résultats.</p>
+              <div class="project-chips">
+                <span class="chip">Python</span>
+                <span class="chip">CNN</span>
+                <span class="chip">TensorFlow</span>
+              </div>
+            </div>
+            <a href="#" class="project-link">GitHub →</a>
+          </div>
+
+        </div>
+        <!-- /.proj-group ml -->
+
       </div>
-
-      <!-- GROUPE Data & Viz -->
-      <div class="proj-group" data-group="dataviz" style="max-width:1100px;width:100%;">
-        <div class="proj-group-header">
-          <div class="proj-group-icon" style="background:rgba(246,169,78,0.12);color:#f6a94e;">📊</div>
-          <span class="proj-group-name">Data &amp; Visualisation</span>
-          <div class="proj-group-line"></div>
-        </div>
-
-        <div class="project-item">
-          <div class="proj-meta">
-            <span class="proj-year">2024</span>
-            <span class="proj-ctx">VSC · IFREMER</span>
-            <span class="proj-data">Physico-chimie · Séries temporelles</span>
-          </div>
-
-          <div class="project-body">
-            <h3>Dashboard — Qualité de l'eau</h3>
-            <p>Traitement et visualisation des paramètres physiques de bassins d'élevage ; dashboard interactif pour suivi en temps réel.</p>
-            <div class="project-chips">
-              <span class="chip">Python</span>
-              <span class="chip">Quarto</span>
-              <span class="chip">Plotly</span>
-            </div>
-          </div>
-
-          <a href="#" class="project-link">GitHub →</a>
-        </div>
-      </div>
-
-      <!-- GROUPE Machine Learning -->
-      <div class="proj-group" data-group="ml" style="max-width:1100px;width:100%;">
-        <div class="proj-group-header">
-          <div class="proj-group-icon" style="background:rgba(224,124,181,0.12);color:#e07cb5;">🤖</div>
-          <span class="proj-group-name">Machine Learning</span>
-          <div class="proj-group-line"></div>
-        </div>
-
-        <div class="project-item">
-          <div class="proj-meta">
-            <span class="proj-year">2023</span>
-            <span class="proj-ctx">Master · Bordeaux</span>
-            <span class="proj-data">Images · Séquences</span>
-          </div>
-
-          <div class="project-body">
-            <h3>Master AI Project</h3>
-            <p>Modèle CNN pour la classification de données biologiques — entraînement, validation et interprétation des résultats.</p>
-            <div class="project-chips">
-              <span class="chip">Python</span>
-              <span class="chip">CNN</span>
-              <span class="chip">TensorFlow</span>
-            </div>
-          </div>
-
-          <a href="#" class="project-link">GitHub →</a>
-        </div>
-      </div>
-
     </div>
-  </div>
-</section>
+  </section>
 
   <!-- ── Séparateur Contact ── -->
   <div class="section-sep">
@@ -1453,10 +1373,9 @@ footer {
       <!-- Contact card -->
       <div class="contact-card">
         <h2>Contacts</h2>
-
-        <a href="/cdn-cgi/l/email-protection#f5989499999a878cdb9990969a878790c0c3b59298949c99db969a98" class="contact-item">
+        <a href="/cdn-cgi/l/email-protection#c3aea2afafacb1baedafa6a0acb1b1a6f6f583a4aea2aaafeda0acae" class="contact-item">
           <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          <span class="__cf_email__" data-cfemail="9af7fbf6f6f5e8e3b4f6fff9f5e8e8ffafacdafdf7fbf3f6b4f9f5f7">mallory.lecorre56@gmail.com</span>
+          <span class="__cf_email__" data-cfemail="8de0ece1e1e2fff4a3e1e8eee2ffffe8b8bbcdeae0ece4e1a3eee2e0">[email&#160;protected]</span>
         </a>
 
         <div class="contact-divider"></div>
@@ -1482,23 +1401,12 @@ footer {
     </div>
   </section>
 
-<!-- ═══ DNA STRIP ═══ -->
-<div class="dna"></div>
+
+
+</div>
+<!-- /.ocean-zone -->
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-/* ── Project filters ── */
-function setFilter(cat, btn) {
-  document.querySelectorAll('.proj-filter').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('.proj-group').forEach(g => {
-    if (cat === 'all' || g.dataset.group === cat) {
-      g.classList.remove('hidden');
-    } else {
-      g.classList.add('hidden');
-    }
-  });
-}
-
 /* ── Accordion ── */
 function toggleAcc(btn) {
   const body = btn.nextElementSibling;
@@ -1523,8 +1431,13 @@ function toggleAcc(btn) {
 }
 
 /* ── Bulles ── */
+const riseStyle = document.createElement('style');
+riseStyle.textContent = `@keyframes rise { 0% { transform:translateY(0) scale(0.5);opacity:0; } 5% { opacity:0.5; } 90% { opacity:0.3; } 100% { transform:translateY(var(--rise)) scale(1);opacity:0; } }`;
+document.head.appendChild(riseStyle);
+
 function createBubble() {
   const oceanZone = document.querySelector('.ocean-zone');
+  if (!oceanZone) return;
   const oceanH = oceanZone.offsetHeight;
   const bubble = document.createElement('div');
   bubble.classList.add('bubble');
@@ -1538,9 +1451,6 @@ function createBubble() {
   oceanZone.appendChild(bubble);
   setTimeout(() => bubble.remove(), duration * 1000 + 200);
 }
-const styleSheet = document.createElement('style');
-styleSheet.textContent = `@keyframes rise { 0% { transform:translateY(0) scale(0.5);opacity:0; } 5% { opacity:0.5; } 90% { opacity:0.3; } 100% { transform:translateY(var(--rise)) scale(1);opacity:0; } }`;
-document.head.appendChild(styleSheet);
 setInterval(createBubble, 700);
 
 /* ── Poissons ── */
@@ -1628,6 +1538,10 @@ const observer = new IntersectionObserver((entries) => {
       });
     }
   });
-}, { threshold: 0.6 });
+}, { threshold: 0.4 });
 
 sections.forEach(section => observer.observe(section));
+</script>
+
+</body>
+</html>

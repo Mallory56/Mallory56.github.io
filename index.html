@@ -158,15 +158,23 @@ nav {
   background-clip: text;
   animation: heroFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.25s both;
 }
-
+  
 .hero-title {
   font-family: 'Lora', serif;
   font-style: italic;
   font-size: clamp(1rem, 2.5vw, 1.4rem);
-  color: rgba(255,255,255,0.55);
   margin: 0 0 2.2rem;
   letter-spacing: 0.02em;
   animation: heroFadeUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.45s both;
+
+  /* Couleur verre / bleu dégradé */
+  background: linear-gradient(90deg, rgba(79,209,197,0.8), rgba(79,209,197,0.4));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  
+  /* Optionnel : léger glow pour faire ressortir */
+  text-shadow: 0 0 6px rgba(79,209,197,0.3);
 }
 
 .hero-tagline {

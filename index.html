@@ -1031,27 +1031,45 @@ footer {
 
   <!-- ─── ABOUT ─── -->
   <section id="about">
-    <div class="about-wrapper">
-      <div class="timeline-block">
-        <div class="tl-intro">
-          <p class="section-label">Background</p>
-          <h2 class="section-title">Éducation &amp;<br>Expériences</h2>
-          <p style="font-family:'Lora',serif; color:rgba(255,255,255,0.4); font-size:0.85rem; font-style:italic; max-width:300px; line-height:1.85; margin-bottom:1.8rem;">
-            After studying marine biology, I completed a master’s in bioinformatics, specializing in omics and NGS data analysis, applying these skills to marine research,
-          </p>
-        </div>
+  <div class="about-wrapper">
 
-       <div class="timeline">
+    <!-- Intro / paragraphe -->
+    <div class="tl-intro">
+      <p class="section-label">Background</p>
+      <h2 class="section-title">Éducation &amp;<br>Expériences</h2>
+      <p style="font-family:'Lora',serif; color:rgba(255,255,255,0.4); font-size:0.85rem; font-style:italic; max-width:500px; line-height:1.85; margin-bottom:2rem;">
+        After studying marine biology, I completed a master’s in bioinformatics, specializing in omics and NGS data analysis, applying these skills to marine research and conservation.
+      </p>
+    </div>
+
+    <div class="timeline-wrapper" style="display:flex; gap:3rem; flex-wrap:wrap; justify-content:center;">
+
+      <!-- Formation / Education -->
+      <div class="timeline-education" style="flex:1; min-width:300px;">
+        <p class="timeline-section-label">Education</p>
+        <div class="timeline">
           <div class="tl-item">
-            <p class="tl-year">2021</p>
-            <p class="tl-title">Les Petits Débrouillards</p>
-            <p class="tl-sub">Scientific communication diploma · Hands-on activities in schools and science festivals</p>
+            <p class="tl-year">2018 – 2021</p>
+            <p class="tl-title">B.Sc. Marine Biology</p>
+            <p class="tl-sub">Université de Nantes, France · Erasmus 6 months at University of Bergen, Norway</p>
           </div>
           <div class="tl-item">
             <p class="tl-year">2022 – 2024</p>
             <p class="tl-title">M.Sc. Bioinformatics · From Genome to Ecosystem</p>
             <p class="tl-sub">Université de Bordeaux · Bordeaux, France · Focus on omics data and marine ecology</p>
           </div>
+          <div class="tl-item">
+            <p class="tl-year">2021</p>
+            <p class="tl-title">Les Petits Débrouillards</p>
+            <p class="tl-sub">Scientific communication diploma · Hands-on activities in schools and science festivals</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Parcours professionnel / Professional experience -->
+      <div class="timeline-professional" style="flex:1; min-width:300px;">
+        <p class="timeline-section-label">Professional Experience</p>
+        <div class="timeline">
           <div class="tl-item">
             <p class="tl-year">2024</p>
             <p class="tl-title">Research apprenticeship</p>
@@ -1064,8 +1082,10 @@ footer {
           </div>
         </div>
       </div>
+
     </div>
-  </section>
+  </div>
+</section>
   <!-- /.about -->
 
   <!-- ── Séparateur Skills ── -->

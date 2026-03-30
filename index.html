@@ -1,4 +1,4 @@
-c<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
@@ -105,6 +105,12 @@ nav {
 .nav-links a:hover { color: white; }
 .nav-links a:hover::after { width: 100%; }
 
+/* ─── HERO ANIMATIONS ────────────────────────── */
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 /* ─── HERO ───────────────────────────────────── */
 #home {
   min-height: 100vh;
@@ -128,6 +134,7 @@ nav {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  animation: heroFadeUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.1s both;
 }
 .hero-eyebrow::before,
 .hero-eyebrow::after {
@@ -149,6 +156,7 @@ nav {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  animation: heroFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.25s both;
 }
 
 .hero-title {
@@ -158,6 +166,7 @@ nav {
   color: rgba(255,255,255,0.55);
   margin: 0 0 2.2rem;
   letter-spacing: 0.02em;
+  animation: heroFadeUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.45s both;
 }
 
 .hero-tagline {
@@ -168,6 +177,7 @@ nav {
   max-width: 480px;
   line-height: 1.8;
   margin: 0 auto 2.8rem;
+  animation: heroFadeUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.62s both;
 }
 
 .hero-pills {
@@ -233,55 +243,6 @@ nav {
   background: rgba(255,255,255,0.08);
 }
 
-/* ─── SCROLL INDICATOR ───────────────────────── */
-.scroll-indicator {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.4rem;
-  z-index: 20;
-  opacity: 0.5;
-  animation: fadeInDown 1.2s 1s ease both;
-}
-@keyframes fadeInDown {
-  from { opacity: 0; transform: translateX(-50%) translateY(-10px); }
-  to   { opacity: 0.5; transform: translateX(-50%) translateY(0); }
-}
-
-.scroll-indicator span {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.55rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.5);
-}
-
-.scroll-mouse {
-  width: 20px; height: 32px;
-  border: 1.5px solid rgba(255,255,255,0.4);
-  border-radius: 10px;
-  position: relative;
-}
-.scroll-mouse::after {
-  content: '';
-  position: absolute;
-  top: 5px; left: 50%;
-  transform: translateX(-50%);
-  width: 3px; height: 6px;
-  background: rgba(255,255,255,0.6);
-  border-radius: 2px;
-  animation: scrollDot 1.6s ease-in-out infinite;
-}
-@keyframes scrollDot {
-  0%   { opacity: 1; transform: translateX(-50%) translateY(0); }
-  80%  { opacity: 0; transform: translateX(-50%) translateY(12px); }
-  100% { opacity: 0; transform: translateX(-50%) translateY(0); }
-}
-
 /* ─── SECTION SEPARATOR LINE ─────────────────── */
 .section-sep {
   display: flex;
@@ -306,7 +267,6 @@ nav {
 
 /* ─── GENERIC SECTION ────────────────────────── */
 section {
-  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -314,7 +274,7 @@ section {
   text-align: center;
   position: relative;
   z-index: 10;
-  padding: 6rem 1rem 3rem;
+  padding: 5rem 1rem 3rem;
 }
 
 .section-label {
@@ -454,14 +414,6 @@ section {
   line-height: 1.5;
 }
 
-/* ─── ABOUT GRID ─────────────────────────────── */
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-}
-@media (max-width: 640px) { .about-grid { grid-template-columns: 1fr; } }
-
 /* ─── SKILLS ─────────────────────────────────── */
 .skills-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; text-align: left; }
 
@@ -487,6 +439,21 @@ section {
   border-radius: 50%;
   background: var(--teal);
   flex-shrink: 0;
+}
+
+/* ─── SKILLS SECTION WRAPPER ─────────────────── */
+.skills-section-wrapper {
+  max-width: 1100px;
+  width: 95%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+@media (max-width: 768px) {
+  .skills-section-wrapper {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ─── ACCORDION ──────────────────────────────── */
@@ -569,6 +536,10 @@ section {
   color: rgba(255,255,255,0.6);
 }
 
+.accordion-body-inner .skills-grid {
+  margin-top: 0.2rem;
+}
+
 .acc-tag {
   display: inline-block;
   background: rgba(79,209,197,0.1);
@@ -599,7 +570,6 @@ section {
 
 .projects-list { display: flex; flex-direction: column; gap: 1rem; }
 
-/* Card redesign — vertical, aérée, titre en avant */
 .project-item {
   display: flex;
   flex-direction: column;
@@ -620,7 +590,6 @@ section {
   box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(79,209,197,0.08);
 }
 
-/* Ligne du haut : méta compacte sur une seule ligne */
 .proj-meta {
   display: flex;
   align-items: center;
@@ -654,7 +623,6 @@ section {
   color: rgba(255,255,255,0.2);
 }
 
-/* Corps principal */
 .project-body {
   padding: 1.4rem 1.6rem 0.8rem;
 }
@@ -685,7 +653,6 @@ section {
   padding-left: 1.1rem;
 }
 .project-body ul li { margin-bottom: 0.2rem; }
-/* Premier ul = description principale, plus visible */
 .project-body ul:first-of-type {
   color: rgba(255,255,255,0.78);
   font-size: 0.88rem;
@@ -694,11 +661,8 @@ section {
   padding-left: 0;
   margin-bottom: 0.6rem;
 }
-.project-body ul:first-of-type li::before {
-  content: none;
-}
+.project-body ul:first-of-type li::before { content: none; }
 
-/* Pied de carte : chips + lien sur la même ligne */
 .project-footer {
   display: flex;
   align-items: center;
@@ -741,7 +705,6 @@ section {
 
 /* ─── PROJECT GROUPS ─────────────────────────── */
 .proj-group { margin-bottom: 2.5rem; }
-.proj-group.hidden { display: none; }
 
 .proj-group-header {
   display: flex;
@@ -907,6 +870,21 @@ footer {
   pointer-events: none;
   animation: drift linear infinite;
 }
+
+/* SVG clouds layered on top */
+.cloud-svg {
+  position: absolute;
+  pointer-events: none;
+  animation: driftCloud linear infinite;
+  opacity: 0;
+  filter: blur(3px);
+}
+@keyframes driftCloud {
+  0%   { transform: translateX(-450px); opacity: 0; }
+  8%   { opacity: 1; }
+  88%  { opacity: 1; }
+  100% { transform: translateX(115vw); opacity: 0; }
+}
 @keyframes drift {
   0%   { transform: translateX(-200px); }
   100% { transform: translateX(110vw); }
@@ -966,13 +944,50 @@ footer {
 <!-- ═══ ZONE CIEL ═══ -->
 <div class="sky-zone" id="sky-wrapper" style="position:relative; overflow:hidden;">
 
+  <!-- Nuages statiques visibles dès le chargement -->
+  <div class="cloud-svg" style="width:420px; top:12%; animation-duration:60s; animation-delay:-10s;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" style="opacity:0.28;">
+      <ellipse cx="100" cy="60" rx="90" ry="22" fill="white"/>
+      <ellipse cx="70" cy="48" rx="45" ry="30" fill="white"/>
+      <ellipse cx="120" cy="44" rx="40" ry="28" fill="white"/>
+      <ellipse cx="95" cy="38" rx="35" ry="25" fill="white"/>
+      <ellipse cx="148" cy="54" rx="28" ry="18" fill="white"/>
+      <ellipse cx="48" cy="56" rx="25" ry="16" fill="white"/>
+    </svg>
+  </div>
+  <div class="cloud-svg" style="width:280px; top:28%; animation-duration:75s; animation-delay:-28s;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 55" style="opacity:0.22;">
+      <ellipse cx="70" cy="42" rx="60" ry="15" fill="white"/>
+      <ellipse cx="55" cy="32" rx="30" ry="22" fill="white"/>
+      <ellipse cx="88" cy="28" rx="28" ry="20" fill="white"/>
+      <ellipse cx="110" cy="38" rx="20" ry="14" fill="white"/>
+    </svg>
+  </div>
+  <div class="cloud-svg" style="width:520px; top:7%; animation-duration:88s; animation-delay:-45s;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 65" style="opacity:0.25;">
+      <ellipse cx="120" cy="50" rx="110" ry="17" fill="white"/>
+      <ellipse cx="80" cy="38" rx="50" ry="26" fill="white"/>
+      <ellipse cx="140" cy="34" rx="45" ry="24" fill="white"/>
+      <ellipse cx="185" cy="44" rx="32" ry="18" fill="white"/>
+      <ellipse cx="50" cy="46" rx="28" ry="16" fill="white"/>
+      <ellipse cx="115" cy="28" rx="30" ry="18" fill="white"/>
+    </svg>
+  </div>
+  <div class="cloud-svg" style="width:360px; top:40%; animation-duration:55s; animation-delay:-18s;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" style="opacity:0.18;">
+      <ellipse cx="100" cy="60" rx="90" ry="22" fill="white"/>
+      <ellipse cx="70" cy="48" rx="45" ry="30" fill="white"/>
+      <ellipse cx="120" cy="44" rx="40" ry="28" fill="white"/>
+      <ellipse cx="95" cy="38" rx="35" ry="25" fill="white"/>
+      <ellipse cx="148" cy="54" rx="28" ry="18" fill="white"/>
+    </svg>
+  </div>
+
   <section id="home">
     <div class="hero-eyebrow">Bio-informatique marine</div>
     <h1 class="hero-name">Mallory<br>Le Corre</h1>
     <p class="hero-title">Bio-informaticienne &amp; Omique marine</p>
-    <p class="hero-tagline">
-      Séquences · Écosystèmes · Données
-    </p>
+    <p class="hero-tagline">Séquences · Écosystèmes · Données</p>
   </section>
 
   <!-- Vague -->
@@ -984,8 +999,8 @@ footer {
     </svg>
   </div>
 
-</div>
-<!-- /.sky-zone -->
+</div><!-- /.sky-zone -->
+
 
 <!-- ═══ ZONE OCÉAN ═══ -->
 <div class="ocean-zone">
@@ -1036,141 +1051,174 @@ footer {
       </div>
     </div>
   </section>
+  <!-- /.about -->
 
-
-
-
-
-
-
-
- <!-- ── Separator ── -->
-<div class="section-sep" style="margin-top:-2rem;">
-  <span class="sep-dot"></span>
-  <div class="sep-line"></div>
-</div>
-
-<!-- ─── SKILLS ─── -->
-<!-- SKILLS -->
-<div class="glass-card">
-  <h2>
-    <svg viewBox="0 0 24 24">
-      <circle cx="12" cy="8" r="3"/>
-      <path d="M6 20v-1a6 6 0 0 1 12 0v1"/>
-    </svg>
-    Skills
-  </h2>
-
-  <!-- Languages -->
-  <div style="margin-bottom:1.2rem;">
-    <div class="label-mono">Languages</div>
-    <div class="skills-grid">
-      <span class="skill-tag"><span class="skill-dot"></span>Python</span>
-      <span class="skill-tag"><span class="skill-dot"></span>R</span>
-      <span class="skill-tag"><span class="skill-dot"></span>Bash</span>
-      <span class="skill-tag"><span class="skill-dot"></span>SQL</span>
+  <!-- ── Séparateur Skills ── -->
+  <div style="padding: 0 0 1rem;">
+    <div class="section-sep">
+      <span class="sep-dot"></span>
+      <div class="sep-line"></div>
     </div>
   </div>
 
-  <!-- Data & Analysis -->
-  <div style="margin-bottom:1.2rem;">
-    <div class="label-mono">Data & Analysis</div>
-    <div class="skills-grid">
-      <span class="skill-tag"><span class="skill-dot"></span>Statistical analysis</span>
-      <span class="skill-tag"><span class="skill-dot"></span>Multivariate analysis</span>
-      <span class="skill-tag"><span class="skill-dot"></span>Machine learning</span>
-      <span class="skill-tag"><span class="skill-dot"></span>Data visualization</span>
-    </div>
-  </div>
+  <!-- ─── SKILLS ─── -->
+  <section id="skills">
+    <div class="skills-section-wrapper">
 
-  <!-- Workflow & Development -->
-  <div style="margin-bottom:1.2rem;">
-    <div class="label-mono">Workflow & Development</div>
-    <div class="skills-grid">
-      <span class="skill-tag"><span class="skill-dot"></span>Pipeline development</span>
-      <span class="skill-tag"><span class="skill-dot"></span>Version management (Git)</span>
-      <span class="skill-tag"><span class="skill-dot"></span>Analysis automation</span>
-    </div>
-  </div>
+      <!-- Skills card -->
+      <div class="accordion-card">
+        <h2>
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="8" r="3"/>
+            <path d="M6 20v-1a6 6 0 0 1 12 0v1"/>
+          </svg>
+          Skills
+        </h2>
 
-  <!-- Biology & Ecology -->
-  <div>
-    <div class="label-mono">Biology & Ecology</div>
-    <div class="skills-grid">
-      <span class="skill-tag"><span class="skill-dot"></span>Phylogeny</span>
-      <span class="skill-tag"><span class="skill-dot"></span>Population genetics</span>
-      <span class="skill-tag"><span class="skill-dot"></span>Marine ecology</span>
-      <span class="skill-tag"><span class="skill-dot"></span>Behavioral ecology</span>
-      <span class="skill-tag"><span class="skill-dot"></span>Ecophysiology</span>
-      <span class="skill-tag"><span class="skill-dot"></span>Biodiversity assessment</span>
-    </div>
-  </div>
-</div>
+        <!-- Languages -->
+        <div class="accordion-item">
+          <button class="accordion-btn" onclick="toggleAcc(this)" aria-expanded="false">
+            <span class="acc-label">Languages</span>
+            <span class="acc-icon">
+              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <div class="skills-grid">
+                <span class="skill-tag"><span class="skill-dot"></span>Python</span>
+                <span class="skill-tag"><span class="skill-dot"></span>R</span>
+                <span class="skill-tag"><span class="skill-dot"></span>Bash</span>
+                <span class="skill-tag"><span class="skill-dot"></span>SQL</span>
+              </div>
+            </div>
+          </div>
+        </div>
 
+        <!-- Data & Analysis -->
+        <div class="accordion-item">
+          <button class="accordion-btn" onclick="toggleAcc(this)" aria-expanded="false">
+            <span class="acc-label">Data &amp; Analysis</span>
+            <span class="acc-icon">
+              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <div class="skills-grid">
+                <span class="skill-tag"><span class="skill-dot"></span>Statistical analysis</span>
+                <span class="skill-tag"><span class="skill-dot"></span>Multivariate analysis</span>
+                <span class="skill-tag"><span class="skill-dot"></span>Machine learning</span>
+                <span class="skill-tag"><span class="skill-dot"></span>Data visualization</span>
+              </div>
+            </div>
+          </div>
+        </div>
 
+        <!-- Workflow & Development -->
+        <div class="accordion-item">
+          <button class="accordion-btn" onclick="toggleAcc(this)" aria-expanded="false">
+            <span class="acc-label">Workflow &amp; Development</span>
+            <span class="acc-icon">
+              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <div class="skills-grid">
+                <span class="skill-tag"><span class="skill-dot"></span>Pipeline development</span>
+                <span class="skill-tag"><span class="skill-dot"></span>Version management (Git)</span>
+                <span class="skill-tag"><span class="skill-dot"></span>Analysis automation</span>
+              </div>
+            </div>
+          </div>
+        </div>
 
+        <!-- Biology & Ecology -->
+        <div class="accordion-item">
+          <button class="accordion-btn" onclick="toggleAcc(this)" aria-expanded="false">
+            <span class="acc-label">Biology &amp; Ecology</span>
+            <span class="acc-icon">
+              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              <div class="skills-grid">
+                <span class="skill-tag"><span class="skill-dot"></span>Phylogeny</span>
+                <span class="skill-tag"><span class="skill-dot"></span>Population genetics</span>
+                <span class="skill-tag"><span class="skill-dot"></span>Marine ecology</span>
+                <span class="skill-tag"><span class="skill-dot"></span>Behavioral ecology</span>
+                <span class="skill-tag"><span class="skill-dot"></span>Ecophysiology</span>
+                <span class="skill-tag"><span class="skill-dot"></span>Biodiversity assessment</span>
+              </div>
+            </div>
+          </div>
+        </div>
 
+      </div>
 
+      <!-- Omics accordion card -->
+      <div class="accordion-card">
+        <h2>
+          <svg viewBox="0 0 24 24">
+            <path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/>
+          </svg>
+          Omics Expertise
+        </h2>
 
-            
-    <!-- OMIQUES / TECHNICAL -->
-    <div class="accordion-card">
-      <h2>
-        <svg viewBox="0 0 24 24">
-          <path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/>
-        </svg>
-        Omics Expertise
-      </h2>
+        <div class="accordion-item">
+          <button class="accordion-btn" onclick="toggleAcc(this)" aria-expanded="false">
+            <span class="acc-label">Metabarcoding</span>
+            <span class="acc-icon">
+              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              Microbial and eukaryotic diversity analysis including QC, denoising (DADA2), dereplication (vsearch) and taxonomic assignment.
+              <div style="margin-top:0.8rem;">
+                <span class="acc-tag">16S</span>
+                <span class="acc-tag">18S</span>
+                <span class="acc-tag">ITS</span>
+              </div>
+            </div>
+          </div>
+        </div>
 
-      <!-- Metabarcoding -->
-      <div class="accordion-item">
-        <button class="accordion-btn" onclick="toggleAcc(this)">
-          <span class="acc-label">Metabarcoding</span>
-        </button>
-        <div class="accordion-body">
-          <div class="accordion-body-inner">
-            Microbial and eukaryotic diversity analysis including QC, denoising (DADA2), dereplication (vsearch) and taxonomic assignment.
+        <div class="accordion-item">
+          <button class="accordion-btn" onclick="toggleAcc(this)" aria-expanded="false">
+            <span class="acc-label">Transcriptomics</span>
+            <span class="acc-icon">
+              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              De novo assembly, quantification and differential expression analysis.
+            </div>
+          </div>
+        </div>
 
-            <div style="margin-top:0.8rem;">
-              <span class="acc-tag">16S</span>
-              <span class="acc-tag">18S</span>
-              <span class="acc-tag">ITS</span>
+        <div class="accordion-item">
+          <button class="accordion-btn" onclick="toggleAcc(this)" aria-expanded="false">
+            <span class="acc-label">Genomics</span>
+            <span class="acc-icon">
+              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              Genome assembly, functional annotation and automated pipelines.
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Transcriptomics -->
-      <div class="accordion-item">
-        <button class="accordion-btn" onclick="toggleAcc(this)">
-          <span class="acc-label">Transcriptomics</span>
-        </button>
-        <div class="accordion-body">
-          <div class="accordion-body-inner">
-            De novo assembly, quantification and differential expression analysis.
-          </div>
-        </div>
-      </div>
-
-      <!-- Genomics -->
-      <div class="accordion-item">
-        <button class="accordion-btn" onclick="toggleAcc(this)">
-          <span class="acc-label">Genomics</span>
-        </button>
-        <div class="accordion-body">
-          <div class="accordion-body-inner">
-            Genome assembly, functional annotation and automated pipelines.
-          </div>
-        </div>
-      </div>
-
     </div>
+  </section>
+  <!-- /.skills -->
 
-  </div>
-</section>
-
-
-  
   <!-- Baleine déco -->
   <div style="display:flex; justify-content:flex-end; align-items:center; padding-right:2rem; z-index:10; position:relative;">
     <img src="image/humpback-whale-isolated-white-background.png" alt="Baleine à bosse"
@@ -1192,7 +1240,7 @@ footer {
         <h2 class="section-title">Projets &amp; Analyses</h2>
 
         <!-- GROUPE Métabarcoding -->
-        <div class="proj-group" data-group="metabarcoding" style="max-width:1100px;width:100%;">
+        <div class="proj-group" data-group="metabarcoding">
           <div class="proj-group-header">
             <div class="proj-group-icon" style="background:rgba(79,209,197,0.1);">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4fd1c5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4M8 6a4 4 0 0 1 4-4M12 22a4 4 0 0 1-4-4M16 18a4 4 0 0 1-4 4M2 12a4 4 0 0 1 4-4M6 16a4 4 0 0 1-4-4M22 12a4 4 0 0 1-4 4M18 8a4 4 0 0 1 4 4"/></svg>
@@ -1203,17 +1251,13 @@ footer {
 
           <div class="project-item">
             <div class="proj-meta">
-              <span class="proj-year">2024</span>
-              <span class="proj-sep"></span>
-              <span class="proj-ctx">Stage · MIO</span>
-              <span class="proj-sep"></span>
+              <span class="proj-year">2024</span><span class="proj-sep"></span>
+              <span class="proj-ctx">Stage · MIO</span><span class="proj-sep"></span>
               <span class="proj-data">16S · Long &amp; short reads</span>
             </div>
             <div class="project-body">
               <h3>Metabarcoding Long-Reads Pipeline</h3>
-              <ul>
-                <li>Caractérisation taxonomique de la biodiversité microbienne d'effluents liquides tunisiens par séquençage haut débit</li>
-              </ul>
+              <ul><li>Caractérisation taxonomique de la biodiversité microbienne d'effluents liquides tunisiens par séquençage haut débit</li></ul>
               <ul>
                 <li>Développement d'un pipeline automatisé (QC → classification → phyloseq) optimisé pour Nanopore</li>
                 <li>Benchmark de technologies de séquençage : Nanopore vs Illumina vs PacBio</li>
@@ -1222,12 +1266,7 @@ footer {
             </div>
             <div class="project-footer">
               <div class="project-chips">
-                <span class="chip">16S</span>
-                <span class="chip">Nanopore</span>
-                <span class="chip">Illumina</span>
-                <span class="chip">PacBio</span>
-                <span class="chip">Bash</span>
-                <span class="chip">R</span>
+                <span class="chip">16S</span><span class="chip">Nanopore</span><span class="chip">Illumina</span><span class="chip">PacBio</span><span class="chip">Bash</span><span class="chip">R</span>
               </div>
               <a href="#" class="project-link">Voir le code →</a>
             </div>
@@ -1235,17 +1274,13 @@ footer {
 
           <div class="project-item">
             <div class="proj-meta">
-              <span class="proj-year">2025–2026</span>
-              <span class="proj-sep"></span>
-              <span class="proj-ctx">VSC · IFREMER</span>
-              <span class="proj-sep"></span>
+              <span class="proj-year">2025–2026</span><span class="proj-sep"></span>
+              <span class="proj-ctx">VSC · IFREMER</span><span class="proj-sep"></span>
               <span class="proj-data">16S-18S-ITS-Arch · Illumina · Sédiments</span>
             </div>
             <div class="project-body">
               <h3>Metabarcoding — Sédiment</h3>
-              <ul>
-                <li>Temporal analysis of microbial communities in the sediment of a commercial shrimp farm to assess community dynamics driven by both environmental factors, such as marine heatwaves, and aquaculture-related changes.</li>
-              </ul>
+              <ul><li>Temporal analysis of microbial communities in the sediment of a commercial shrimp farm to assess community dynamics driven by both environmental factors, such as marine heatwaves, and aquaculture-related changes.</li></ul>
               <ul>
                 <li>Sample preparation (grinding) and DNA extraction</li>
                 <li>Data processing (QC → taxonomic classification)</li>
@@ -1254,14 +1289,7 @@ footer {
             </div>
             <div class="project-footer">
               <div class="project-chips">
-                <span class="chip">16S</span>
-                <span class="chip">Eukaryote</span>
-                <span class="chip">Archée</span>
-                <span class="chip">Fungi</span>
-                <span class="chip">Illumina</span>
-                <span class="chip">R</span>
-                <span class="chip">Python</span>
-                <span class="chip">Bash</span>
+                <span class="chip">16S</span><span class="chip">Eukaryote</span><span class="chip">Archée</span><span class="chip">Fungi</span><span class="chip">Illumina</span><span class="chip">R</span><span class="chip">Python</span><span class="chip">Bash</span>
               </div>
               <a href="#" class="project-link">Voir le code →</a>
             </div>
@@ -1269,38 +1297,26 @@ footer {
 
           <div class="project-item">
             <div class="proj-meta">
-              <span class="proj-year">2026</span>
-              <span class="proj-sep"></span>
-              <span class="proj-ctx">VSC · IFREMER</span>
-              <span class="proj-sep"></span>
+              <span class="proj-year">2026</span><span class="proj-sep"></span>
+              <span class="proj-ctx">VSC · IFREMER</span><span class="proj-sep"></span>
               <span class="proj-data">ITS · Sédiments · PacBio</span>
             </div>
             <div class="project-body">
               <h3>Metabarcoding — Fungi Australie</h3>
-              <ul>
-                <li>Analysis of environmental DNA from Eucalyptus-associated fungi in Australia, focusing on community composition, diversity, and ecological interactions.</li>
-              </ul>
-              <ul>
-                <li>Data processing using a bioinformatics pipeline to analyze various experimental and environmental parameters</li>
-              </ul>
+              <ul><li>Analysis of environmental DNA from Eucalyptus-associated fungi in Australia, focusing on community composition, diversity, and ecological interactions.</li></ul>
+              <ul><li>Data processing using a bioinformatics pipeline to analyze various experimental and environmental parameters</li></ul>
             </div>
             <div class="project-footer">
               <div class="project-chips">
-                <span class="chip">Fungi</span>
-                <span class="chip">PacBio</span>
-                <span class="chip">R</span>
-                <span class="chip">Python</span>
-                <span class="chip">Bash</span>
+                <span class="chip">Fungi</span><span class="chip">PacBio</span><span class="chip">R</span><span class="chip">Python</span><span class="chip">Bash</span>
               </div>
               <a href="#" class="project-link">Voir le code →</a>
             </div>
           </div>
-
-        </div>
-        <!-- /.proj-group metabarcoding -->
+        </div><!-- /.proj-group metabarcoding -->
 
         <!-- GROUPE Génomique & Transcriptomique -->
-        <div class="proj-group" data-group="genomics" style="max-width:1100px;width:100%;">
+        <div class="proj-group" data-group="genomics">
           <div class="proj-group-header">
             <div class="proj-group-icon" style="background:rgba(123,142,247,0.12);">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7b8ef7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
@@ -1311,10 +1327,8 @@ footer {
 
           <div class="project-item">
             <div class="proj-meta">
-              <span class="proj-year">2023–24</span>
-              <span class="proj-sep"></span>
-              <span class="proj-ctx">Master · Bordeaux</span>
-              <span class="proj-sep"></span>
+              <span class="proj-year">2023–24</span><span class="proj-sep"></span>
+              <span class="proj-ctx">Master · Bordeaux</span><span class="proj-sep"></span>
               <span class="proj-data">WGS · ADN</span>
             </div>
             <div class="project-body">
@@ -1323,10 +1337,7 @@ footer {
             </div>
             <div class="project-footer">
               <div class="project-chips">
-                <span class="chip">GATK</span>
-                <span class="chip">Docker</span>
-                <span class="chip">Nextflow</span>
-                <span class="chip">Python</span>
+                <span class="chip">GATK</span><span class="chip">Docker</span><span class="chip">Nextflow</span><span class="chip">Python</span>
               </div>
               <a href="#" class="project-link">GitHub →</a>
             </div>
@@ -1334,10 +1345,8 @@ footer {
 
           <div class="project-item">
             <div class="proj-meta">
-              <span class="proj-year">2025–26</span>
-              <span class="proj-sep"></span>
-              <span class="proj-ctx">VSC · IFREMER</span>
-              <span class="proj-sep"></span>
+              <span class="proj-year">2025–26</span><span class="proj-sep"></span>
+              <span class="proj-ctx">VSC · IFREMER</span><span class="proj-sep"></span>
               <span class="proj-data">ARNm · RNA-seq</span>
             </div>
             <div class="project-body">
@@ -1346,20 +1355,15 @@ footer {
             </div>
             <div class="project-footer">
               <div class="project-chips">
-                <span class="chip">Trinity</span>
-                <span class="chip">Bash</span>
-                <span class="chip">Python</span>
-                <span class="chip">RNA-seq</span>
+                <span class="chip">Trinity</span><span class="chip">Bash</span><span class="chip">Python</span><span class="chip">RNA-seq</span>
               </div>
               <a href="#" class="project-link">GitHub →</a>
             </div>
           </div>
-
-        </div>
-        <!-- /.proj-group genomics -->
+        </div><!-- /.proj-group genomics -->
 
         <!-- GROUPE Data & Viz -->
-        <div class="proj-group" data-group="dataviz" style="max-width:1100px;width:100%;">
+        <div class="proj-group" data-group="dataviz">
           <div class="proj-group-header">
             <div class="proj-group-icon" style="background:rgba(246,169,78,0.12);">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f6a94e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
@@ -1370,10 +1374,8 @@ footer {
 
           <div class="project-item">
             <div class="proj-meta">
-              <span class="proj-year">2024</span>
-              <span class="proj-sep"></span>
-              <span class="proj-ctx">VSC · IFREMER</span>
-              <span class="proj-sep"></span>
+              <span class="proj-year">2024</span><span class="proj-sep"></span>
+              <span class="proj-ctx">VSC · IFREMER</span><span class="proj-sep"></span>
               <span class="proj-data">Physico-chimie · Séries temporelles</span>
             </div>
             <div class="project-body">
@@ -1382,19 +1384,15 @@ footer {
             </div>
             <div class="project-footer">
               <div class="project-chips">
-                <span class="chip">Python</span>
-                <span class="chip">Quarto</span>
-                <span class="chip">Plotly</span>
+                <span class="chip">Python</span><span class="chip">Quarto</span><span class="chip">Plotly</span>
               </div>
               <a href="#" class="project-link">GitHub →</a>
             </div>
           </div>
-
-        </div>
-        <!-- /.proj-group dataviz -->
+        </div><!-- /.proj-group dataviz -->
 
         <!-- GROUPE Machine Learning -->
-        <div class="proj-group" data-group="ml" style="max-width:1100px;width:100%;">
+        <div class="proj-group" data-group="ml">
           <div class="proj-group-header">
             <div class="proj-group-icon" style="background:rgba(224,124,181,0.12);">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e07cb5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg>
@@ -1405,10 +1403,8 @@ footer {
 
           <div class="project-item">
             <div class="proj-meta">
-              <span class="proj-year">2023</span>
-              <span class="proj-sep"></span>
-              <span class="proj-ctx">Master · Bordeaux</span>
-              <span class="proj-sep"></span>
+              <span class="proj-year">2023</span><span class="proj-sep"></span>
+              <span class="proj-ctx">Master · Bordeaux</span><span class="proj-sep"></span>
               <span class="proj-data">Images · Séquences</span>
             </div>
             <div class="project-body">
@@ -1417,20 +1413,17 @@ footer {
             </div>
             <div class="project-footer">
               <div class="project-chips">
-                <span class="chip">Python</span>
-                <span class="chip">CNN</span>
-                <span class="chip">TensorFlow</span>
+                <span class="chip">Python</span><span class="chip">CNN</span><span class="chip">TensorFlow</span>
               </div>
               <a href="#" class="project-link">GitHub →</a>
             </div>
           </div>
-
-        </div>
-        <!-- /.proj-group ml -->
+        </div><!-- /.proj-group ml -->
 
       </div>
     </div>
   </section>
+  <!-- /.projects -->
 
   <!-- ── Séparateur Contact ── -->
   <div class="section-sep">
@@ -1472,13 +1465,11 @@ footer {
       <!-- Contact card -->
       <div class="contact-card">
         <h2>Contacts</h2>
-        <a href="mailto:mallory.lecorre@example.com" class="contact-item">
+        <a href="/cdn-cgi/l/email-protection#abc6cac7c7c4d9d285c7cec8c4d9d9ceebced3cac6dbc7ce85c8c4c6" class="contact-item">
           <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          mallory.lecorre@example.com
+          <span class="__cf_email__" data-cfemail="c6aba7aaaaa9b4bfe8aaa3a5a9b4b4a386a3bea7abb6aaa3e8a5a9ab">[email&#160;protected]</span>
         </a>
-
         <div class="contact-divider"></div>
-
         <div class="contact-socials">
           <a href="#" class="btn-social">
             <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
@@ -1499,11 +1490,11 @@ footer {
 
     </div>
   </section>
+  <!-- /.contact -->
 
-</div>
-<!-- /.ocean-zone -->
+</div><!-- /.ocean-zone -->
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* ── Accordion ── */
 function toggleAcc(btn) {
   const body = btn.nextElementSibling;
@@ -1601,7 +1592,72 @@ function createBiolum() {
 for (let i = 0; i < 40; i++) setTimeout(createBiolum, i * 150);
 setInterval(createBiolum, 800);
 
-/* ── Nuages ── */
+/* ── Nuages SVG ── */
+const cloudShapes = [
+  // Grand nuage bouffi
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80">
+    <ellipse cx="100" cy="60" rx="90" ry="22" fill="white"/>
+    <ellipse cx="70" cy="48" rx="45" ry="30" fill="white"/>
+    <ellipse cx="120" cy="44" rx="40" ry="28" fill="white"/>
+    <ellipse cx="95" cy="38" rx="35" ry="25" fill="white"/>
+    <ellipse cx="148" cy="54" rx="28" ry="18" fill="white"/>
+    <ellipse cx="48" cy="56" rx="25" ry="16" fill="white"/>
+  </svg>`,
+  // Petit nuage léger
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 55">
+    <ellipse cx="70" cy="42" rx="60" ry="15" fill="white"/>
+    <ellipse cx="55" cy="32" rx="30" ry="22" fill="white"/>
+    <ellipse cx="88" cy="28" rx="28" ry="20" fill="white"/>
+    <ellipse cx="110" cy="38" rx="20" ry="14" fill="white"/>
+  </svg>`,
+  // Nuage allongé
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 65">
+    <ellipse cx="120" cy="50" rx="110" ry="17" fill="white"/>
+    <ellipse cx="80" cy="38" rx="50" ry="26" fill="white"/>
+    <ellipse cx="140" cy="34" rx="45" ry="24" fill="white"/>
+    <ellipse cx="185" cy="44" rx="32" ry="18" fill="white"/>
+    <ellipse cx="50" cy="46" rx="28" ry="16" fill="white"/>
+    <ellipse cx="115" cy="28" rx="30" ry="18" fill="white"/>
+  </svg>`,
+];
+
+function createCloudSVG() {
+  const skyZone = document.getElementById('sky-wrapper');
+  if (!skyZone) return;
+  const cloud = document.createElement('div');
+  cloud.classList.add('cloud-svg');
+
+  const shapeIdx = Math.floor(Math.random() * cloudShapes.length);
+  cloud.innerHTML = cloudShapes[shapeIdx];
+
+  // Taille généreuse : 280–520px de large
+  const scale = Math.random() * 1.0 + 1.2;
+  const baseW = [200, 140, 240][shapeIdx] || 200;
+  const w = baseW * scale;
+  cloud.style.width = w + 'px';
+
+  // Position : premier tiers du ciel
+  const skyH = skyZone.offsetHeight;
+  cloud.style.top = (Math.random() * (skyH * 0.48) + 40) + 'px';
+  cloud.style.left = '-450px';
+
+  // Opacité subtile
+  const opacity = Math.random() * 0.12 + 0.18;
+  cloud.querySelector('svg').style.opacity = opacity;
+
+  // Vitesse lente
+  const duration = Math.random() * 50 + 40;
+  cloud.style.animationDuration = duration + 's';
+  cloud.style.animationDelay = (Math.random() * -35) + 's';
+
+  skyZone.appendChild(cloud);
+  setTimeout(() => cloud.remove(), (duration + 5) * 1000);
+}
+
+// Nuages initiaux + intervalle
+for (let i = 0; i < 5; i++) setTimeout(createCloudSVG, i * 2500);
+setInterval(createCloudSVG, 7000);
+
 function createCloud() {
   const skyZone = document.getElementById('sky-wrapper');
   const cloud = document.createElement('div');
@@ -1628,17 +1684,4 @@ const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + entry.target.id) {
-          link.classList.add('active');
-        }
-      });
-    }
-  });
-}, { threshold: 0.4 });
-
-sections.forEach(section => observer.observe(section));
-</script>
-
-</body>
-</html>
+        link.classList.remove

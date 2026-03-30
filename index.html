@@ -45,7 +45,8 @@ body {
 .sky-zone {
   background: linear-gradient(to bottom, #cce8f4, #87CEEB, #4ab8e8, #1E90FF);
   position: relative;
-  overflow: hidden;
+  /* FIX: overflow:hidden retiré pour que la vague soit visible */
+  overflow: visible;
 }
 
 .ocean-zone {
@@ -104,6 +105,8 @@ nav {
 }
 .nav-links a:hover { color: white; }
 .nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: white; }
+.nav-links a.active::after { width: 100%; }
 
 /* ─── HERO ANIMATIONS ────────────────────────── */
 @keyframes heroFadeUp {
@@ -162,35 +165,31 @@ nav {
 .hero-title {
   font-family: 'Lora', serif;
   font-style: italic;
-  font-size: clamp(1.2rem, 3vw, 1.6rem); /* plus gros que l’original */
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
   margin: 0 0 2.2rem;
   letter-spacing: 0.02em;
   animation: heroFadeUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.45s both;
-
-  /* Couleur dégradé bleu/vert plus foncé */
-  background: linear-gradient(90deg, rgba(0,150,130,0.85), rgba(0,150,130,0.6));
+  /* FIX: text-shadow incompatible avec background-clip:text — on utilise un filtre drop-shadow à la place */
+  background: linear-gradient(90deg, rgba(0,150,130,0.95), rgba(0,180,160,0.75));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-
-  /* Légère lueur pour ressortir du background */
-  text-shadow: 0 0 6px rgba(0,150,130,0.3);
+  filter: drop-shadow(0 0 6px rgba(0,150,130,0.4));
 }
 
 .hero-tagline {
   font-family: 'DM Mono', monospace;
-  font-size: 1rem; /* augmenter la taille */
+  font-size: 1rem;
   letter-spacing: 0.12em;
-  color: rgba(255, 255, 255, 0.85); /* texte plus foncé / visible */
-  max-width: 700px; /* laisse respirer le texte */
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 700px;
   line-height: 1.8;
   margin: 0 auto 2.8rem;
   animation: heroFadeUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.62s both;
-  font-weight: 500; /* plus gras = plus lisible */
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* léger relief pour contraste */
+  font-weight: 500;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .hero-tagline {
     font-size: 0.95rem;
@@ -571,11 +570,19 @@ section {
 }
 
 /* ─── WHALE DECO ─────────────────────────────── */
+/* FIX: keyframes whaleFloat manquants — ajoutés */
+@keyframes whaleFloat {
+  0%   { transform: translateY(0px) rotate(-1deg); }
+  50%  { transform: translateY(-12px) rotate(1deg); }
+  100% { transform: translateY(0px) rotate(-1deg); }
+}
+
 .whale-deco {
   animation: whaleFloat 6s ease-in-out infinite;
-  opacity: 0.6; 
+  opacity: 0.6;
   filter: brightness(80%);
 }
+
 /* ─── PROJECTS ───────────────────────────────── */
 .projects-wrapper {
   max-width: 1100px;
@@ -888,7 +895,7 @@ footer {
   animation: drift linear infinite;
 }
 
-/* SVG clouds layered on top */
+/* SVG clouds */
 .cloud-svg {
   position: absolute;
   pointer-events: none;
@@ -907,6 +914,7 @@ footer {
   100% { transform: translateX(110vw); }
 }
 
+/* FIX: waveSlide correctement défini */
 @keyframes waveSlide {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
@@ -958,7 +966,8 @@ footer {
 </nav>
 
 <!-- ═══ ZONE CIEL ═══ -->
-<div class="sky-zone" id="sky-wrapper" style="position:relative; overflow:hidden;">
+<!-- FIX: id="sky-wrapper" + overflow:visible pour que la vague soit visible en bas -->
+<div class="sky-zone" id="sky-wrapper" style="position:relative; overflow:visible;">
 
   <!-- Nuages statiques visibles dès le chargement -->
   <div class="cloud-svg" style="width:420px; top:12%; animation-duration:60s; animation-delay:-10s;">
@@ -1005,8 +1014,8 @@ footer {
     <p class="hero-tagline">Bioinformatician specialized in omics and NGS data, seeking to apply my skills to species conservation, particularly cetaceans, by developing bioinformatics approaches. Interested in science communication and making research accessible to the public.</p>
   </section>
 
-  <!-- Vague -->
-  <div style="position:absolute; bottom:0; left:0; width:100%; height:120px; overflow:hidden; z-index:5; pointer-events:none;">
+  <!-- FIX: z-index élevé + overflow:visible sur le parent pour que la vague soit visible -->
+  <div style="position:absolute; bottom:0; left:0; width:100%; height:120px; overflow:visible; z-index:15; pointer-events:none;">
     <svg viewBox="0 0 2880 120" preserveAspectRatio="none"
          style="position:absolute; bottom:0; left:0; width:200%; height:120px; animation: waveSlide 9s linear infinite;">
       <path fill="#1565C0"
@@ -1036,7 +1045,7 @@ footer {
           <p class="section-label">Background</p>
           <h2 class="section-title">Éducation &amp;<br>Expériences</h2>
           <p style="font-family:'Lora',serif; color:rgba(255,255,255,0.4); font-size:0.85rem; font-style:italic; max-width:300px; line-height:1.85; margin-bottom:1.8rem;">
-            After studying marine biology, I completed a master’s in bioinformatics, specializing in omics and NGS data analysis, applying these skills to marine research,
+            After studying marine biology, I completed a master's in bioinformatics, specializing in omics and NGS data analysis, applying these skills to marine research,
           </p>
         </div>
 
@@ -1045,6 +1054,11 @@ footer {
             <p class="tl-year">2021</p>
             <p class="tl-title">Les Petits Débrouillards</p>
             <p class="tl-sub">Scientific communication diploma · Hands-on activities in schools and science festivals</p>
+          </div>
+          <div class="tl-item">
+            <p class="tl-year">2019-2021</p>
+            <p class="tl-title">Bachelor's degree in Biology</p>
+            <p class="tl-sub">Université Bretagne Sud · Vannes · Include a 6-mounth ERASMUD in ireland</p>
           </div>
           <div class="tl-item">
             <p class="tl-year">2022 – 2024</p>
@@ -1065,7 +1079,6 @@ footer {
       </div>
     </div>
   </section>
-  <!-- /.about -->
 
   <!-- ── Séparateur Skills ── -->
   <div style="padding: 0 0 1rem;">
@@ -1089,7 +1102,6 @@ footer {
           Skills
         </h2>
 
-        <!-- Languages -->
         <div class="accordion-item">
           <button class="accordion-btn" onclick="toggleAcc(this)" aria-expanded="false">
             <span class="acc-label">Languages</span>
@@ -1109,7 +1121,6 @@ footer {
           </div>
         </div>
 
-        <!-- Data & Analysis -->
         <div class="accordion-item">
           <button class="accordion-btn" onclick="toggleAcc(this)" aria-expanded="false">
             <span class="acc-label">Data &amp; Analysis</span>
@@ -1129,7 +1140,6 @@ footer {
           </div>
         </div>
 
-        <!-- Workflow & Development -->
         <div class="accordion-item">
           <button class="accordion-btn" onclick="toggleAcc(this)" aria-expanded="false">
             <span class="acc-label">Workflow &amp; Development</span>
@@ -1148,7 +1158,6 @@ footer {
           </div>
         </div>
 
-        <!-- Biology & Ecology -->
         <div class="accordion-item">
           <button class="accordion-btn" onclick="toggleAcc(this)" aria-expanded="false">
             <span class="acc-label">Biology &amp; Ecology</span>
@@ -1190,11 +1199,14 @@ footer {
           </button>
           <div class="accordion-body">
             <div class="accordion-body-inner">
-              Microbial and eukaryotic diversity analysis including QC, denoising (DADA2), dereplication (vsearch) and taxonomic assignment.
+              Microbial and eukaryotic diversity analysis including Quality Control, reads processing, taxonomic assignment and statistical analysos (biodiversity index, differential analysis, and functionnal annotations.
               <div style="margin-top:0.8rem;">
                 <span class="acc-tag">16S</span>
                 <span class="acc-tag">18S</span>
                 <span class="acc-tag">ITS</span>
+                <span class="acc-tag">Pacbio</span>
+                <span class="acc-tag">Illumina</span>
+                <span class="acc-tag">Nanopore</span>
               </div>
             </div>
           </div>
@@ -1209,7 +1221,11 @@ footer {
           </button>
           <div class="accordion-body">
             <div class="accordion-body-inner">
-              De novo assembly, quantification and differential expression analysis.
+              Control quality, data processing and assembly.
+               <div style="margin-top:0.8rem;">
+                <span class="acc-tag">Illumina</span>
+                <span class="acc-tag">De Novo assembly</span>
+              </div>
             </div>
           </div>
         </div>
@@ -1223,7 +1239,28 @@ footer {
           </button>
           <div class="accordion-body">
             <div class="accordion-body-inner">
-              Genome assembly, functional annotation and automated pipelines.
+              Alignment, variant calling, annotation, visualisation
+              <div style="margin-top:0.8rem;">
+                <span class="acc-tag">Illumina</span>
+                <span class="acc-tag">mtDNA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+        <div class="accordion-item">
+          <button class="accordion-btn" onclick="toggleAcc(this)" aria-expanded="false">
+            <span class="acc-label">Phylogenetic</span>
+            <span class="acc-icon">
+              <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-body-inner">
+              Pcr sequence processing, alignment, visualisation
+              <div style="margin-top:0.8rem;">
+                <span class="acc-tag">Meta</span>
+                <span class="acc-tag">tree construction</span>
             </div>
           </div>
         </div>
@@ -1231,7 +1268,6 @@ footer {
 
     </div>
   </section>
-  <!-- /.skills -->
 
   <!-- Baleine déco -->
   <div style="display:flex; justify-content:flex-end; align-items:center; padding-right:2rem; z-index:10; position:relative;">
@@ -1327,7 +1363,7 @@ footer {
               <a href="#" class="project-link">Voir le code →</a>
             </div>
           </div>
-        </div><!-- /.proj-group metabarcoding -->
+        </div>
 
         <!-- GROUPE Génomique & Transcriptomique -->
         <div class="proj-group" data-group="genomics">
@@ -1374,7 +1410,7 @@ footer {
               <a href="#" class="project-link">GitHub →</a>
             </div>
           </div>
-        </div><!-- /.proj-group genomics -->
+        </div>
 
         <!-- GROUPE Data & Viz -->
         <div class="proj-group" data-group="dataviz">
@@ -1403,7 +1439,7 @@ footer {
               <a href="#" class="project-link">GitHub →</a>
             </div>
           </div>
-        </div><!-- /.proj-group dataviz -->
+        </div>
 
         <!-- GROUPE Machine Learning -->
         <div class="proj-group" data-group="ml">
@@ -1432,12 +1468,11 @@ footer {
               <a href="#" class="project-link">GitHub →</a>
             </div>
           </div>
-        </div><!-- /.proj-group ml -->
+        </div>
 
       </div>
     </div>
   </section>
-  <!-- /.projects -->
 
   <!-- ── Séparateur Contact ── -->
   <div class="section-sep">
@@ -1479,9 +1514,9 @@ footer {
       <!-- Contact card -->
       <div class="contact-card">
         <h2>Contacts</h2>
-        <a href="/cdn-cgi/l/email-protection#abc6cac7c7c4d9d285c7cec8c4d9d9ceebced3cac6dbc7ce85c8c4c6" class="contact-item">
+        <a href="mailto:mallory.lecorre@example.com" class="contact-item">
           <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          <span class="__cf_email__" data-cfemail="c6aba7aaaaa9b4bfe8aaa3a5a9b4b4a386a3bea7abb6aaa3e8a5a9ab">[email&#160;protected]</span>
+          mallory.lecorre@example.com
         </a>
         <div class="contact-divider"></div>
         <div class="contact-socials">
@@ -1504,11 +1539,10 @@ footer {
 
     </div>
   </section>
-  <!-- /.contact -->
 
 </div><!-- /.ocean-zone -->
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 /* ── Accordion ── */
 function toggleAcc(btn) {
   const body = btn.nextElementSibling;
@@ -1564,6 +1598,7 @@ const fishColors = ['rgba(255,255,255,0.10)','rgba(100,200,255,0.08)','rgba(79,2
 
 function createFish() {
   const oceanZone = document.querySelector('.ocean-zone');
+  if (!oceanZone) return;
   const fish = document.createElement('div');
   fish.classList.add('fish');
   const goRight = Math.random() > 0.5;
@@ -1586,6 +1621,7 @@ setInterval(createFish, 9000);
 const bioColors = ['rgba(0,255,180,VAL)','rgba(80,180,255,VAL)','rgba(0,220,255,VAL)','rgba(79,209,197,VAL)'];
 function createBiolum() {
   const oceanZone = document.querySelector('.ocean-zone');
+  if (!oceanZone) return;
   const dot = document.createElement('div');
   dot.classList.add('biolum');
   const size = Math.random() * 4 + 2;
@@ -1608,7 +1644,6 @@ setInterval(createBiolum, 800);
 
 /* ── Nuages SVG ── */
 const cloudShapes = [
-  // Grand nuage bouffi
   `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80">
     <ellipse cx="100" cy="60" rx="90" ry="22" fill="white"/>
     <ellipse cx="70" cy="48" rx="45" ry="30" fill="white"/>
@@ -1617,14 +1652,12 @@ const cloudShapes = [
     <ellipse cx="148" cy="54" rx="28" ry="18" fill="white"/>
     <ellipse cx="48" cy="56" rx="25" ry="16" fill="white"/>
   </svg>`,
-  // Petit nuage léger
   `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 55">
     <ellipse cx="70" cy="42" rx="60" ry="15" fill="white"/>
     <ellipse cx="55" cy="32" rx="30" ry="22" fill="white"/>
     <ellipse cx="88" cy="28" rx="28" ry="20" fill="white"/>
     <ellipse cx="110" cy="38" rx="20" ry="14" fill="white"/>
   </svg>`,
-  // Nuage allongé
   `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 65">
     <ellipse cx="120" cy="50" rx="110" ry="17" fill="white"/>
     <ellipse cx="80" cy="38" rx="50" ry="26" fill="white"/>
@@ -1640,40 +1673,30 @@ function createCloudSVG() {
   if (!skyZone) return;
   const cloud = document.createElement('div');
   cloud.classList.add('cloud-svg');
-
   const shapeIdx = Math.floor(Math.random() * cloudShapes.length);
   cloud.innerHTML = cloudShapes[shapeIdx];
-
-  // Taille généreuse : 280–520px de large
   const scale = Math.random() * 1.0 + 1.2;
   const baseW = [200, 140, 240][shapeIdx] || 200;
   const w = baseW * scale;
   cloud.style.width = w + 'px';
-
-  // Position : premier tiers du ciel
   const skyH = skyZone.offsetHeight;
   cloud.style.top = (Math.random() * (skyH * 0.48) + 40) + 'px';
   cloud.style.left = '-450px';
-
-  // Opacité subtile
   const opacity = Math.random() * 0.12 + 0.18;
   cloud.querySelector('svg').style.opacity = opacity;
-
-  // Vitesse lente
   const duration = Math.random() * 50 + 40;
   cloud.style.animationDuration = duration + 's';
   cloud.style.animationDelay = (Math.random() * -35) + 's';
-
   skyZone.appendChild(cloud);
   setTimeout(() => cloud.remove(), (duration + 5) * 1000);
 }
 
-// Nuages initiaux + intervalle
 for (let i = 0; i < 5; i++) setTimeout(createCloudSVG, i * 2500);
 setInterval(createCloudSVG, 7000);
 
 function createCloud() {
   const skyZone = document.getElementById('sky-wrapper');
+  if (!skyZone) return;
   const cloud = document.createElement('div');
   cloud.classList.add('cloud');
   const w = Math.random() * 180 + 80;
@@ -1690,7 +1713,7 @@ function createCloud() {
 for (let i = 0; i < 4; i++) setTimeout(createCloud, i * 4000);
 setInterval(createCloud, 8000);
 
-/* ── Nav active ── */
+/* ── Nav active (FIX: code complet, non tronqué) ── */
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
 
@@ -1698,4 +1721,16 @@ const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       navLinks.forEach(link => {
-        link.classList.remove
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + entry.target.id) {
+          link.classList.add('active');
+        }
+      });
+    }
+  });
+}, { threshold: 0.4 });
+
+sections.forEach(section => observer.observe(section));
+</script>
+</body>
+</html>

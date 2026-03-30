@@ -1512,11 +1512,9 @@ footer {
   </section>
   <!-- /.contact -->
 
-</div>
-  
-  <!-- /.ocean-zone -->
+</div><!-- /.ocean-zone -->
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* ── Accordion ── */
 function toggleAcc(btn) {
   const body = btn.nextElementSibling;
@@ -1614,7 +1612,72 @@ function createBiolum() {
 for (let i = 0; i < 40; i++) setTimeout(createBiolum, i * 150);
 setInterval(createBiolum, 800);
 
-/* ── Nuages ── */
+/* ── Nuages SVG ── */
+const cloudShapes = [
+  // Grand nuage bouffi
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80">
+    <ellipse cx="100" cy="60" rx="90" ry="22" fill="white"/>
+    <ellipse cx="70" cy="48" rx="45" ry="30" fill="white"/>
+    <ellipse cx="120" cy="44" rx="40" ry="28" fill="white"/>
+    <ellipse cx="95" cy="38" rx="35" ry="25" fill="white"/>
+    <ellipse cx="148" cy="54" rx="28" ry="18" fill="white"/>
+    <ellipse cx="48" cy="56" rx="25" ry="16" fill="white"/>
+  </svg>`,
+  // Petit nuage léger
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 55">
+    <ellipse cx="70" cy="42" rx="60" ry="15" fill="white"/>
+    <ellipse cx="55" cy="32" rx="30" ry="22" fill="white"/>
+    <ellipse cx="88" cy="28" rx="28" ry="20" fill="white"/>
+    <ellipse cx="110" cy="38" rx="20" ry="14" fill="white"/>
+  </svg>`,
+  // Nuage allongé
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 65">
+    <ellipse cx="120" cy="50" rx="110" ry="17" fill="white"/>
+    <ellipse cx="80" cy="38" rx="50" ry="26" fill="white"/>
+    <ellipse cx="140" cy="34" rx="45" ry="24" fill="white"/>
+    <ellipse cx="185" cy="44" rx="32" ry="18" fill="white"/>
+    <ellipse cx="50" cy="46" rx="28" ry="16" fill="white"/>
+    <ellipse cx="115" cy="28" rx="30" ry="18" fill="white"/>
+  </svg>`,
+];
+
+function createCloudSVG() {
+  const skyZone = document.getElementById('sky-wrapper');
+  if (!skyZone) return;
+  const cloud = document.createElement('div');
+  cloud.classList.add('cloud-svg');
+
+  const shapeIdx = Math.floor(Math.random() * cloudShapes.length);
+  cloud.innerHTML = cloudShapes[shapeIdx];
+
+  // Taille généreuse : 280–520px de large
+  const scale = Math.random() * 1.0 + 1.2;
+  const baseW = [200, 140, 240][shapeIdx] || 200;
+  const w = baseW * scale;
+  cloud.style.width = w + 'px';
+
+  // Position : premier tiers du ciel
+  const skyH = skyZone.offsetHeight;
+  cloud.style.top = (Math.random() * (skyH * 0.48) + 40) + 'px';
+  cloud.style.left = '-450px';
+
+  // Opacité subtile
+  const opacity = Math.random() * 0.12 + 0.18;
+  cloud.querySelector('svg').style.opacity = opacity;
+
+  // Vitesse lente
+  const duration = Math.random() * 50 + 40;
+  cloud.style.animationDuration = duration + 's';
+  cloud.style.animationDelay = (Math.random() * -35) + 's';
+
+  skyZone.appendChild(cloud);
+  setTimeout(() => cloud.remove(), (duration + 5) * 1000);
+}
+
+// Nuages initiaux + intervalle
+for (let i = 0; i < 5; i++) setTimeout(createCloudSVG, i * 2500);
+setInterval(createCloudSVG, 7000);
+
 function createCloud() {
   const skyZone = document.getElementById('sky-wrapper');
   const cloud = document.createElement('div');
@@ -1641,17 +1704,4 @@ const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + entry.target.id) {
-          link.classList.add('active');
-        }
-      });
-    }
-  });
-}, { threshold: 0.4 });
-
-sections.forEach(section => observer.observe(section));
-</script>
-
-</body>
-</html>
+        link.classList.remove

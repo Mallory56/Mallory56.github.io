@@ -571,11 +571,10 @@ section {
 }
 
 /* ─── WHALE DECO ─────────────────────────────── */
-@keyframes whaleFloat {
-  0%, 100% { transform: translateY(0px) rotate(-1deg); }
-  50%       { transform: translateY(-12px) rotate(1deg); }
+.whale-deco {
+  animation: whaleFloat 6s ease-in-out infinite;
+  opacity: 0.6; /* plus subtile */
 }
-.whale-deco { animation: whaleFloat 6s ease-in-out infinite; }
 
 /* ─── PROJECTS ───────────────────────────────── */
 .projects-wrapper {

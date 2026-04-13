@@ -89,9 +89,9 @@ nav {
   font-size: 0.72rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.6);
+  color: rgba(255,255,255,0.7);
   text-decoration: none;
-  transition: color 0.25s;
+  transition: color 0.35s, text-shadow 0.35s;
   position: relative;
 }
 .nav-links a::after {
@@ -106,6 +106,19 @@ nav {
 .nav-links a:hover::after { width: 100%; }
 .nav-links a.active { color: white; }
 .nav-links a.active::after { width: 100%; }
+
+/* Nav on light background (sky zone) */
+nav.nav-light .nav-links a {
+  color: rgba(10,40,80,0.75);
+  text-shadow: none;
+}
+nav.nav-light .nav-links a:hover { color: rgba(10,40,80,1); }
+nav.nav-light .nav-links a.active { color: rgba(10,40,80,1); }
+nav.nav-light .nav-links a::after { background: rgba(10,80,80,0.7); }
+nav.nav-light {
+  background: rgba(255,255,255,0.28);
+  border-bottom-color: rgba(255,255,255,0.35);
+}
 
 /* ─── HERO ANIMATIONS ────────────────────────── */
 @keyframes heroFadeUp {
@@ -531,6 +544,34 @@ section {
 }
 .accordion-body-inner .skills-grid { margin-top: 0.2rem; }
 
+/* ─── ACC LIST (tirets teal) ─────────────────── */
+.acc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.acc-list li {
+  font-family: 'Lora', serif;
+  font-size: 0.82rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.6);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+}
+.acc-list li::before {
+  content: '—';
+  color: var(--teal);
+  opacity: 0.75;
+  flex-shrink: 0;
+  margin-top: 0.05rem;
+  font-size: 0.78rem;
+  font-style: normal;
+}
+
 .acc-tag {
   display: inline-block;
   background: rgba(79,209,197,0.1);
@@ -584,7 +625,6 @@ section {
   box-shadow: 0 14px 44px rgba(0,0,0,0.45), 0 0 0 1px rgba(79,209,197,0.08);
 }
 
-/* Bannière : contexte + badge statut */
 .proj-header {
   display: flex;
   align-items: center;
@@ -603,7 +643,6 @@ section {
   opacity: 0.9;
 }
 
-/* Badges de statut */
 .status-badge {
   font-family: 'DM Mono', monospace;
   font-size: 0.6rem;
@@ -649,7 +688,6 @@ section {
 }
 .status-planned::before { background: rgba(200,200,255,0.5); }
 
-/* Corps de la carte */
 .project-body { padding: 1.4rem 1.6rem 0.9rem; }
 
 .project-body h3 {
@@ -662,7 +700,6 @@ section {
   line-height: 1.2;
 }
 
-/* Description principale */
 .proj-desc {
   font-family: 'Lora', serif;
   font-size: 0.88rem;
@@ -672,7 +709,6 @@ section {
   margin: 0 0 0.85rem;
 }
 
-/* Points de détail — tirets teal lisibles, texte blanc à 72% */
 .proj-details {
   list-style: none;
   padding: 0;
@@ -700,7 +736,6 @@ section {
   font-style: normal;
 }
 
-/* Footer de la carte */
 .project-footer {
   display: flex;
   align-items: center;
@@ -948,9 +983,9 @@ footer {
 <nav>
   <div class="nav-links">
     <a href="#home">About</a>
-    <a href="#about">Parcours</a>
+    <a href="#about">Background</a>
     <a href="#skills">Skills</a>
-    <a href="#projects">Projets</a>
+    <a href="#projects">Projects</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
@@ -998,8 +1033,8 @@ footer {
 
   <section id="home">
     <h1 class="hero-name">Mallory<br>Le Corre</h1>
-    <p class="hero-title">Bio-informaticienne &amp; Marine Omics</p>
-    <p class="hero-tagline">Bioinformatician specialized in omics and NGS data, seeking to apply my skills to species conservation, particularly cetaceans, by developing bioinformatics approaches. Interested in science communication and making research accessible to the public.</p>
+    <p class="hero-title">Bioinformatician &amp; Marine Omics</p>
+    <p class="hero-tagline">Bioinformatician specialised in omics and NGS data, seeking to apply my skills to species conservation — particularly cetaceans — through the development of bioinformatics approaches. Passionate about science communication and making research accessible to the public.</p>
   </section>
 
   <div style="position:absolute; bottom:0; left:0; width:100%; height:120px; overflow:visible; z-index:15; pointer-events:none;">
@@ -1029,9 +1064,9 @@ footer {
       <div class="timeline-block">
         <div class="tl-intro">
           <p class="section-label">Background</p>
-          <h2 class="section-title">Éducation &amp;<br>Expériences</h2>
+          <h2 class="section-title">Education &amp;<br>Experience</h2>
           <p style="font-family:'Lora',serif; color:rgba(255,255,255,0.4); font-size:0.85rem; font-style:italic; max-width:300px; line-height:1.85; margin-bottom:1.8rem;">
-            After a bachelor degree in Biology and Ecology, with a strong focus on marin ecosystem, I completed a master's in bioinformatics. I specialized in omics and NGS data analysis.
+            After a bachelor's degree in Biology and Ecology with a strong focus on marine ecosystems, I completed a master's in bioinformatics, specialising in omics and NGS data analysis.
           </p>
         </div>
 
@@ -1048,7 +1083,7 @@ footer {
           </div>
           <div class="tl-item">
             <p class="tl-year">2022–2024</p>
-            <p class="tl-title">Master’s degree in Bioinformatics · From Genome to Ecosystem</p>
+            <p class="tl-title">Master's degree in Bioinformatics · From Genome to Ecosystem</p>
             <p class="tl-sub">Université de Bordeaux · Bordeaux, France · Focus on omics data</p>
           </div>
           <div class="tl-item">
@@ -1079,10 +1114,7 @@ footer {
 
     <!-- LEFT COLUMN -->
     <div class="accordion-card">
-      <h2>
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><path d="M6 20v-1a6 6 0 0 1 12 0v1"/></svg>
-        Skills
-      </h2>
+      <h2>Skills</h2>
 
       <!-- Programming -->
       <div class="accordion-item">
@@ -1092,12 +1124,12 @@ footer {
         </button>
         <div class="accordion-body">
           <div class="accordion-body-inner">
-            <div class="skills-grid">
-              <span class="skill-tag"><span class="skill-dot"></span>Python (data analysis, scripting, pipelines)</span>
-              <span class="skill-tag"><span class="skill-dot"></span>R (statistical modeling, visualization)</span>
-              <span class="skill-tag"><span class="skill-dot"></span>Bash (HPC, workflow automation)</span>
-              <span class="skill-tag"><span class="skill-dot"></span>SQL (data management)</span>
-            </div>
+            <ul class="acc-list">
+              <li>Python — data analysis, scripting, pipelines</li>
+              <li>R — statistical modeling, visualization</li>
+              <li>Bash — HPC, workflow automation</li>
+              <li>SQL — data management</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -1110,11 +1142,11 @@ footer {
         </button>
         <div class="accordion-body">
           <div class="accordion-body-inner">
-            <div class="skills-grid">
-              <span class="skill-tag"><span class="skill-dot"></span>Statistical modeling and multivariate analysis for ecological and biological data</span>
-              <span class="skill-tag"><span class="skill-dot"></span>Machine learning (theoretical knowledge and applied experience on real datasets, including master projects)</span>
-              <span class="skill-tag"><span class="skill-dot"></span>Scientific data visualization (publications, presentations)</span>
-            </div>
+            <ul class="acc-list">
+              <li>Statistical modeling and multivariate analysis for ecological and biological data</li>
+              <li>Machine learning — theoretical knowledge and applied experience on real datasets, including master projects</li>
+              <li>Scientific data visualization for publications and presentations</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -1127,12 +1159,12 @@ footer {
         </button>
         <div class="accordion-body">
           <div class="accordion-body-inner">
-            <div class="skills-grid">
-              <span class="skill-tag"><span class="skill-dot"></span>Reproducible research workflows</span>
-              <span class="skill-tag"><span class="skill-dot"></span>Pipeline development (bioinformatics)</span>
-              <span class="skill-tag"><span class="skill-dot"></span>Version control (Git)</span>
-              <span class="skill-tag"><span class="skill-dot"></span>Analysis automation (HPC environments)</span>
-            </div>
+            <ul class="acc-list">
+              <li>Reproducible research workflows</li>
+              <li>Pipeline development (bioinformatics)</li>
+              <li>Version control with Git</li>
+              <li>Analysis automation in HPC environments</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -1145,14 +1177,12 @@ footer {
         </button>
         <div class="accordion-body">
           <div class="accordion-body-inner">
-            <div class="skills-grid">
-              <span class="skill-tag"><span class="skill-dot"></span>Phylogeny</span>
-              <span class="skill-tag"><span class="skill-dot"></span>Population genetics</span>
-              <span class="skill-tag"><span class="skill-dot"></span>Marine ecology</span>
-              <span class="skill-tag"><span class="skill-dot"></span>Behavioral ecology</span>
-              <span class="skill-tag"><span class="skill-dot"></span>Ecophysiology</span>
-              <span class="skill-tag"><span class="skill-dot"></span>Biodiversity assessment</span>
-            </div>
+            <ul class="acc-list">
+              <li>Phylogeny and population genetics</li>
+              <li>Marine ecology and behavioral ecology</li>
+              <li>Ecophysiology</li>
+              <li>Biodiversity assessment</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -1160,10 +1190,7 @@ footer {
 
     <!-- RIGHT COLUMN -->
     <div class="accordion-card">
-      <h2>
-        <svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg>
-        Omics Expertise
-      </h2>
+      <h2>Omics Expertise</h2>
 
       <!-- Metabarcoding -->
       <div class="accordion-item">
@@ -1178,7 +1205,7 @@ footer {
               <span class="acc-tag">16S</span>
               <span class="acc-tag">18S</span>
               <span class="acc-tag">ITS</span>
-              <span class="acc-tag">Pacbio</span>
+              <span class="acc-tag">PacBio</span>
               <span class="acc-tag">Illumina</span>
               <span class="acc-tag">Nanopore</span>
             </div>
@@ -1264,57 +1291,54 @@ footer {
     <div class="projects-wrapper">
       <div style="text-align:left; max-width:1100px; width:100%;">
         <p class="section-label">Selected Work</p>
-        <h2 class="section-title">Projets &amp; Analyses</h2>
+        <h2 class="section-title">Projects &amp; Analyses</h2>
 
         <!-- GROUPE Métabarcoding -->
         <div class="proj-group" data-group="metabarcoding">
           <div class="proj-group-header">
-            <div class="proj-group-icon" style="background:rgba(79,209,197,0.1);">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4fd1c5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4M8 6a4 4 0 0 1 4-4M12 22a4 4 0 0 1-4-4M16 18a4 4 0 0 1-4 4M2 12a4 4 0 0 1 4-4M6 16a4 4 0 0 1-4-4M22 12a4 4 0 0 1-4 4M18 8a4 4 0 0 1 4 4"/></svg>
-            </div>
             <span class="proj-group-name">Métabarcoding</span>
             <div class="proj-group-line"></div>
           </div>
 
           <div class="project-item">
             <div class="proj-header">
-              <span class="proj-ctx">Stage · MIO</span>
-              <span class="status-badge status-done">En cours</span>
+              <span class="proj-ctx">Internship · MIO</span>
+              <span class="status-badge status-done">Completed</span>
             </div>
             <div class="project-body">
               <h3>Metabarcoding Long-Reads Pipeline</h3>
-              <p class="proj-desc">Caractérisation taxonomique de la biodiversité microbienne d'effluents liquides tunisiens par séquençage haut débit.</p>
+              <p class="proj-desc">Taxonomic characterisation of microbial diversity in Tunisian liquid effluents using high-throughput sequencing.</p>
               <ul class="proj-details">
-                <li>Développement d'un pipeline automatisé (QC → classification → phyloseq) optimisé pour Nanopore</li>
-                <li>Benchmark de technologies de séquençage : Nanopore vs Illumina vs PacBio</li>
-                <li>Analyses exploratoires de diversité microbienne sur données environnementales 16S</li>
+                <li>Development of an automated pipeline (QC → classification → phyloseq) optimised for Nanopore data</li>
+                <li>Benchmarking of sequencing technologies: Nanopore vs Illumina vs PacBio</li>
+                <li>Exploratory microbial diversity analyses on environmental 16S datasets</li>
               </ul>
             </div>
             <div class="project-footer">
               <div class="project-chips">
                 <span class="chip">16S</span><span class="chip">Nanopore</span><span class="chip">Illumina</span><span class="chip">PacBio</span><span class="chip">Bash</span><span class="chip">R</span>
               </div>
-              <a href="https://github.com/Mallory56/Pipeline_metabarcoding_nanopore" class="project-link">Voir le code →</a>
+              <a href="https://github.com/Mallory56/Pipeline_metabarcoding_nanopore" class="project-link">View code →</a>
             </div>
           </div>
 
           <div class="project-item">
             <div class="proj-header">
               <span class="proj-ctx">VSC · IFREMER</span>
-              <span class="status-badge status-ongoing">En cours</span>
+              <span class="status-badge status-ongoing">Ongoing</span>
             </div>
             <div class="project-body">
-              <h3>Metabarcoding — Sédiment</h3>
+              <h3>Metabarcoding — Sediment</h3>
               <p class="proj-desc">Temporal analysis of microbial communities in the sediment of a commercial shrimp farm to assess community dynamics driven by both environmental factors, such as marine heatwaves, and aquaculture-related changes.</p>
               <ul class="proj-details">
                 <li>Sample preparation (grinding) and DNA extraction</li>
                 <li>Data processing (QC → taxonomic classification)</li>
-                <li>Statistical analyses, including alpha and beta diversity, co-occurrence patterns, and functional annotation</li>
+                <li>Statistical analyses including alpha and beta diversity, co-occurrence patterns, and functional annotation</li>
               </ul>
             </div>
             <div class="project-footer">
               <div class="project-chips">
-                <span class="chip">16S</span><span class="chip">Eukaryote</span><span class="chip">Archée</span><span class="chip">Fungi</span><span class="chip">Illumina</span><span class="chip">R</span><span class="chip">Python</span><span class="chip">Bash</span>
+                <span class="chip">16S</span><span class="chip">Eukaryote</span><span class="chip">Archaea</span><span class="chip">Fungi</span><span class="chip">Illumina</span><span class="chip">R</span><span class="chip">Python</span><span class="chip">Bash</span>
               </div>
             </div>
           </div>
@@ -1322,13 +1346,13 @@ footer {
           <div class="project-item">
             <div class="proj-header">
               <span class="proj-ctx">VSC · IFREMER</span>
-              <span class="status-badge status-planned">En cours</span>
+              <span class="status-badge status-ongoing">Ongoing</span>
             </div>
             <div class="project-body">
-              <h3>Metabarcoding — Fungi Australie</h3>
+              <h3>Metabarcoding — Fungi Australia</h3>
               <p class="proj-desc">Analysis of environmental DNA from Eucalyptus-associated fungi in Australia, focusing on community composition, diversity, and ecological interactions.</p>
               <ul class="proj-details">
-                <li>Data processing using a bioinformatics pipeline to analyze various experimental and environmental parameters</li>
+                <li>Data processing using a bioinformatics pipeline to analyse various experimental and environmental parameters</li>
               </ul>
             </div>
             <div class="project-footer">
@@ -1342,8 +1366,6 @@ footer {
         <!-- GROUPE Génomique & Transcriptomique -->
         <div class="proj-group" data-group="genomics">
           <div class="proj-group-header">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7b8ef7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
-            </div>
             <span class="proj-group-name">Génomique &amp; Transcriptomic</span>
             <div class="proj-group-line"></div>
           </div>
@@ -1351,11 +1373,11 @@ footer {
           <div class="project-item">
             <div class="proj-header">
               <span class="proj-ctx">Master · Bordeaux</span>
-              <span class="status-badge status-done">Terminé</span>
+              <span class="status-badge status-done">Completed</span>
             </div>
             <div class="project-body">
               <h3>Functional Genomics Pipeline</h3>
-              <p class="proj-desc">Pipeline complet : assemblage génomique, annotation fonctionnelle et analyses downstream.</p>
+              <p class="proj-desc">End-to-end pipeline covering genome assembly, functional annotation, and downstream analyses.</p>
             </div>
             <div class="project-footer">
               <div class="project-chips">
@@ -1368,7 +1390,7 @@ footer {
         <div class="project-item">
           <div class="proj-header">
             <span class="proj-ctx">VSC · IFREMER</span>
-            <span class="status-badge status-ongoing">En cours</span>
+            <span class="status-badge status-ongoing">Ongoing</span>
           </div>
         
           <div class="project-body">
@@ -1394,13 +1416,11 @@ footer {
             </div>
           </div>
         </div>
+        </div>
 
         <!-- GROUPE Data & Viz -->
         <div class="proj-group" data-group="dataviz">
           <div class="proj-group-header">
-            <div class="proj-group-icon" style="background:rgba(246,169,78,0.12);">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f6a94e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-            </div>
             <span class="proj-group-name">Data &amp; Visualisation</span>
             <div class="proj-group-line"></div>
           </div>
@@ -1408,17 +1428,16 @@ footer {
           <div class="project-item">
             <div class="proj-header">
               <span class="proj-ctx">VSC · IFREMER</span>
-              <span class="status-badge status-done">En cours</span>
+              <span class="status-badge status-ongoing">Ongoing</span>
             </div>
             <div class="project-body">
-              <h3>Dashboard — Qualité de l'eau</h3>
-              <p class="proj-desc">Processing and visualization of physical parameters from a multiparameter sensor in an aquaculture farm to investigate how environmental conditions (especially marine heat waves) affect shrimp farming and mortality.</p>
+              <h3>Dashboard — Water Quality</h3>
+              <p class="proj-desc">Processing and visualisation of physical parameters from a multiparameter sensor in an aquaculture farm to investigate how environmental conditions (especially marine heat waves) affect shrimp farming and mortality.</p>
               <ul class="proj-details">
-                <li>Data processin, cleaning, recalibrations, filtering </li>
+                <li>Data processing, cleaning, recalibration, and filtering</li>
                 <li>Creation of interactive figures integrating sensor measurements, climatic data, and farmer-provided datasets</li>
-                <li>Presentation and communication</li>
+                <li>Presentation and communication of results</li>
               </ul>            
-            
             </div>
             <div class="project-footer">
               <div class="project-chips">
@@ -1431,9 +1450,6 @@ footer {
         <!-- GROUPE Machine Learning -->
         <div class="proj-group" data-group="ml">
           <div class="proj-group-header">
-            <div class="proj-group-icon" style="background:rgba(224,124,181,0.12);">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e07cb5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg>
-            </div>
             <span class="proj-group-name">Machine Learning</span>
             <div class="proj-group-line"></div>
           </div>
@@ -1441,11 +1457,11 @@ footer {
           <div class="project-item">
             <div class="proj-header">
               <span class="proj-ctx">Master · Bordeaux</span>
-              <span class="status-badge status-done">Terminé</span>
+              <span class="status-badge status-done">Completed</span>
             </div>
             <div class="project-body">
               <h3>Master AI Project</h3>
-              <p class="proj-desc"> Development of an AI-based game using the Minimax algorithm enhanced with Alpha-Beta pruning and a positional heuristic, achieving strong performance (88% wins) against random play while providing an interactive terminal interface with multiple gameplay modes and statistic.</p>
+              <p class="proj-desc">Development of an AI-based game using the Minimax algorithm enhanced with Alpha-Beta pruning and a positional heuristic, achieving strong performance (88% wins) against random play while providing an interactive terminal interface with multiple gameplay modes and statistics.</p>
             </div>
             <div class="project-footer">
               <div class="project-chips">
@@ -1468,7 +1484,7 @@ footer {
   <!-- ─── CONTACT ─── -->
   <section id="contact">
     <div style="max-width:1100px; width:95%; text-align:left; margin-bottom:2.5rem;">
-      <p class="section-label">Contacts</p>
+      <p class="section-label">Get in touch</p>
       <h2 class="section-title">Contact me</h2>
     </div>
     <div style="display:flex; align-items:center; gap:3rem; max-width:860px; width:95%; flex-wrap:wrap; justify-content:center;">
@@ -1498,7 +1514,7 @@ footer {
 
       <!-- Contact card -->
       <div class="contact-card">
-        <h2>Contacts</h2>
+        <h2>Get in touch</h2>
         <a href="mailto:mallory.lecorre56@gmail.com" class="contact-item">
           <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           mallory.lecorre56@gmail.com
@@ -1697,6 +1713,23 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.4 });
 
 sections.forEach(section => observer.observe(section));
+
+/* ── Nav adaptive color ── */
+const navEl = document.querySelector('nav');
+const skyWrapper = document.getElementById('sky-wrapper');
+
+function updateNavColor() {
+  const skyBottom = skyWrapper.getBoundingClientRect().bottom;
+  // If sky zone is still covering the nav area (nav height ~55px)
+  if (skyBottom > 55) {
+    navEl.classList.add('nav-light');
+  } else {
+    navEl.classList.remove('nav-light');
+  }
+}
+
+window.addEventListener('scroll', updateNavColor, { passive: true });
+updateNavColor(); // run on load
 </script>
 </body>
 </html>
